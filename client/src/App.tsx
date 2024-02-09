@@ -4,12 +4,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { LoginButton } from './LoginRegisterMenu/LoginButton.tsx'
 import LoginMenu from './LoginRegisterMenu/LoginMenu.tsx'
+import { Search } from './SearchBar/Search.tsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <Search/>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
