@@ -8,8 +8,10 @@ export const createUserWithUsername = onCall(async (data, context) => {
     }
     const db = database()
 
-    const dataInvalid = !data.username || !data.uid
+    const dataInvalid = !data.username
     if (dataInvalid) throw new HttpsError("invalid-argument", "Wrong data provided")
+
+    const uid = context.auth.uid
 
     const usernameExists = (await db.ref(`userName/${data.username.toLowerCase()}`).get()).val()
     if (!!usernameExists) throw new HttpsError("already-exists", "Username already exists")
@@ -20,9 +22,9 @@ export const createUserWithUsername = onCall(async (data, context) => {
     }
 
     // make new user
-    db.ref(`userData/${data.uid}`).set(user)
-    db.ref(`userName/${data.username.toLowerCase()}`).set(data.uid)
-    logger.info(`User ${data.uid} created with username ${data.username}`)
+    db.ref(`userData/${uid}`).set(user)
+    db.ref(`userName/${data.username.toLowerCase()}`).set(uid)
+    logger.info(`User ${uid} created with username ${data.username}`)
 
     return user
 })

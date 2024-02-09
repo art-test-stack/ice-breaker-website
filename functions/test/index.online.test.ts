@@ -26,7 +26,7 @@ describe("createUserWithUsername", () => {
     })
 
     it("should create a user", async () => {
-        const data = { username: "test_name", uid: "test_uid" }
+        const data = { username: "test_name" }
         const context = { auth: { uid: "test_uid" } }
         const result = await wrapped(data, context)
         expect(result).toEqual({ username: "test_name", moderator: false })
@@ -44,7 +44,7 @@ describe("createUserWithUsername", () => {
     })
 
     it("should error because user is not authenticated", async () => {
-        const data = { username: "test", uid: "test" }
+        const data = { username: "test" }
         await expect(wrapped(data)).rejects.toThrow("User is not authenticated")
     })
 
@@ -52,7 +52,7 @@ describe("createUserWithUsername", () => {
         // setup data in database
         await db.ref("userName/test").set("test")
 
-        const data = { username: "test", uid: "test" }
+        const data = { username: "test" }
         const context = { auth: { uid: "test" } }
         await expect(wrapped(data, context)).rejects.toThrow("Username already exists")
 
@@ -60,14 +60,8 @@ describe("createUserWithUsername", () => {
         await db.ref("userName/test").remove()
     })
 
-    it("should error because no uid was provided", async () => {
-        const data = { username: "test" }
-        const context = { auth: { uid: "test" } }
-        await expect(wrapped(data, context)).rejects.toThrow("Wrong data provided")
-    })
-
     it("should error because no username was provided", async () => {
-        const data = { uid: "test" }
+        const data = {}
         const context = { auth: { uid: "test" } }
         await expect(wrapped(data, context)).rejects.toThrow("Wrong data provided")
     })
