@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.login-ui-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgb(21, 22, 26);
+}
