@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { LoginButton } from './LoginRegisterMenu/LoginButton.tsx'
 import LoginMenu from './LoginRegisterMenu/LoginMenu.tsx'
 import { Search } from './SearchBar/Search.tsx'
-
+import {Title} from './Title/Title.tsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +11,7 @@ function App() {
   return (
     <>
       <Search/>
+      
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -24,6 +23,8 @@ function App() {
 
       {/* <div><LoginButton /></div> */}
       <div> <LoginMenu /> </div>
+      
+      <div><Title/></div>  
 
     </>
   )
