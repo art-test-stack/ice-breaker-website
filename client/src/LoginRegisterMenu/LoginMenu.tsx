@@ -21,7 +21,7 @@ export default function LoginMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [email, setEmail] = React.useState(''); 
   const [password, setPassword] = React.useState('');
-  const [showRegisterMenu, setShowRegisterMenu] = React.useState(false); 
+  // const [showRegisterMenu, setShowRegisterMenu] = React.useState(false); 
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -36,8 +36,16 @@ export default function LoginMenu() {
     setPassword(''); 
     handleClose(); 
   }
-  const handleRegisterClick = () => {
-    setShowRegisterMenu(true); 
+  // const handleRegisterClick = () => {
+  //   setShowRegisterMenu(true); 
+  //   handleClose(); 
+  // }
+
+  const handleRegister = () => {
+    console.log('Email:', email); 
+    console.log('Password: ', password); 
+    setEmail(''); 
+    setPassword(''); 
     handleClose(); 
   }
   return (
@@ -164,7 +172,7 @@ export default function LoginMenu() {
             Log in
           </Typography>
         </MenuItem>
-        <MenuItem onClick={handleRegisterClick}>
+        <MenuItem onClick={handleRegister}>
           <ListItemIcon>
             <AppRegistrationIcon fontSize="small" />
           </ListItemIcon>
