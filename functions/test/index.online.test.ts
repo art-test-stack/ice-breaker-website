@@ -11,6 +11,7 @@ const testEnv = functions(
 )
 
 import * as myFunctions from "../src/index"
+import { PostGameData } from "../src/game"
 
 const db = admin.database()
 
@@ -64,5 +65,57 @@ describe("createUserWithUsername", () => {
         const data = {}
         const context = { auth: { uid: "test" } }
         await expect(wrapped(data, context)).rejects.toThrow("Wrong data provided")
+    })
+})
+
+describe("postGame", () => {
+    let wrapped: any
+
+    beforeAll(() => {
+        wrapped = testEnv.wrap(myFunctions.postGame)
+    })
+
+    afterAll(() => {
+        testEnv.cleanup()
+    })
+
+    it("should error because user is not authenticated", async () => {
+        const data = { username: "test" }
+        await expect(wrapped(data)).rejects.toThrow("User is not authenticated")
+    })
+
+    it("should create a game", async () => {
+        const data: PostGameData = {
+            author: "test_uid",
+            name: "test game",
+            imageUrl: "https://acoolimage.com/theimage.png/",
+            categories: [1, 2, 3],
+            description: "test game description",
+            rules: "test game rules",
+            num_players: 2,
+            duration: 3,
+            equipment: "equipment test epidhdu",
+        }
+        const context = { auth: { uid: "test_uid" } }
+        const game_id: string = await wrapped(data, context)
+
+        // check database
+        const game = (await db.ref(`games/${game_id}`).get()).val()
+        expect(game).toEqual({
+            author: "test_uid",
+            name: "test game",
+            imageUrl: "https://acoolimage.com/theimage.png/",
+            categories: [1, 2, 3],
+            description: "test game description",
+            rules: "test game rules",
+            num_players: 2,
+            duration: 3,
+            equipment: "equipment test epidhdu",
+            // aliases: [],
+            // ratings: [],
+        })
+
+        // cleanup
+        await db.ref(`games/${game_id}`).remove()
     })
 })
