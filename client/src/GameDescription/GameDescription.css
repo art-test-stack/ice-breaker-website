@@ -1,0 +1,23 @@
+.gameDescriptionBox{
+    background-color: #826B7A;
+    width: 629px;
+    border-radius: 20px;
+    padding: 42px 42px 42px 42px;
+}
+
+.gameTitle{
+    font-family: 'Erica One', sans-serif;
+    /* background-color: green; */
+    margin: 0 40px 0;
+}
+
+.literallyDescription{
+    font-weight: bolder;
+}
+
+.descriptionBox{
+    /* background-color: blue; */
+    text-align: left;
+    font-family: 'Encode Sans Semi Expand', sans-serif;
+}
+
