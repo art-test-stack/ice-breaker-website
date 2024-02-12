@@ -1,0 +1,29 @@
+#infoBox {
+    width: 315px;
+    border-radius: 20px;
+    background-color: #26554D;
+    padding: 35px 25px 35px 25px;
+    text-align: left;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+}
+
+.bolded {
+    font-weight: bolder;
+    display: inline-block;
+    /* background-color: black; */
+    /* margin: 0 0 20px 0; */
+}
+
+#numPlayers, #duration, #categories {
+    display: inline-block;
+    margin: 0 0 0 7px;
+    /* background-color: aqua;  */
+}
+
+.listEquipments {
+    margin: 0 0 3px 0;
+    /* background-color: aqua;  */
+}
+
+
+
