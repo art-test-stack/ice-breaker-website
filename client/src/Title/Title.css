@@ -1,9 +1,57 @@
-.title {
+#title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.titleLetter {
     background: none;
-    border: 0;  
-    color:#81CFFF;
+    border: 0;
+    color: transparent;
     font-family: 'Erica One', sans-serif;
     font-size: xx-large;
-    padding: 0%;
-  }
+    padding: 0.5px;
+    transition: transform 1s ease, color 1.2s;
+    position: relative;
+}
 
+.titleLetter::before, .titleLetter::after {
+    content: attr(data-letter);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 1s ease, color 1.2s;
+    color: transparent;
+    z-index: 1;
+}
+
+.titleLetter::before {
+    transform: translate(0, 0);
+    color: transparent;
+}
+
+.titleLetter::after {
+    transform: translate(0, 0);
+    color: #81CFFF;   
+}
+
+.titleLetter:hover {
+    color: #ed27ff;
+    transition: color 0.1s;
+}
+
+.titleLetter:hover::before{
+    transform: translate(3px, -3px);
+    transition: transform 0.25s ease, color 0.1s;
+    color: #FFA07A;
+}
+
+.titleLetter:hover::after{
+    transform: translate(6px, -6px);
+    transition: transform 0.25s ease, color 0.3s;
+    color: white;
+}
