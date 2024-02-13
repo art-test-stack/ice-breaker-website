@@ -11,21 +11,20 @@ function App() {
 
   return (
     <>
-      <Search/>
-      
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
 
-      {/* <div><LoginButton /></div> */}
-      <div> <LoginMenu /> </div>
+      <div id='header'> 
+        <div id='titleContainer'>
+          <Title/>
+        </div>
+        <div id='searchContainer'>
+          <Search/>
+        </div>
+        <div id='loginContainer'>
+          <LoginMenu />
+        </div>
+      </div>
       
-      <div><Title/></div>  
+      {/* <div><LoginButton /></div> */}
 
       <div><CategoryDropdown /></div>
     </>
