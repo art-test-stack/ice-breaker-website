@@ -1,0 +1,35 @@
+/* Dropdown button */
+.Category {
+    background-color: none;
+    padding-left: 0px;
+    margin-top: 0%;
+    width: 300px;
+    
+    list-style-type: none;
+    font-family: 'Galindo', sans-serif;
+    
+    position: fixed;
+}
+
+/* Buttons inside dropdown */
+.buttonCategory{
+    background-color: #0f1724;
+    width: 300px;
+    border-radius: 0px;
+
+    font-size: large;
+    color: white;
+}
+
+/* Button inside the .Category */
+.rs-btn {
+    background: none;
+    width: 300px;
+    
+    font-size: x-large;
+    color: gray;
+}
+
+
+
+

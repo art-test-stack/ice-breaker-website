@@ -4,6 +4,7 @@ import { LoginButton } from './LoginRegisterMenu/LoginButton.tsx'
 import LoginMenu from './LoginRegisterMenu/LoginMenu.tsx'
 import { Search } from './SearchBar/Search.tsx'
 import {Title} from './Title/Title.tsx'
+import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
       
       <div><Title/></div>  
 
+      <div><CategoryDropdown /></div>
     </>
   )
 }
