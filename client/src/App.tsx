@@ -1,33 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import GameGrid from './components/molecules/GameGrid'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="gameBox">
+          <GameGrid games={[{
+          imgSrc: './assets/cards.webp',
+          imgAlt: 'Image 1',
+          title: 'Game 1',
+          category: 'Action',
+        },
+        {
+          imgSrc: 'image2.jpg',
+          imgAlt: 'Image 2',
+          title: 'Game 2',
+          category: 'Card',
+        },
+        {
+          imgSrc: 'image3.jpg',
+          imgAlt: 'Image 3',
+          title: 'Game 3',
+          category: 'Adventure',
+        },
+        {
+          imgSrc: 'image3.jpg',
+          imgAlt: 'Image 4',
+          title: 'Game 4',
+          category: 'Adventure',
+        }]}></GameGrid>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

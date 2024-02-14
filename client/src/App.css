@@ -1,8 +1,11 @@
 #root {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
 }
 
 .logo {
@@ -39,4 +42,10 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.gameBox {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
 }
