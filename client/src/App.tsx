@@ -1,7 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { LoginButton } from './LoginRegisterMenu/LoginButton.tsx'
+import LoginMenu from './LoginRegisterMenu/LoginMenu.tsx'
+import { Search } from './SearchBar/Search.tsx'
+import {Title} from './Title/Title.tsx'
+import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx'
 
 import { AuthUI, CurrentUserDataProvider } from "./firebase/auth"
 
@@ -10,29 +13,22 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+      <div id='header'> 
+        <div id='titleContainer'>
+          <Title/>
+        </div>
+        <div id='searchContainer'>
+          <Search/>
+        </div>
+        <div id='loginContainer'>
+          <LoginMenu />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-        <CurrentUserDataProvider>
-            <AuthUI/>
-        </CurrentUserDataProvider>
+      
+      {/* <div><LoginButton /></div> */}
+
+      <div><CategoryDropdown /></div>
     </>
   )
 }
