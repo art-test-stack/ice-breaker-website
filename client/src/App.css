@@ -21,6 +21,16 @@
   align-items: center;
 }
 
+.gameSectionHeader {
+  display: flex; 
+  justify-content: left; 
+  align-items: bottom;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10vw;
+}
+
 .gameBox {
   display: flex; 
   justify-content: center; 

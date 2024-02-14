@@ -11,7 +11,6 @@ export function Title() {
         <div id='title'>
             {
                 letters.map((letter, i) => (
-                    // set z layer to be 1 - i
                     <div className='titleLetter' data-letter={letter} style={
                         {
                             zIndex: letters.length - i,

@@ -34,8 +34,8 @@ function App() {
         </div>
         {/* <div><LoginButton /></div> */}
       </div>
-      <div>
-      <CategoryDropdown />
+      <div className ="gameSectionHeader">
+        <CategoryDropdown />
       </div>
       <div className ="gameSection">
           <div className="gameBox">
