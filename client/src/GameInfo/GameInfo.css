@@ -5,6 +5,8 @@
     padding: 35px 25px 35px 25px;
     text-align: left;
     font-family: 'Encode Sans Semi Expanded', sans-serif;
+    margin: 10px 10px 10px 20px;
+    height: fit-content;
 }
 
 .bolded {
