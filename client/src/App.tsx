@@ -22,7 +22,9 @@ function App() {
           <Search/>
         </div>
         <div id='loginContainer'>
-          <LoginMenu />
+          <CurrentUserDataProvider>
+            <LoginMenu />
+          </CurrentUserDataProvider>
         </div>
       </div>
       
