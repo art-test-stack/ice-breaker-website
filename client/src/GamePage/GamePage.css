@@ -1,6 +1,7 @@
 .GamePage{
     display: flex;
     width: 975px;
+    padding-bottom: 50px;
     /* background-color: bisque; */
 }
 
