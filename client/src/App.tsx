@@ -6,6 +6,8 @@ import { Search } from './SearchBar/Search.tsx'
 import {Title} from './Title/Title.tsx'
 import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx'
 
+import { AuthUI, CurrentUserDataProvider } from "./firebase/auth"
+
 function App() {
   const [count, setCount] = useState(0)
 

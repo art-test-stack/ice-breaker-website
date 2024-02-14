@@ -4,6 +4,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.9",
     "@mui/material": "^5.15.9",
-    "cypress": "^13.6.4"
+    "cypress": "^13.6.4",
+    "firebase": "^10.8.0"
   }
 }
