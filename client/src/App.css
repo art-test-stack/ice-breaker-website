@@ -44,6 +44,14 @@
   color: #888;
 }
 
+.gameSection{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+
+}
+
 .gameBox {
   display: flex; 
   justify-content: center; 
