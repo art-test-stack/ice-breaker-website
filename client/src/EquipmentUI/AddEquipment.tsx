@@ -27,10 +27,13 @@ function AddEquipment () {
 
     function handleEdit(index: number){
         const editedInput = prompt("Edit equipment: ")
-        if (editedInput != null) {
+        if (editedInput != null && editedInput != '') {
             const newEquipments: string[] = [...equipments]
             newEquipments.splice(index,1, editedInput)
             setEquipments(newEquipments)
+        }
+        else {
+            setEquipments(equipments)
         }
     }
 
