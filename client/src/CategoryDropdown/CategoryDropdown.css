@@ -1,46 +1,89 @@
-/* Dropdown button */
-.Category {
+
+#categoriesButton {
     background-color: none;
     padding-left: 0px;
-    margin-top: 0%;
-    width: 300px;
-    
-    list-style-type: none;
+    margin-top: 5px;
+    width: 150px;
     font-family: 'Galindo', sans-serif;
-    
-    position: fixed;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Buttons inside dropdown */
-.buttonCategory{
+.categoryOption{
     background-color: #0f1724;
-    width: 300px;
+    width: 100%;
     border-radius: 0px;
-
-    font-size: large;
+    font-size: 20px;
     color: white;
+    overflow: auto;
+    background-color: transparent;
+    border: none;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+    border-radius: 10px;
+    transition: opacity 0.2s ease-out, color 0.2s ease-out, transform 0.2s ease-out;
+    margin: 1px;
+    padding: -1px;
 }
 
-/* Button inside the .Category */
-.rs-btn {
-    background: none;
-    width: 300px;
-    
-    font-size: x-large;
-    color: gray;
+.categoryLabel {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+    font-size: 16px;
+    animation: labelAppear 0.2s ease-out;
+    transition: 0.5s ease-in-out;
 }
 
-button {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: border-color 0.25s;
+@keyframes labelAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
+
+.categoryOptionEven:hover{
+    text-shadow: 0 0 20px #f581ff;
+    background-color: #832e8b6d;
+}
+
+.categoryOptionOdd:hover{
+    text-shadow: 0 0 20px #ffbda2;
+    background-color: #894e348a;
+}
+
+
+#categoriesDropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    position: absolute;
+    width: 150px;
+    max-height: calc(100vh - 120px);
+
+    margin-top: 40px;
+    margin-right: 14px;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 4px 4px 16px 16px;
+    transform-origin: top;
+    transition: ease-in-out 0.3s;
+}
+
 
 
 

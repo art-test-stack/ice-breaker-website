@@ -1,0 +1,8 @@
+.GamePage{
+    display: flex;
+    width: 975px;
+    padding-bottom: 50px;
+    /* background-color: bisque; */
+}
+
+/*Distance between pink container and green container is 20px*/

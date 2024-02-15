@@ -1,6 +1,4 @@
-
-
-#header {
+ #header {
     /* menu along the top of the page */
     display: flex;
     justify-content: space-between;
@@ -16,4 +14,25 @@
     z-index: 0;
 }
 
+.gameSection{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+}
 
+.gameSectionHeader {
+  display: flex; 
+  justify-content: left; 
+  align-items: bottom;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10vw;
+}
+
+.gameBox {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
