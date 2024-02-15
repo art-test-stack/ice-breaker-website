@@ -1,0 +1,10 @@
+.game-grid {
+    display: grid;
+    gap: 20px;
+    width: 80%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
