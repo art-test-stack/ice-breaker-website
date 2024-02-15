@@ -119,7 +119,7 @@ export default function LoginMenu() {
                 onClick={handleClick}
                 size="small"
                 sx={{ ml: 2 }}
-                aria-controls={open ? 'account-menu' : undefined}
+                aria-controls={open ? 'login-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
             >
@@ -133,7 +133,7 @@ export default function LoginMenu() {
         </Box>
         <Menu
             anchorEl={anchorEl}
-            id="account-menu"
+            id="login-menu"
             open={open}
             onClose={handleClose}
             PaperProps={{
@@ -201,7 +201,7 @@ export default function LoginMenu() {
             {/* <MenuItem onClick={handleClose}> */}
             <MenuItem onClick={(event) => event.stopPropagation()}>
             <TextField
-                id="standard-basic"
+                id="email-textfield"
                 label="E-mail"
                 variant="standard"
                 size="small"
@@ -209,12 +209,19 @@ export default function LoginMenu() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault(); 
+                    document.getElementById('password-textfield')?.focus(); 
+                  }
+                  e.stopPropagation()
+                }}
             />
             </MenuItem>
             {/* <MenuItem onClick={handleClose}> */}
             <MenuItem onClick={(event) => event.stopPropagation()}>
             <TextField
-                id="standard-basic"
+                id="password-textfield"
                 label="Password"
                 variant="standard"
                 size="small"
@@ -222,6 +229,13 @@ export default function LoginMenu() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault(); 
+                    handleLogin(); 
+                  }
+                  e.stopPropagation()
+                }}
             />
             </MenuItem>
             <MenuItem onClick={handleLogin}>
