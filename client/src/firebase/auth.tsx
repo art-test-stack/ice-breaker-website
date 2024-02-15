@@ -71,7 +71,7 @@ export const AuthUI = () => {
         return <>
             <h3>Logged in as {userData.data?.username}</h3>
             <button onClick={() => {
-                signOut(auth)
+                signOutUser()
             }}>sign out</button>
         </>
     } else {
@@ -83,21 +83,35 @@ export const AuthUI = () => {
                 <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
 
                 <button onClick={() => {
-                    signInWithEmailAndPassword(auth, email, password).then(() => {
-                        console.log("logged in")
-                    }).catch((error) => {
-                        setErrorMessage(error.message)
-                    })
+                    loginUser(email, password, setErrorMessage);
                 }}>sign in</button>
 
                 <button onClick={() => {
-                    createUserWithEmailAndPassword(auth, email,password).catch((error) => {
-                        setErrorMessage(error.message)
-                    })
+                    registerUser(email, password, setErrorMessage);
                 }}>register</button>
 
                 <p style={{color: 'pink'}}>{errorMessage}</p>
             </div>
         </>
     }
+}
+
+export function registerUser(email: string, password: string, callback: any) {
+    createUserWithEmailAndPassword(auth, email, password).then((_) => {
+        callback(null);
+    }).catch((error) => {
+        callback(error.message);
+    });
+}
+
+export function loginUser(email: string, password: string, callback: any) {
+    signInWithEmailAndPassword(auth, email, password).then((_) => {
+        callback(null);
+    }).catch((error) => {
+        callback(error.message);
+    });
+}
+
+export function signOutUser() {
+    signOut(auth);
 }
