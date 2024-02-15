@@ -1,32 +1,37 @@
 import { useState } from 'react'
 import './AddEquipment.css'
+import { ChangeEvent } from 'react'
+import { SyntheticEvent } from 'react'
 
 function AddEquipment () {
-    const [equipments, setEquipments] = useState([])
-    const [inputValue, setInputValue] = useState('')
+    const [equipments, setEquipments] = useState<string[]>([])
+    const [inputValue, setInputValue] = useState<string>('')
 
-    function handleChange(e){
+    function handleChange(e: ChangeEvent<HTMLInputElement>){
         setInputValue(e.target.value)
     }
 
-    function handleSubmit(e){
+    function handleSubmit(e: SyntheticEvent){
         e.preventDefault()
-        setEquipments([...equipments, inputValue])
-        setInputValue('')
+        if (inputValue != ''){
+            setEquipments([...equipments, inputValue])
+            setInputValue('')
+        }
     }
 
-    function handleDelete(index){
+    function handleDelete(index: number){
         const newEquipments = [...equipments]
         newEquipments.splice(index, 1)
         setEquipments(newEquipments)
     }
 
-    function handleEdit(index){
+    function handleEdit(index: number){
         const editedInput = prompt("Edit equipment: ")
         if (editedInput != null) {
-            equipments.splice(index,1, editedInput)
+            const newEquipments: string[] = [...equipments]
+            newEquipments.splice(index,1, editedInput)
+            setEquipments(newEquipments)
         }
-        setEquipments([...equipments])
     }
 
     return (
