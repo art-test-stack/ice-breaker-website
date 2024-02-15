@@ -7,6 +7,7 @@ import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx';
 import { AuthUI, CurrentUserDataProvider } from "./firebase/auth";
 import GamePage from './GamePage/GamePage.tsx';
 import GameGrid from './components/molecules/GameGrid';
+import CreateGameButton from './CreateGameButton/CreateGameButton.tsx'
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <>
+      <CreateGameButton></CreateGameButton>
       <div id='header'> 
         <div id='titleContainer'>
           <Title/>
@@ -29,11 +31,11 @@ function App() {
         <div id='searchContainer'>
           <Search/>
         </div>
-        <div id='loginContainer'>
+        {/* <div id='loginContainer'>
           <CurrentUserDataProvider>
             <LoginMenu />
           </CurrentUserDataProvider>
-        </div>
+        </div> */}
         {/* <div><LoginButton /></div> */}
       </div>
       <div className ="gameSectionHeader">
