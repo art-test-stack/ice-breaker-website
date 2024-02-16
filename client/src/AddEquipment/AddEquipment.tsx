@@ -12,6 +12,12 @@ function AddEquipment () {
         setInputValue(e.target.value)
     }
 
+    function handleEnter(e: React.KeyboardEvent<HTMLInputElement>){
+        if(e.key === 'Enter' && e.target instanceof HTMLInputElement){
+            setInputValue(e.target.value)
+        }
+    }
+
     function handleSubmit(e: SyntheticEvent){
         e.preventDefault()
         if (inputValue != ''){
@@ -25,19 +31,6 @@ function AddEquipment () {
         newEquipments.splice(index, 1)
         setEquipments(newEquipments)
     }
-
-    // function handleEdit(index: number){
-    //     // var editedInput = prompt("Edit equipment: ")
-    //     // if (editedInput != null && editedInput != '') {
-    //     //     const newEquipments: string[] = [...equipments]
-    //     //     newEquipments.splice(index,1, editedInput)
-    //     //     setEquipments(newEquipments)
-    //     // }
-    //     // else {
-    //     //     setEquipments(equipments)
-    //     // }     
-
-    // }
 
     function handleEdit(index: number) {
         let editedInput: string | null = null;
@@ -69,7 +62,8 @@ function AddEquipment () {
         <div id='addEquipmentContainer'>
             <p>Equipments:</p>
             <form>
-                <input id="inputBoxEquipment" type='text' value={inputValue} placeholder='Enter equipment' onChange={handleChange}/>
+                <input id="inputBoxEquipment" type='text' value={inputValue} placeholder='Enter equipment...' onChange={handleChange}
+                onKeyDown={handleEnter}/>
                 <button id="addButtonEquipment" onClick={handleSubmit}>Add</button>
             </form>
             <ul>

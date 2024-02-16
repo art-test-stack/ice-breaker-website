@@ -7,7 +7,7 @@ import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx';
 import { AuthUI, CurrentUserDataProvider } from "./firebase/auth";
 import GamePage from './GamePage/GamePage.tsx';
 import GameGrid from './components/molecules/GameGrid';
-// import CreateGameButton from './CreateGameButton/CreateGameButton.tsx'
+import CreateGameButton from './CreateGameButton/CreateGameButton.tsx'
 import AddEquipment from './AddEquipment/AddEquipment.tsx'
 import './App.css';
 
@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <AddEquipment/>
-      {/*<CreateGameButton></CreateGameButton>*/}
+      <CreateGameButton/>
       <div id='header'> 
         <div id='titleContainer'>
           <Title/>
