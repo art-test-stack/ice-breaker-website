@@ -21,7 +21,7 @@ function AddEquipment () {
     function handleSubmit(e: SyntheticEvent){
         e.preventDefault()
         if (inputValue != ''){
-            setEquipments([...equipments, inputValue])
+            setEquipments([...equipments, inputValue.trim()])
             setInputValue('')
         }
     }
@@ -62,7 +62,7 @@ function AddEquipment () {
         <div id='addEquipmentContainer'>
             <p>Equipments:</p>
             <form>
-                <input id="inputBoxEquipment" type='text' value={inputValue} placeholder='Enter equipment...' onChange={handleChange}
+                <input id="inputBoxEquipment" type='text' value={inputValue.trimStart()} placeholder='Enter equipment...' onChange={handleChange}
                 onKeyDown={handleEnter}/>
                 <button id="addButtonEquipment" onClick={handleSubmit}>Add</button>
             </form>
