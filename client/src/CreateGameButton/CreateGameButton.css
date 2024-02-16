@@ -17,8 +17,8 @@
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 
-    background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
-    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+    background-image: linear-gradient(to right, #6253e1, #852D91, #3dbdd4, #45ba51);
+    box-shadow: 0 4px 15px 0 rgba(106, 50, 132, 0.75);
 }
 
 #createGameButton:hover {
