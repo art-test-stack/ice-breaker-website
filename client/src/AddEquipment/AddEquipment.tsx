@@ -33,11 +33,12 @@ function AddEquipment () {
     }
 
     function handleEdit(index: number) {
-        let editedInput: string | null = null;
+        var editedInput = prompt("Edit equipment")
+        // let editedInput: string | null = null;
     
         while (editedInput === null || editedInput.trim() === '') {
             // Prompt the user and store the result
-            editedInput = prompt("Edit equipment:");
+            // editedInput = prompt("Edit equipment:");
     
             // If the user clicks "Cancel," exit the loop
             if (editedInput === null) {
@@ -46,7 +47,7 @@ function AddEquipment () {
     
             // If the input is an empty string, prompt again
             if (editedInput.trim() === '') {
-                prompt("Edit equipment:");
+                editedInput = prompt("Enter valid equipment:");
             }
         }
     
