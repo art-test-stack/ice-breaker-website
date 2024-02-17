@@ -7,6 +7,7 @@ import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx';
 import { AuthUI, CurrentUserDataProvider } from "./firebase/auth";
 import GamePage from './GamePage/GamePage.tsx';
 import GameGrid from './components/molecules/GameGrid';
+import GoBack from './components/atoms/GoBack.tsx';
 import CreateGameButton from './CreateGameButton/CreateGameButton.tsx'
 import AddEquipment from './AddEquipment/AddEquipment.tsx'
 import './App.css';
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <>
+      <GoBack></GoBack>
       <AddEquipment/>
       <CreateGameButton/>
       <div id='header'> 
