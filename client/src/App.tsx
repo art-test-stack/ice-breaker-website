@@ -11,7 +11,9 @@ import GoBack from './components/atoms/GoBack.tsx';
 import CreateGameButton from './CreateGameButton/CreateGameButton.tsx'
 import AddEquipment from './AddEquipment/AddEquipment.tsx'
 import GameNameField from './GameNameField/GameNameField.tsx';
+import DescriptionPrompt from './DescriptionPrompt/DescriptionPrompt.tsx';
 import './App.css';
+
 
 function App() {
   // Just an example. Not sure about the datatypes, but they shouldn't be that hard to change
@@ -27,6 +29,7 @@ function App() {
   return (
     <>
       <GameNameField></GameNameField>
+      <DescriptionPrompt></DescriptionPrompt>
       <GoBack></GoBack>
       <AddEquipment/>
       <CreateGameButton/>

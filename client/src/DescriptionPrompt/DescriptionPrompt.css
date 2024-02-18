@@ -1,0 +1,19 @@
+#descriptionPrompt{
+    font-family: 'Galindo', sans-serif;
+    font-size: larger;
+    
+    
+    width: 400px;
+    height: 300px;
+    padding: 0.5em;
+    border-radius: 20px;
+
+    vertical-align: top;
+    word-wrap: break-word;
+}
+
+#addGameTitle{
+    font-family: 'Galindo', sans-serif;
+    font-size: larger;
+    color: black;
+}
