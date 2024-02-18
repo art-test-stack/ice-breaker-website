@@ -10,6 +10,7 @@ import GameGrid from './components/molecules/GameGrid';
 import GoBack from './components/atoms/GoBack.tsx';
 import CreateGameButton from './CreateGameButton/CreateGameButton.tsx'
 import AddEquipment from './AddEquipment/AddEquipment.tsx'
+import GameNameField from './GameNameField/GameNameField.tsx';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+      <GameNameField></GameNameField>
       <GoBack></GoBack>
       <AddEquipment/>
       <CreateGameButton/>
