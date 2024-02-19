@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Slider from '@mui/material/Slider';
-// import { Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 const marks = [
     { value: 1, label: '2 players' },
@@ -52,7 +52,7 @@ export default function PlayerNoSlider() {
         value = {value}
         onChange={handleChange}
         step={null}
-        marks={marks}
+        // marks={marks}
         min={1}
         max={14}
         valueLabelDisplay="auto"   
