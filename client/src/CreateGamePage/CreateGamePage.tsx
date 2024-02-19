@@ -1,4 +1,3 @@
-
 import GoBack from "../components/atoms/GoBack";
 
 import './CreateGamePage.css';
@@ -16,7 +15,16 @@ import { push, ref } from "@firebase/database";
 
 
 const publishButtonClicked = () => {
-
+    push(ref(database, 'games'), {
+        name: gameName,
+        description: gameDescription,
+        minPlayers: minPlayers,
+        equipment: equipment,
+        categories: activeCategoriesOutput,
+        maxPlayers: maxPlayers,
+                        })
+    window.alert("The game " + gameName + " was added successfully!")
+    window.location.reload() 
 }
 
 
@@ -43,16 +51,7 @@ export function CreateGamePage() {
                     <CreateGameButton onClick={() => {
                         console.log('create game button clicked');
                     }}/>
-                        <PublishButton onClick={() => {
-                            push(ref(database, 'games'), {
-                                name: gameName,
-                                description: gameDescription,
-                                equipment: equipment,
-                                minPlayers: minPlayers,
-                                maxPlayers: maxPlayers,
-                                categories: activeCategoriesOutput
-                        })
-                    }}/>
+                        <PublishButton onClick={publishButtonClicked}/>
 
                 </div>
             </div>
