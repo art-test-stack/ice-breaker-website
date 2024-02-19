@@ -1,26 +1,42 @@
 #addEquipmentContainer {
     display: inline-block;
-    font-family: 'Calibri', sans-serif;
+    font-family: 'Calibri Light', sans-serif;
     font-weight: bold;
     font-size: large;
 }
 
 #addButtonEquipment{
+    background-color: transparent;
+    border-color: transparent;
+    transition: all 0.3s;
+    transform-origin: 50% 50%;
+}
 
+#addButtonEquipment:hover {
+    transform: scale(1.5);
 }
 
 #inputBoxEquipment{
+    padding: 5px;
+    border-radius: 5px;
+}
 
+#inputBoxEquipment:focus{
+    border-color: transparent;
 }
 
 .equipments{
-
 }
 
-#editEquipmentButton {
 
+.deleteBtn, .editBtn {
+    background-color: transparent;
+    border-color: transparent;
+    transition: all 0.3s;
+    transform-origin: 50% 50%;
 }
 
-#deleteEquipmentButton {
-
+.deleteBtn:hover, .editBtn:hover  {
+    transform: scale(1.5);
 }
+
