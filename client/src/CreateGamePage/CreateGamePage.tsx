@@ -3,7 +3,7 @@ import GoBack from "../components/atoms/GoBack";
 
 import './CreateGamePage.css';
 import '../goBackWrapper.css';
-import PublishButton from "../components/PublishButton";
+import PublishButton from "./PublishButton/PublishButton";
 import GameNameField, {gameName} from "./GameNameField/GameNameField";
 import DescriptionPrompt, {gameDescription} from "./DescriptionPrompt/DescriptionPrompt";
 import AddEquipment, {equipment} from "./AddEquipment/AddEquipment";
@@ -14,8 +14,14 @@ import PlayerNoSlider, {minPlayers, maxPlayers} from "./SelectPlayerNumberSlider
 import { database } from '../firebase/init';
 import { push, ref } from "@firebase/database";
 
+
+const publishButtonClicked = () => {
+
+}
+
+
 export function CreateGamePage() {
-  return (
+    return (
     <div>
         <div className="goBackWrapper">
             <GoBack onClick={() => {
@@ -37,18 +43,17 @@ export function CreateGamePage() {
                     <CreateGameButton onClick={() => {
                         console.log('create game button clicked');
                     }}/>
-
-                    <PublishButton onClick={() => {
-                        /*push(ref(database, 'games'), {
-                            name: gameName,
-                            description: gameDescription,
-                            equipment: equipment,
-                            minPlayers: minPlayers,
-                            maxPlayers: maxPlayers,
-                            categories: activeCategoriesOutput
-                            
-                        })*/
+                        <PublishButton onClick={() => {
+                            push(ref(database, 'games'), {
+                                name: gameName,
+                                description: gameDescription,
+                                equipment: equipment,
+                                minPlayers: minPlayers,
+                                maxPlayers: maxPlayers,
+                                categories: activeCategoriesOutput
+                        })
                     }}/>
+
                 </div>
             </div>
         </div>
