@@ -1,7 +1,5 @@
-import React from 'react';
-import { LoginButton } from './LoginRegisterMenu/LoginButton.tsx';
 import LoginMenu from './LoginRegisterMenu/LoginMenu.tsx';
-import { Search } from './SearchBar/Search.tsx';
+import { Search, SearchProvider } from './SearchBar/Search.tsx';
 import { Title } from './Title/Title.tsx';
 import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx';
 import { AuthUI, CurrentUserDataProvider } from "./firebase/auth";
@@ -22,62 +20,39 @@ function App() {
 
   return (
     <>
-      <div id='header'> 
-        <div id='titleContainer'>
-          <Title/>
-        </div>
-        <div id='searchContainer'>
-          <Search/>
-        </div>
-        <div id='loginContainer'>
-          <CurrentUserDataProvider>
-            <LoginMenu />
-          </CurrentUserDataProvider>
-        </div>
-        {/* <div><LoginButton /></div> */}
-      </div>
-      <div className ="gameSectionHeader">
-        <CategoryDropdown />
-      </div>
-      <div className ="gameSection">
-          <div className="gameBox">
-            <GameGrid games={[
-              {
-                imgSrc: './assets/cards.webp',
-                imgAlt: 'Image 1',
-                title: 'Game 1',
-                category: 'Action',
-              },
-              {
-                imgSrc: 'image2.jpg',
-                imgAlt: 'Image 2',
-                title: 'Game 2',
-                category: 'Card',
-              },
-              {
-                imgSrc: 'image3.jpg',
-                imgAlt: 'Image 3',
-                title: 'Game 3',
-                category: 'Adventure',
-              },
-              {
-                imgSrc: 'image3.jpg',
-                imgAlt: 'Image 4',
-                title: 'Game 4',
-                category: 'Adventure',
-              }
-            ]}/>
+      <SearchProvider>
+        <div id='header'> 
+          <div id='titleContainer'>
+            <Title/>
           </div>
-          <div>
-            <GamePage 
-              title={gameExample.title} 
-              gameText={gameExample.description} 
-              numPlayers={gameExample.numPlayers}
-              duration={gameExample.duration} 
-              equipments={gameExample.equipments} 
-              categories={gameExample.categories}/>
+          <div id='searchContainer'>
+            <Search/>
           </div>
+          <div id='loginContainer'>
+            <CurrentUserDataProvider>
+              <LoginMenu />
+            </CurrentUserDataProvider>
+          </div>
+          {/* <div><LoginButton /></div> */}
         </div>
+        <div className ="gameSectionHeader">
+          <CategoryDropdown />
+        </div>
+        <div className ="gameSection">
+            <div className="gameBox">
+              <GameGrid/>
+            </div>
+            <div>
+              <GamePage 
+                title={gameExample.title} 
+                gameText={gameExample.description} 
+                numPlayers={gameExample.numPlayers}
+                duration={gameExample.duration} 
+                equipments={gameExample.equipments} 
+                categories={gameExample.categories}/>
+            </div>
+          </div>
+        </SearchProvider>
     </>
   );
 }
