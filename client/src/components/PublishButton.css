@@ -27,3 +27,8 @@
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
+
+.popUp{
+    text-align: center;
+    font-weight: 700;
+}

@@ -40,14 +40,15 @@ export function CreateGamePage() {
                     }}/>
 
                     <PublishButton onClick={() => {
-                        push(ref(database, 'games'), {
+                        /*push(ref(database, 'games'), {
                             name: gameName,
                             description: gameDescription,
                             equipment: equipment,
                             minPlayers: minPlayers,
                             maxPlayers: maxPlayers,
                             categories: activeCategoriesOutput
-                        })
+                            
+                        })*/
                     }}/>
                 </div>
             </div>
