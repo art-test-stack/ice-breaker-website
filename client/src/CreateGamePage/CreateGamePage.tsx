@@ -12,6 +12,8 @@ import CreateGameButton from "./CreateGameButton/CreateGameButton";
 import { AddCategoryDropdown, activeCategoriesOutput } from "./AddCategory/AddCategoryDropdown";
 import PlayerNoSlider, {minPlayers, maxPlayers} from "./SelectPlayerNumberSlider/PlayerNoSlider";
 
+import { database } from '../firebase/init';
+import { push, ref } from "@firebase/database";
 
 export function CreateGamePage() {
   return (
@@ -38,7 +40,14 @@ export function CreateGamePage() {
                     }}/>
 
                     <PublishButton onClick={() => {
-                        console.log(gameName, gameDescription, equipment, minPlayers, maxPlayers, activeCategoriesOutput)
+                        push(ref(database, 'games'), {
+                            name: gameName,
+                            description: gameDescription,
+                            equipment: equipment,
+                            minPlayers: minPlayers,
+                            maxPlayers: maxPlayers,
+                            categories: activeCategoriesOutput
+                        })
                     }}/>
                 </div>
             </div>
