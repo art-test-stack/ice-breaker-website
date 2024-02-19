@@ -3,6 +3,7 @@
     font-family: 'Calibri Light', sans-serif;
     font-weight: bold;
     font-size: large;
+    padding-bottom: 10px;
 }
 
 #addButtonEquipment{
@@ -18,15 +19,21 @@
 
 #inputBoxEquipment{
     padding: 5px;
-    border-radius: 5px;
+    margin-top: 0;
+    background-color: transparent;
+    border-width: 0 0 1px 0;
 }
 
 #inputBoxEquipment:focus{
     border-color: transparent;
+    outline: none;
+    border-bottom: 1px solid;
 }
 
-.equipments{
+#equipments{
+    word-wrap: break-word;
 }
+
 
 
 .deleteBtn, .editBtn {

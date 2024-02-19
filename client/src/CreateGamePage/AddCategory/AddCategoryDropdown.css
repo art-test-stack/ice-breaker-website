@@ -12,6 +12,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: all 0.3s;
+    transform-origin: 50% 50%;
+}
+
+#addCategoriesButton:hover{
+    transform: scale(1.1);
 }
 
 #addCategoryContainer {
