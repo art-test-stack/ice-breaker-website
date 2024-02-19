@@ -5,6 +5,8 @@ import { Title } from '../Title/Title.tsx';
 import { CategoryDropdown } from '../CategoryDropdown/CategoryDropdown.tsx';
 import { AuthUI, CurrentUserDataProvider } from "../firebase/auth";
 import GameGrid from '../components/molecules/GameGrid';
+import CreateGameButton from "../CreateGamePage/CreateGameButton/CreateGameButton";
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 function HomePage() {
@@ -27,6 +29,9 @@ function HomePage() {
         </div>
         <div className ="gameSectionHeader">
           <CategoryDropdown />
+          <CreateGameButton onClick={() => {
+                        console.log('create game button clicked');
+                    }}/>
         </div>
         <div className ="gameSection">
             <GameGrid games={[]}/>

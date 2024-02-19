@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from "./pages/HomePage"
 import PageForGameDescription from "./pages/PageForGameDescription"
+import CreateGamePage from "./pages/CreateGamePage"
 // @ts-ignore //Routes have error, but still work. Ignore this.
 import { Route, Routes } from 'react-router-dom' 
 import './App.css';
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/games" element={<PageForGameDescription />}/>
+        <Route path="/createGame" element={<CreateGamePage />}/>
       </Routes>
     </>
 
