@@ -4,7 +4,7 @@ import React from 'react';
 import LoginMenu from '../LoginRegisterMenu/LoginMenu.tsx';
 import { Search, SearchProvider } from '../SearchBar/Search.tsx';
 import { Title } from '../Title/Title.tsx';
-import { CategoryDropdown } from '../CategoryDropdown/CategoryDropdown.tsx';
+import GoBack from "../components/atoms/GoBack";
 import { CurrentUserDataProvider } from "../firebase/auth.tsx";
 import GamePage from "../GamePage/GamePage"
 import '../App.css'
@@ -36,6 +36,9 @@ function PageForGameDescription(){
         {/* <div><LoginButton /></div> */}
       </div>
       <div className ="gameSectionHeader">
+      <GoBack onClick={() => {
+                  console.log('go back button clicked');
+              }}/>
       </div>
         <GamePage 
               title={gameExample.title} 
