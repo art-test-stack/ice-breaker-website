@@ -1,9 +1,10 @@
 import './GameNameField.css'
 import { ChangeEvent } from 'react'
 
+export let gameName = ""
 
 function handleChange(e: ChangeEvent<HTMLInputElement>){
-    console.log(e.target.value)
+    gameName = e.target.value
 }
 
 

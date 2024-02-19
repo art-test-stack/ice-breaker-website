@@ -1,17 +1,10 @@
 import './CategoryDropdown.css'
 import { useState } from 'react';
 
+import  {categories} from '../App.tsx'
 
 export function CategoryDropdown() {
     let [showDropdown, setShowDropdown] = useState(false);
-    const categories = [
-        "Chill",
-        "Active",
-        "Team Building",
-        "Card Game",
-        "Outdoor",
-        "Indoor",
-    ]
 
     let [activeCategories, setActiveCategories] = useState(categories.map(() => false));
     // categories of ice breaker games

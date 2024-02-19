@@ -2,10 +2,11 @@ import './DescriptionPrompt.css'
 import { ChangeEvent } from 'react'
 
 
-function handleChange(e: ChangeEvent<HTMLTextAreaElement>){
-    console.log(e.target.value)
-}
+export let gameDescription = ""
 
+function handleChange(e: ChangeEvent<HTMLInputElement>){
+    gameDescription = e.target.value
+}
 
 export default function DescriptionPrompt() {
   return (

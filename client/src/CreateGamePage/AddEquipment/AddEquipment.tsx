@@ -3,6 +3,8 @@ import './AddEquipment.css'
 import { ChangeEvent } from 'react'
 import { SyntheticEvent } from 'react'
 
+export let equipment: string[] = []
+
 // the equipments list can be accessed by [equipments]
 function AddEquipment () {
     const [equipments, setEquipments] = useState<string[]>([])
@@ -21,7 +23,9 @@ function AddEquipment () {
     function handleSubmit(e: SyntheticEvent){
         e.preventDefault()
         if (inputValue != ''){
-            setEquipments([...equipments, inputValue.trim()])
+            const val = [...equipments, inputValue.trim()]
+            setEquipments(val)
+            equipment = val
             setInputValue('')
         }
     }
@@ -30,6 +34,7 @@ function AddEquipment () {
         const newEquipments = [...equipments]
         newEquipments.splice(index, 1)
         setEquipments(newEquipments)
+        equipment = newEquipments
     }
 
     function handleEdit(index: number) {
@@ -52,9 +57,10 @@ function AddEquipment () {
         }
     
         if (editedInput !== null && editedInput !== '') {
-            const newEquipments: string[] = [...equipments]
-            newEquipments.splice(index, 1, editedInput)
-            setEquipments(newEquipments)    
+            const newEquipments: string[] = [...equipments];
+            newEquipments.splice(index, 1, editedInput);
+            setEquipments(newEquipments);
+            equipment = newEquipments;
         }
     }
     

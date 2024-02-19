@@ -9,6 +9,14 @@ import GameGrid from './components/molecules/GameGrid';
 import './App.css';
 import { CreateGamePage } from './CreateGamePage/CreateGamePage.tsx';
 
+export const categories = [
+    "Chill",
+    "Active",
+    "Team Building",
+    "Card Game",
+    "Outdoor",
+    "Indoor",
+]
 
 function App() {
   // Just an example. Not sure about the datatypes, but they shouldn't be that hard to change
