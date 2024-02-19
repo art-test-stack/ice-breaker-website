@@ -9,11 +9,11 @@ function handleChange(e: ChangeEvent<HTMLTextAreaElement>){
 
 export default function DescriptionPrompt() {
   return (
-    <div>
-            <h2 id='addGameTitle'>Game Description:</h2>
-            <form>
-                <textarea id="descriptionPrompt" onChange={handleChange}  placeholder='What are the rules of the game?' />
-            </form>
+    <div style={{width:"100%"}}>
+        <h2 id='addGameTitle'>Game Description:</h2>
+        <form>
+            <textarea id="descriptionPrompt" onChange={handleChange}  placeholder='What are the rules of the game?' />
+        </form>
     </div>
   );
 }

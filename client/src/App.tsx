@@ -1,18 +1,13 @@
-import React from 'react';
-import { LoginButton } from './LoginRegisterMenu/LoginButton.tsx';
+
 import LoginMenu from './LoginRegisterMenu/LoginMenu.tsx';
 import { Search } from './SearchBar/Search.tsx';
 import { Title } from './Title/Title.tsx';
 import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx';
-import { AuthUI, CurrentUserDataProvider } from "./firebase/auth";
+import { CurrentUserDataProvider } from "./firebase/auth";
 import GamePage from './GamePage/GamePage.tsx';
 import GameGrid from './components/molecules/GameGrid';
-import GoBack from './components/atoms/GoBack.tsx';
-import CreateGameButton from './CreateGameButton/CreateGameButton.tsx'
-import AddEquipment from './AddEquipment/AddEquipment.tsx'
-import GameNameField from './GameNameField/GameNameField.tsx';
-import DescriptionPrompt from './DescriptionPrompt/DescriptionPrompt.tsx';
 import './App.css';
+import { CreateGamePage } from './createGamePage/CreateGamePage.tsx';
 
 
 function App() {
@@ -28,11 +23,6 @@ function App() {
 
   return (
     <>
-      <GameNameField></GameNameField>
-      <DescriptionPrompt></DescriptionPrompt>
-      <GoBack></GoBack>
-      <AddEquipment/>
-      <CreateGameButton/>
       <div id='header'> 
         <div id='titleContainer'>
           <Title/>
@@ -87,6 +77,9 @@ function App() {
               duration={gameExample.duration} 
               equipments={gameExample.equipments} 
               categories={gameExample.categories}/>
+          </div>
+          <div>
+            <CreateGamePage/>
           </div>
         </div>
     </>

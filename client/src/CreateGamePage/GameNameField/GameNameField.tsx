@@ -9,10 +9,10 @@ function handleChange(e: ChangeEvent<HTMLInputElement>){
 
 export default function GameNameField() {
   return (
-    <div>
-            <form>
-                <input id="namePrompt" type='text' onChange={handleChange}  placeholder='What is the name of the game?' />
-            </form>
+    <div style={{width:"100%"}}>
+        <form>
+            <input id="namePrompt" type='text' onChange={handleChange}  placeholder='What is the name of the game?' />
+        </form>
     </div>
   );
 }

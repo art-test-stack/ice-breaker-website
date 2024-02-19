@@ -3,17 +3,21 @@
     font-size: larger;
     
     
-    width: 400px;
-    height: 300px;
-    padding: 0.5em;
+    width: calc(100% - 20px);
+    padding: 10px 10px 10px 10px;
+
+    min-height: 300px;
     border-radius: 20px;
 
     vertical-align: top;
     word-wrap: break-word;
+
+    /* set not resizable */
+    resize: none;
 }
 
 #addGameTitle{
     font-family: 'Galindo', sans-serif;
     font-size: larger;
-    color: black;
+    color: white;
 }
