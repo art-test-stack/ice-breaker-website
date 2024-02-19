@@ -4,6 +4,7 @@ import GoBack from "../components/atoms/GoBack";
 
 import './CreateGamePage.css';
 import '../goBackWrapper.css';
+import PublishButton from "../components/PublishButton";
 import GameNameField from "./GameNameField/GameNameField";
 import DescriptionPrompt from "./DescriptionPrompt/DescriptionPrompt";
 import AddEquipment from "./AddEquipment/AddEquipment";
@@ -28,6 +29,7 @@ export function CreateGamePage() {
                     <CreateGameButton onClick={() => {
                         console.log('create game button clicked');
                     }}/>
+                    <PublishButton></PublishButton>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,7 +18,7 @@ import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import {currentUserData, loginUser, registerUser, signOutUser} from '../firebase/auth'
 import { useContext } from 'react';
 import { register } from 'module';
-
+import Box from '@mui/material/Box';
 
 export default function LoginMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

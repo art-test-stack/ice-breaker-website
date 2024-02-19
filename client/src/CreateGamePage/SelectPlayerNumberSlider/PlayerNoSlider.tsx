@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+
 import Slider from '@mui/material/Slider';
 import { Typography } from '@mui/material';
-
+import Box from '@mui/material/Box';
 const marks = [
     { value: 1, label: '2 players' },
     { value: 2, label: '3 players' },
@@ -42,6 +42,14 @@ export default function PlayerNoSlider() {
         return playerValues[sliderValue - 1]; 
     }
 
+    const CustomMark = ({ label }: { label: string }) => {
+        return (
+            <span style={{ fontSize: '0', position: 'absolute', top: '35px', transform: 'translateX(-50%)' }}>
+                {label}
+            </span>
+        );
+    }
+
   return (
     <Box sx={{ width: 300 }}>
         <Typography variant="h6" gutterBottom>
@@ -52,7 +60,7 @@ export default function PlayerNoSlider() {
         value = {value}
         onChange={handleChange}
         step={null}
-        marks={marks}
+        marks={marks.map(mark => ({ ...mark, label: <CustomMark label={mark.label} /> }))}
         min={1}
         max={14}
         valueLabelDisplay="auto"   
