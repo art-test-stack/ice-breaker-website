@@ -15,6 +15,13 @@ import { push, ref } from "@firebase/database";
 
 
 const publishButtonClicked = () => {
+    /*if (gameName == ''){
+        window.alert("All fields must be filled")*/
+    
+    if (!(activeCategoriesOutput.includes(true)) || gameName == '' || gameDescription == ''){
+        window.alert("All fields must be filled!")
+    }
+    else{
     push(ref(database, 'games'), {
         name: gameName,
         description: gameDescription,
@@ -23,8 +30,10 @@ const publishButtonClicked = () => {
         categories: activeCategoriesOutput,
         maxPlayers: maxPlayers,
                         })
-    window.alert("The game " + gameName + " was added successfully!")
-    window.location.reload() 
+        window.alert("The game " + gameName + " was added successfully!")
+         window.location.reload() 
+    }
+
 }
 
 
@@ -44,7 +53,7 @@ export function CreateGamePage() {
 
                     <div id="createGameSettingsBox">
                         <AddEquipment/>
-                        {/* <PlayerNoSlider/> */}
+                        <PlayerNoSlider/>
                         <AddCategoryDropdown/>
                     </div>
 
