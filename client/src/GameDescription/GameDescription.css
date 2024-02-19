@@ -1,6 +1,7 @@
 .gameDescriptionBox{
     background-color: #826B7A;
     width: 629px;
+    font-family: 'Calibri Light', sans-serif;
     border-radius: 20px;
     padding: 42px 42px 42px 42px;
     margin: 10px 20px 10px 10px;
@@ -16,12 +17,14 @@
 }
 
 .literallyDescription{
+    font-family: 'Calibri', sans-serif;
     font-weight: bolder;
 }
 
 .descriptionBox{
     /* background-color: blue; */
+    font-size: large;
     text-align: left;
-    font-family: 'Encode Sans Semi Expand', sans-serif;
+    font-family: 'Calibri Light', sans-serif;
 }
 
