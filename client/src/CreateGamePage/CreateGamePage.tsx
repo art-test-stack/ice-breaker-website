@@ -1,7 +1,6 @@
 
 import GoBack from "../components/atoms/GoBack";
 
-
 import './CreateGamePage.css';
 import '../goBackWrapper.css';
 import PublishButton from "../components/PublishButton";
@@ -31,7 +30,7 @@ export function CreateGamePage() {
 
                     <div id="createGameSettingsBox">
                         <AddEquipment/>
-                        <PlayerNoSlider/>
+                        {/* <PlayerNoSlider/> */}
                         <AddCategoryDropdown/>
                     </div>
 
@@ -39,7 +38,7 @@ export function CreateGamePage() {
                         console.log('create game button clicked');
                     }}/>
 
-                    <PublishButton onClick={() => {
+                    {/* <PublishButton onClick={() => {
                         push(ref(database, 'games'), {
                             name: gameName,
                             description: gameDescription,
@@ -48,7 +47,7 @@ export function CreateGamePage() {
                             maxPlayers: maxPlayers,
                             categories: activeCategoriesOutput
                         })
-                    }}/>
+                    }}/> */}
                 </div>
             </div>
         </div>

@@ -80,9 +80,6 @@ function AddEquipment () {
             <ul>
                 {equipments.map((content, index) => (
                 <li className="equipments" key={index}>{content}
-                <button className="editBtn" onClick={() => handleEdit(index)}>
-                    <img src="src/assets/pencil.svg"/>
-                </button>
                 <button className="deleteBtn" onClick={() =>handleDelete(index)}>
                     <img src="src/assets/trash.svg"/>
                 </button>

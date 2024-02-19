@@ -13,7 +13,7 @@
 }
 
 #addButtonEquipment:hover {
-    transform: scale(1.5);
+    transform: scale(1.3);
 }
 
 #inputBoxEquipment{
@@ -37,6 +37,6 @@
 }
 
 .deleteBtn:hover, .editBtn:hover  {
-    transform: scale(1.5);
+    transform: scale(1.3);
 }
 

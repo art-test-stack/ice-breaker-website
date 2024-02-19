@@ -16,7 +16,7 @@ export function AddCategoryDropdown() {
         <>
             <div id="addCategoryContainer">
                 <button id="addCategoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
-                    <img src='src/assets/dropdownIcon.svg' style={{marginRight: "10px"}}/>
+                    <img src='src/assets/plus.svg' style={{marginRight: "10px"}}/>
                     Add categories
                 </button>
                 <div id="addCategoriesDropdown" style={{transform: showDropdown ? "" : "scaleX(0) scaleY(0)", backgroundColor: showDropdown ? "#354b5ab1" : '#62effca5'}}>
