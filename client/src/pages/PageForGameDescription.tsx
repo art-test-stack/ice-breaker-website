@@ -1,12 +1,13 @@
-import GamePage from "../GamePage/GamePage"
-import '../App.css'
+
 
 import React from 'react';
 import LoginMenu from '../LoginRegisterMenu/LoginMenu.tsx';
-import { Search } from '../SearchBar/Search.tsx';
+import { Search, SearchProvider } from '../SearchBar/Search.tsx';
 import { Title } from '../Title/Title.tsx';
 import { CategoryDropdown } from '../CategoryDropdown/CategoryDropdown.tsx';
 import { CurrentUserDataProvider } from "../firebase/auth.tsx";
+import GamePage from "../GamePage/GamePage"
+import '../App.css'
 
 function PageForGameDescription(){
     const gameExample = {
@@ -19,6 +20,7 @@ function PageForGameDescription(){
       }
     return (
         <>
+        <SearchProvider>
               <div id='header'> 
         <div id='titleContainer'>
           <Title/>
@@ -34,7 +36,6 @@ function PageForGameDescription(){
         {/* <div><LoginButton /></div> */}
       </div>
       <div className ="gameSectionHeader">
-        <CategoryDropdown />
       </div>
         <GamePage 
               title={gameExample.title} 
@@ -43,6 +44,7 @@ function PageForGameDescription(){
               duration={gameExample.duration} 
               equipments={gameExample.equipments} 
               categories={gameExample.categories}/>
+        </SearchProvider>
         </>   
     )
 }
