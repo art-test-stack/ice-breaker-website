@@ -30,7 +30,7 @@ function App() {
           </div>
           <div id='loginContainer'>
             <CurrentUserDataProvider>
-              <LoginMenu />
+              {/* <LoginMenu /> */}
             </CurrentUserDataProvider>
           </div>
           {/* <div><LoginButton /></div> */}

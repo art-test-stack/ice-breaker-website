@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React from 'react';
 
 export class ShareButton extends React.Component  {
@@ -8,9 +9,9 @@ export class ShareButton extends React.Component  {
   
     render() {
       return (
-        <button onClick={this.handleClick}>
+        <Button onClick={this.handleClick}>
             Share
-        </button>
+        </Button>
       );
     }
   }
