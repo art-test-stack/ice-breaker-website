@@ -1,7 +1,6 @@
 
 import GoBack from "../components/atoms/GoBack";
 
-
 import './CreateGamePage.css';
 import '../goBackWrapper.css';
 import PublishButton from "../components/PublishButton";
@@ -31,7 +30,7 @@ export function CreateGamePage() {
 
                     <div id="createGameSettingsBox">
                         <AddEquipment/>
-                        <PlayerNoSlider/>
+                        {/* <PlayerNoSlider/> */}
                         <AddCategoryDropdown/>
                     </div>
 
