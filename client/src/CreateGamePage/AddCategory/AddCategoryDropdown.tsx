@@ -1,10 +1,12 @@
 import './AddCategoryDropdown.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import  {categories} from '../../App.tsx'
 import Tooltip from '@mui/material/Tooltip';
 
+export let activeCategoriesOutput: boolean[] = []
 
 export function AddCategoryDropdown() {
+
     let [showDropdown, setShowDropdown] = useState(false);
 
     let [activeCategories, setActiveCategories] = useState(categories.map(() => false));
@@ -33,6 +35,7 @@ export function AddCategoryDropdown() {
                                 let newActiveCategories = [...activeCategories];
                                 newActiveCategories[i] = !newActiveCategories[i];
                                 setActiveCategories(newActiveCategories);
+                                activeCategoriesOutput = newActiveCategories;
                             }}>{category}</button>
                         })
                     }

@@ -94,6 +94,7 @@
     border-radius: 16px 4px 16px 16px;
     transform-origin: top right;
     transition: ease-in-out 0.3s;
+    z-index: 10000;
 }
 
 /* list of all categories */
