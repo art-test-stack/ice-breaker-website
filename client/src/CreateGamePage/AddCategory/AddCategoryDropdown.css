@@ -1,0 +1,110 @@
+
+#addCategoriesButton {
+    background-color: none;
+    padding-left: 0px;
+    margin-top: 5px;
+    width: 100%;
+    font-family: 'Galindo', sans-serif;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addCategoryContainer {
+    display: flex;
+    justify-content: left;
+    align-items: end;
+    flex-direction: column;
+    
+}
+
+.addCategoryOption {
+    background-color: #0f1724;
+    width: 100%;
+    border-radius: 0px;
+    font-size: 16px;
+    color: white;
+    overflow: auto;
+    background-color: transparent;
+    border: none;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+    border-radius: 10px;
+    transition: opacity 0.2s ease-out, color 0.2s ease-out, transform 0.2s ease-out;
+    margin: 1px;
+    padding: -1px;
+}
+
+.addCategoryLabel {
+    border-radius: 10px;
+    max-width: 30%;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    animation: labelAppear 0.2s ease-out;
+    transition: 0.5s ease-in-out;
+    white-space: nowrap;
+    margin: 3px;
+    padding: 2px;
+}
+
+@keyframes labelAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.addCategoryOptionEven:hover{
+    text-shadow: 0 0 20px #f581ff;
+    background-color: #832e8b6d;
+}
+
+.addCategoryOptionOdd:hover{
+    text-shadow: 0 0 20px #ffbda2;
+    background-color: #894e348a;
+}
+
+
+#addCategoriesDropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    position: absolute;
+    width: 100px;
+    max-height: calc(100vh - 120px);
+
+    margin-top: 15px;
+    margin-right: 200px;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px 4px 16px 16px;
+    transform-origin: top right;
+    transition: ease-in-out 0.3s;
+}
+
+/* list of all categories */
+#addCategoryLabelContainer {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    flex-wrap: wrap;
+}
+
+
+
+
+

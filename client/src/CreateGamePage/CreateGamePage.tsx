@@ -8,6 +8,7 @@ import GameNameField from "./GameNameField/GameNameField";
 import DescriptionPrompt from "./DescriptionPrompt/DescriptionPrompt";
 import AddEquipment from "./AddEquipment/AddEquipment";
 import CreateGameButton from "./CreateGameButton/CreateGameButton";
+import { AddCategoryDropdown } from "./AddCategory/AddCategoryDropdown";
 
 export function CreateGamePage() {
   return (
@@ -24,6 +25,7 @@ export function CreateGamePage() {
                 <div id="createGameRightContainer">
                     <div id="createGameSettingsBox">
                         <AddEquipment/>
+                        <AddCategoryDropdown/>
                     </div>
                     <CreateGameButton onClick={() => {
                         console.log('create game button clicked');
