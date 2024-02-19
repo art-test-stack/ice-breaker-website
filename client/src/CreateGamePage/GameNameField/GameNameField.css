@@ -1,0 +1,10 @@
+#namePrompt{
+    width: 100%;
+    font-family: 'Galindo', sans-serif;
+    font-size: x-large;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
