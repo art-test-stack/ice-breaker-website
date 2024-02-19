@@ -40,11 +40,11 @@ function App() {
         <div id='searchContainer'>
           <Search/>
         </div>
-        {/* <div id='loginContainer'>
+        <div id='loginContainer'>
           <CurrentUserDataProvider>
             <LoginMenu />
           </CurrentUserDataProvider>
-        </div> */}
+        </div>
         {/* <div><LoginButton /></div> */}
       </div>
       <div className ="gameSectionHeader">
