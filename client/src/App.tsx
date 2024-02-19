@@ -7,7 +7,7 @@ import { CurrentUserDataProvider } from "./firebase/auth";
 import GamePage from './GamePage/GamePage.tsx';
 import GameGrid from './components/molecules/GameGrid';
 import './App.css';
-import { CreateGamePage } from './createGamePage/CreateGamePage.tsx';
+import { CreateGamePage } from './CreateGamePage/CreateGamePage.tsx';
 
 
 function App() {
