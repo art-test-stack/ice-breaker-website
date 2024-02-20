@@ -30,9 +30,6 @@ export function Search(){
   
     return (
         <> 
-        <head>
-            <link href='https://fonts.googleapis.com/css?family=Galindo' rel='stylesheet'></link>
-        </head>
         <form id="formSearch" style={SearchStyle}>
             <input 
                 id="searchbar" 

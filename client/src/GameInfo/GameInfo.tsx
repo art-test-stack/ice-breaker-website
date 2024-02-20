@@ -10,7 +10,6 @@ interface GameInfoProps {
 /* Assuming categories is a string. Can also be a list of strings, then the last div must be changed.
 <GameInfo numPlayers="string" duration = "string" categories="string" equipments={[string,string]} /> */
 
-
 function GameInfo({numPlayers, duration, categories, equipments}: GameInfoProps){
 
     const listEquipments = equipments.map((equipment) => 
@@ -21,9 +20,6 @@ function GameInfo({numPlayers, duration, categories, equipments}: GameInfoProps)
 
     return (
     <>
-    <head>
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Semi+Expanded:wght@600&display=swap" rel="stylesheet"/>
-    </head>
     <div id='infoBox'>
         <div>
             <p className='bolded'>Number of players:</p>
@@ -34,7 +30,7 @@ function GameInfo({numPlayers, duration, categories, equipments}: GameInfoProps)
             <p id='duration'>{duration}</p>
         </div>
         <div id="list">
-            <p className='bolded'>Equipments needed:</p>
+            <p className='bolded'>Equipments:</p>
             <ul className='listEquipments'>{listEquipments}</ul>
         </div>
         <div>

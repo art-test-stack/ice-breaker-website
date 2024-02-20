@@ -1,0 +1,23 @@
+#descriptionPrompt{
+    font-family: 'Calibri Light', sans-serif;
+    font-size: larger;
+    
+    
+    width: calc(100% - 20px);
+    padding: 10px 10px 10px 10px;
+
+    min-height: 300px;
+    border-radius: 20px;
+
+    vertical-align: top;
+    word-wrap: break-word;
+
+    /* set not resizable */
+    resize: none;
+}
+
+#addGameTitle{
+    font-family: 'Calibri', sans-serif;
+    font-size: larger;
+    color: white;
+}

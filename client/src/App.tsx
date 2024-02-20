@@ -1,11 +1,22 @@
+
 import LoginMenu from './LoginRegisterMenu/LoginMenu.tsx';
 import { Search, SearchProvider } from './SearchBar/Search.tsx';
 import { Title } from './Title/Title.tsx';
 import { CategoryDropdown } from './CategoryDropdown/CategoryDropdown.tsx';
-import { AuthUI, CurrentUserDataProvider } from "./firebase/auth";
+import { CurrentUserDataProvider } from "./firebase/auth";
 import GamePage from './GamePage/GamePage.tsx';
 import GameGrid from './components/molecules/GameGrid';
 import './App.css';
+import { CreateGamePage } from './CreateGamePage/CreateGamePage.tsx';
+
+export const categories = [
+    "Chill",
+    "Active",
+    "Team Building",
+    "Card Game",
+    "Outdoor",
+    "Indoor",
+]
 
 function App() {
   // Just an example. Not sure about the datatypes, but they shouldn't be that hard to change
@@ -28,12 +39,9 @@ function App() {
           <div id='searchContainer'>
             <Search/>
           </div>
-          <div id='loginContainer'>
-            <CurrentUserDataProvider>
-              <LoginMenu />
-            </CurrentUserDataProvider>
+          <div>
+            <CreateGamePage/>
           </div>
-          {/* <div><LoginButton /></div> */}
         </div>
         <div className ="gameSectionHeader">
           <CategoryDropdown />
