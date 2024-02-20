@@ -1,11 +1,13 @@
 #publishButton {
     font-family: 'Galindo', sans-serif;
-    width: 120px;
-    height: 35px;
+    width: 115px;
+    height: 53px;
     font-size: 16px;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
+    margin: 20px;
+    padding: 1px 4px 1px 4px; 
     margin: 20px;
     
     text-align:center;
@@ -26,4 +28,9 @@
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+}
+
+.popUp{
+    text-align: center;
+    font-weight: 700;
 }

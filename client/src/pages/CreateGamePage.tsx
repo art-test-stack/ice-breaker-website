@@ -1,5 +1,5 @@
 import GoBack from "../components/atoms/GoBack";
-import PublishButton from "../components/PublishButton";
+import PublishButton from "../CreateGamePage/PublishButton/PublishButton.tsx";
 import GameNameField from "../CreateGamePage/GameNameField/GameNameField";
 import DescriptionPrompt from "../CreateGamePage/DescriptionPrompt/DescriptionPrompt";
 import AddEquipment from "../CreateGamePage/AddEquipment/AddEquipment";

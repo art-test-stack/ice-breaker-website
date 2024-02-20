@@ -8,7 +8,8 @@
     "cypress": "^13.6.4",
     "firebase": "^10.8.0",
     "react-router-dom": "^6.22.1",
-    "react-bootstrap": "^2.10.1"
+    "react-bootstrap": "^2.10.1",
+    "reactjs-popup": "^2.0.6"
   },
   "devDependencies": {
     "@types/uuid": "^9.0.8"
