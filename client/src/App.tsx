@@ -8,6 +8,7 @@ import GamePage from './GamePage/GamePage.tsx';
 import GameGrid from './components/molecules/GameGrid';
 import './App.css';
 import { CreateGamePage } from './CreateGamePage/CreateGamePage.tsx';
+import { LoginButton } from './LoginRegisterMenu/LoginButton.tsx';
 
 export const categories = [
     "Chill",
@@ -39,9 +40,8 @@ function App() {
           <div id='searchContainer'>
             <Search/>
           </div>
-          <div>
-            <CreateGamePage/>
-          </div>
+
+          <LoginMenu/>
         </div>
         <div className ="gameSectionHeader">
           <CategoryDropdown />
@@ -61,6 +61,9 @@ function App() {
             </div>
           </div>
         </SearchProvider>
+        <div className ="gameSection">
+          <CreateGamePage/>
+        </div>
     </>
   );
 }
