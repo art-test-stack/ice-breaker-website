@@ -1,10 +1,43 @@
+import { createContext, useContext, useState } from 'react';
 import './Search.css';
 
+
+interface SearchContextType {
+    searchQuery: string;
+    setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  }
+  
+const SearchContext = createContext<SearchContextType | undefined>(undefined);
+
+export const SearchProvider = ({ children }: any) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  return (
+    <SearchContext.Provider value={{ searchQuery, setSearchQuery }}>
+      {children}
+    </SearchContext.Provider>
+  );
+};
+
+export const useSearch = () => useContext(SearchContext);
+
 export function Search(){
+    const { searchQuery, setSearchQuery }: any = useSearch();
+    
+    const handleSearchInputChange = (event: any) => {
+        setSearchQuery(event.target.value);
+    };
+  
     return (
         <> 
         <form id="formSearch" style={SearchStyle}>
-            <input id="searchbar" type="search" placeholder='Search'/>
+            <input 
+                id="searchbar" 
+                type="search" 
+                placeholder='Search'
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+            />
         </form>
         </>
     );
