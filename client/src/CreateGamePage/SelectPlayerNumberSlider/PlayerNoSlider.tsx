@@ -57,20 +57,49 @@ export default function PlayerNoSlider() {
 
   return (
     <Box sx={{ width: "90%"}}>
-        <Typography variant="h6" gutterBottom>
-            Select player number
+        {/* 
+        add styling:
+        font-family: 'Calibri Light', sans-serif;
+        font-weight: bold;
+        font-size: large;
+         */}
+        <Typography variant="h6" gutterBottom
+        sx={{
+            fontFamily: 'Calibri',
+            fontWeight: 'bold',
+            fontSize: 'large',
+            marginLeft: '5px'
+        }}
+        >
+            Select player number:
         </Typography>
-      <Slider
-        aria-label="Player number slider"
-        value = {value}
-        onChange={handleChange}
-        step={null}
-        marks={marks.map(mark => ({ ...mark, label: <CustomMark label={mark.label} /> }))}
-        min={1}
-        max={14}
-        valueLabelDisplay="auto"   
-        valueLabelFormat={formatLabel}
-        />
+        <Slider
+            aria-label="Player number slider"
+            value = {value}
+            onChange={handleChange}
+            step={null}
+            marks={marks.map(mark => ({ ...mark, label: <CustomMark label={mark.label} /> }))}
+            min={1}
+            max={14}
+            valueLabelDisplay="auto"   
+            valueLabelFormat={formatLabel}
+            sx={{
+                color: '#7bb3fc',
+                '& .MuiSlider-valueLabel': {
+                    backgroundColor: '#5375a3',
+                    color: 'white',
+                    fontFamily: 'Calibri',
+                    fontWeight: 'bold',
+                    fontSize: 'large'
+                },
+                '& .MuiSlider-thumb': {
+                    backgroundColor: 'white',
+                    '&:hover': {
+                        boxShadow: '0px 0px 10px 5px #FFA07A'
+                    }
+                }
+            }}
+            />
     </Box>
   );
 }

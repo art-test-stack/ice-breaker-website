@@ -18,20 +18,19 @@ const publishButtonClicked = () => {
     /*if (gameName == ''){
         window.alert("All fields must be filled")*/
     
-    if (!(activeCategoriesOutput.includes(true)) || gameName == '' || gameDescription == ''){
+    if (gameName == '' || gameDescription == '') {
         window.alert("All fields must be filled!")
-    }
-    else{
-    push(ref(database, 'games'), {
-        name: gameName,
-        description: gameDescription,
-        minPlayers: minPlayers,
-        equipment: equipment,
-        categories: activeCategoriesOutput,
-        maxPlayers: maxPlayers,
-                        })
+    } else {
+        push(ref(database, 'games'), {
+            name: gameName,
+            description: gameDescription,
+            minPlayers: minPlayers,
+            equipment: equipment,
+            categories: activeCategoriesOutput,
+            maxPlayers: maxPlayers,
+        })
         window.alert("The game " + gameName + " was added successfully!")
-         window.location.reload() 
+        window.location.reload() 
     }
 
 }

@@ -52,15 +52,16 @@ function AddEquipment () {
                     <img src='src/assets/check.svg'/>
                 </button>
             </form>
-            <ul id="equipments">
+            <div id="equipments" style={{backgroundColor: equipments.length == 0 ? "transparent" : ""}}>
                 {equipments.map((content, index) => (
-                <li className="equipment" key={index}>{content}
-                <button className="deleteBtn" onClick={() =>handleDelete(index)}>
-                    <img src="src/assets/trash.svg"/>
-                </button>
-                </li>
+                    <div className="equipment" key={index}>
+                        {content}
+                        <button className="deleteBtn" onClick={() =>handleDelete(index)}>
+                            <img src="src/assets/trash.svg"/>
+                        </button>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     )
 }

@@ -31,7 +31,27 @@
 }
 
 #equipments{
+    width: 73%;
     word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: rgba(17, 31, 62, 0.523);
+    border-radius: 0px 0px 16px 16px;
+    padding: 10px;
+}
+
+.equipment {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    /* wrap text */
+    max-width: 150px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
 }
 
 
