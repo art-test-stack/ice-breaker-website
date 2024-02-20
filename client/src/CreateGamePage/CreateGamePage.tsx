@@ -28,9 +28,12 @@ const publishButtonClicked = () => {
             equipment: equipment,
             categories: activeCategoriesOutput,
             maxPlayers: maxPlayers,
+        }).then(() => {
+            window.alert("The game " + gameName + " was added successfully!")
+            window.location.reload() 
+        }).catch((error) => {
+            window.alert("Error adding game: " + error.message)
         })
-        window.alert("The game " + gameName + " was added successfully!")
-        window.location.reload() 
     }
 
 }
