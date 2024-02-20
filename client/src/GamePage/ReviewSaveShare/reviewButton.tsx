@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface ReviewFormData {
     rating: number;
@@ -19,10 +20,10 @@ const placeholderStyle: React.CSSProperties = {
 const ReviewForm: any = ({ onClose }: any) => {
     // const userData = useContext(currentUserData)
     const initialFormData: ReviewFormData = {
-        rating: 1,
+        rating: 0,
         comment: '',
         username: 'blabla'
-        // username: userData?.data?.username, //Have to fix why userData is undefined
+        // username: userData?.data?.username, //Have to make userData as context in App.ts
       };
 
     const [formData, setFormData] = useState<ReviewFormData>(initialFormData);
@@ -50,7 +51,7 @@ const ReviewForm: any = ({ onClose }: any) => {
                 <Typography component="legend">Rating: </Typography>
                 <Rating
                     name="rating"
-                    // value={value}
+                    value={formData.rating}
                     onChange={handleInputChange}
                 />
             </div>
@@ -61,7 +62,7 @@ const ReviewForm: any = ({ onClose }: any) => {
                     id="comment" 
                     value={formData.comment} 
                     onChange={handleInputChange}  
-                    placeholder="Write yout review here..."
+                    placeholder="Write your review here..."
                     style={placeholderStyle}/>
             </div>
             <Button type="submit" onClick={onClose}>Submit</Button>
@@ -83,7 +84,7 @@ export const ReviewGame = () => {
   
     return (
       <div>
-        <Button onClick={openModal}>Review</Button>
+        <Button onClick={openModal} startIcon={<EditIcon/>}>Review</Button>
         <Modal isOpen={isModalOpen} onClose={closeModal}>
             <ReviewForm onClose={closeModal}/>
         </Modal>

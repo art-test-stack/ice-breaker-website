@@ -1,17 +1,16 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import IosShareIcon from '@mui/icons-material/IosShare';
 
-export class ShareButton extends React.Component  {
-    handleClick = () => {
-        // add here the steps after
-        console.log('Sharing...');
-    }
-  
-    render() {
-      return (
-        <Button onClick={this.handleClick}>
-            Share
-        </Button>
-      );
-    }
+export const ShareButton = () =>  {
+
+  const handleClick = () => {
+      // add here the steps after
+      console.log('Sharing...');
   }
+
+    return (
+      <Button onClick={handleClick} startIcon={<IosShareIcon/>}>
+          Share
+      </Button>
+    );
+}

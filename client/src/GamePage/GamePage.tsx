@@ -20,7 +20,6 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
             <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories}/>
             
         </div>
-        {/* <ReviewSaveShareButton/> */}
         </>
     );
 }
