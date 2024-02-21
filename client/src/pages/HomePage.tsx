@@ -36,9 +36,9 @@ function HomePage() {
             </div>
             <div className ="gameSection">
                 
-                    <CurrentGamesProvider>
-                        <GameGrid games={[]}/>
-                    </CurrentGamesProvider>
+                <CurrentGamesProvider>
+                    <GameGrid games={[]}/>
+                </CurrentGamesProvider>
                 
             </div>
         </SearchProvider>

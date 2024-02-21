@@ -1,6 +1,6 @@
 
 import { createContext, useEffect, useState } from 'react';
-import {  ref, onChildAdded, onChildRemoved } from "firebase/database"
+import {  ref, onChildAdded, onChildRemoved, get } from "firebase/database"
 import { database } from "./init"
 
 // create a context for the games list
@@ -33,4 +33,8 @@ export const CurrentGamesProvider = ({ children }: { children: any }) => {
     }, [])
     
     return <currentGamesList.Provider value={gamesList}>{children}</currentGamesList.Provider>
+}
+
+export const getGame = (id: string) => {
+    return ref(database, `games/${id}`)
 }

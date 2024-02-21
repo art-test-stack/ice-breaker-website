@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LoginMenu from '../LoginRegisterMenu/LoginMenu.tsx';
 import { Search, SearchProvider } from '../SearchBar/Search.tsx';
 import { Title } from '../Title/Title.tsx';
@@ -8,16 +8,37 @@ import GoBack from "../components/atoms/GoBack";
 import { CurrentUserDataProvider } from "../firebase/auth.tsx";
 import GamePage from "../GamePage/GamePage"
 import '../App.css'
+import { getGame } from '../firebase/gameprovider.tsx';
+import { useParams } from 'react-router-dom';
+import { get, onValue } from 'firebase/database';
+import { getCategoryList } from '../App.tsx';
 
 function PageForGameDescription(){
-    const gameExample = {
-        title: 'GameName',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Enim eu turpis egestas pretium aenean pharetra magna ac.',
-        numPlayers: '1-6',
-        duration: '1-5 hours',
-        equipments: ['dice','timer','paper'],
-        categories: 'dice game'
-      }
+    // const gameExample = {
+    //     title: 'GameName',
+    //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Enim eu turpis egestas pretium aenean pharetra magna ac.',
+    //     numPlayers: '1-6',
+    //     duration: '1-5 hours',
+    //     equipments: ['dice','timer','paper'],
+    //     categories: 'dice game'
+
+    const { gameId } = useParams();
+    const [game, setGame] = useState<any | null>(null);
+
+    useEffect(() => {
+        const gameRef = getGame(gameId as string);
+        onValue(gameRef, (snapshot) => {
+            const data = snapshot.val();
+            setGame(data);
+        });
+
+    }, [gameId]);
+
+    if (!game) {
+        return <div>Loading...</div>;
+    }
+    console.log(game);
+
     return (
         <>
         <SearchProvider>
@@ -41,12 +62,12 @@ function PageForGameDescription(){
               }}/>
       </div>
         <GamePage 
-              title={gameExample.title} 
-              gameText={gameExample.description} 
-              numPlayers={gameExample.numPlayers}
-              duration={gameExample.duration} 
-              equipments={gameExample.equipments} 
-              categories={gameExample.categories}/>
+              title={game.name} 
+              gameText={game.description} 
+              numPlayers={game.minPlayers.toString() + (game.maxPlayers == 21 ? " or more" : `-${game.maxPlayers}`)}
+              duration={game.duration} 
+              equipments={game.equipment ?? []} 
+              categories={getCategoryList(game.categories).join(", ")}/>
         </SearchProvider>
         </>   
     )

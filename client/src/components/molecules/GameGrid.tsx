@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import GameCard from '../atoms/GameCard'; 
 import './GameGrid.css';
-import cardImage from '../../assets/cards.webp'
 import { useSearch } from '../../SearchBar/Search';
 // @ts-ignore
 import { useNavigate } from 'react-router-dom';
 import { currentGamesList } from '../../firebase/gameprovider';
-import { categories } from '../../App';
+import { categories, getCategoryList } from '../../App';
 
 
 export interface GameGridProps {
@@ -50,21 +49,21 @@ const searchKeys = ['name']
 
 const GameGrid: React.FC<GameGridProps> = () => {
     const navigate = useNavigate()
-    const handleClick = () => {
-        navigate ('/games');//change here to make dynamic later
+    const handleClick = (id: string) => {
+        navigate(`/games/${id}`)
     }
     const { searchQuery }: any = useSearch();
 
     const gamesList = useContext(currentGamesList);
 
-    const filteredGames = searchQuery ? Object.values(gamesList).filter((game: any) => {
+    const filteredGames = searchQuery ? Object.entries(gamesList).filter((game: any) => {
         for (const key in searchKeys) {
-            if (game[searchKeys[key]].toLowerCase().includes(searchQuery.toLowerCase())) {
+            if (game[1][searchKeys[key]].toLowerCase().includes(searchQuery.toLowerCase())) {
                 return true;
             }
         };
         return false;
-    }) : Object.values(gamesList)
+    }) : Object.entries(gamesList)
 
     return (
         <div className="game-grid">
@@ -73,11 +72,11 @@ const GameGrid: React.FC<GameGridProps> = () => {
                     key={index}
                     imgSrc={'./src/assets/cards.webp'} // this is not currently from the database
                     imgAlt={'Image 2'}
-                    title={game.name}
-                    category={game.categories?.map((val: boolean, i: number) => [val, categories[i]])?.filter((val: [boolean, string]) => val[0])?.map((val: [boolean, string]) => val[1])?.join(', ')}
+                    title={game[1].name}
+                    category={getCategoryList(game[1].categories).join(', ')}
                     onClick={() => {
-                        handleClick(),
-                        console.log(`Clicked on ${game.title}`);
+                        handleClick(game[0]),
+                        console.log(`Clicked on ${game[1].title} (id: ${game[0]})`);
                     }} 
 
                 />
