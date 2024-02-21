@@ -12,8 +12,8 @@ interface GameInfoProps {
 
 function GameInfo({numPlayers, duration, categories, equipments}: GameInfoProps){
 
-    const listEquipments = equipments.map((equipment) => 
-        <li key='equipment'>
+    const listEquipments = equipments.map((equipment, i) => 
+        <li key={i}>
             {equipment}
         </li>
         );
