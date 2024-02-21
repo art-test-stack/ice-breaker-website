@@ -11,7 +11,7 @@ import '../App.css'
 import { getGame } from '../firebase/gameprovider.tsx';
 import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
-import { getCategoryList } from '../App.tsx';
+import { durations, getCategoryList } from '../App.tsx';
 
 function PageForGameDescription(){
     // const gameExample = {
@@ -37,7 +37,6 @@ function PageForGameDescription(){
     if (!game) {
         return <div>Loading...</div>;
     }
-    console.log(game);
 
     return (
         <>
@@ -65,9 +64,10 @@ function PageForGameDescription(){
               title={game.name} 
               gameText={game.description} 
               numPlayers={game.minPlayers.toString() + (game.maxPlayers == 21 ? " or more" : `-${game.maxPlayers}`)}
-              duration={game.duration} 
+              duration={durations[game.duration]} 
               equipments={game.equipment ?? []} 
-              categories={getCategoryList(game.categories).join(", ")}/>
+              categories={getCategoryList(game.categories).join(", ")}
+              author={game.creator}/>
         </SearchProvider>
         </>   
     )
