@@ -11,6 +11,9 @@ export function DurationSelector() {
         duration = d;
     }
     return <>
+        <p style={{fontFamily:"Calibri", marginBottom:'10px', marginTop:'0', fontWeight: "bold", fontSize: "large", width: "85%"}}>
+            Duration:
+        </p>
         <div id="durationSelectorContainer">
             {
                 durations.map((duration, i) => {
