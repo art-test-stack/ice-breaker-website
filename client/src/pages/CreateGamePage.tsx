@@ -5,23 +5,26 @@ import PublishButton from "../CreateGamePage/PublishButton/PublishButton";
 import GameNameField, {gameName} from "../CreateGamePage/GameNameField/GameNameField";
 import DescriptionPrompt, {gameDescription} from "../CreateGamePage/DescriptionPrompt/DescriptionPrompt";
 import AddEquipment, {equipment} from "../CreateGamePage/AddEquipment/AddEquipment";
-import CreateGameButton from "../CreateGamePage/CreateGameButton/CreateGameButton";
 import { AddCategoryDropdown, activeCategoriesOutput } from "../CreateGamePage/AddCategory/AddCategoryDropdown";
 import PlayerNoSlider, {minPlayers, maxPlayers} from "../CreateGamePage/SelectPlayerNumberSlider/PlayerNoSlider";
 import LoginMenu from '../LoginRegisterMenu/LoginMenu.tsx';
-import { AuthUI, CurrentUserDataProvider } from "../firebase/auth";
+import { CurrentUserDataProvider, currentUserDataValue } from "../firebase/auth";
 import { Title } from '../Title/Title.tsx';
 import '../CreateGamePage/CreateGamePage.css';
 import '../goBackWrapper.css';
 import '../App.css';
 import { database } from '../firebase/init';
 import { push, ref } from "@firebase/database";
+import { DurationSelector, duration } from "../CreateGamePage/DurationSelector/DurationSelector.tsx";
 
 const publishButtonClicked = () => {
+    // get current context value
+    const userData = currentUserDataValue;
     /*if (gameName == ''){
         window.alert("All fields must be filled")*/
-    
-    if (gameName == '' || gameDescription == '') {
+    if (!userData) {
+        window.alert("You must be logged in to create a game!")
+    } else if (gameName == '' || gameDescription == '') {
         window.alert("All fields must be filled!")
     } else {
         push(ref(database, 'games'), {
@@ -31,6 +34,8 @@ const publishButtonClicked = () => {
             equipment: equipment,
             categories: activeCategoriesOutput,
             maxPlayers: maxPlayers,
+            creator: userData.user?.uid,
+            duration: duration,
         }).then(() => {
             window.alert("The game " + gameName + " was added successfully!")
             window.location.reload() 
@@ -74,9 +79,14 @@ export function CreateGamePage() {
                     <div id="createGameSettingsBox">
                         <AddEquipment/>
                         <PlayerNoSlider/>
+                        <DurationSelector/>
                         <AddCategoryDropdown/>
                     </div>
-                        <PublishButton onClick={publishButtonClicked}/>
+                        <CurrentUserDataProvider>
+                            <PublishButton onClick={() => {
+                                publishButtonClicked();
+                            }}/>
+                        </CurrentUserDataProvider>
                     </div>
                 </div>
             </div>

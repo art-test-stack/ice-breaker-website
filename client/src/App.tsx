@@ -15,6 +15,13 @@ export const categories = [
     "Indoor",
 ]
 
+export const durations = [
+    "Quick",
+    "Medium",
+    "Long",
+    "All day",
+]
+
 export function getCategoryList(map: boolean[]) {
     if (!map) return [];
     let output = [];
