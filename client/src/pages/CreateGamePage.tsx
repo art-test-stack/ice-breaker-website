@@ -75,7 +75,7 @@ export function CreateGamePage() {
                         <AddEquipment/>
                         <PlayerNoSlider/>
                         <AddCategoryDropdown/>
-                    </div >
+                    </div>
                         <PublishButton onClick={publishButtonClicked}/>
                     </div>
                 </div>
