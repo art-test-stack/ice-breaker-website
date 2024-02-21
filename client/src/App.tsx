@@ -22,12 +22,23 @@ export const durations = [
     "All day",
 ]
 
+export function getCategoryList(map: boolean[]) {
+    if (!map) return [];
+    let output = [];
+    for (let i = 0; i < map.length; i++) {
+        if (map[i]) {
+            output.push(categories[i]);
+        }
+    }
+    return output;
+}
+
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/games" element={<PageForGameDescription />}/>
+        <Route path="/games/:gameId" element={<PageForGameDescription />}/>
         <Route path="/createGame" element={<CreateGamePage />}/>
       </Routes>
     </>

@@ -9,7 +9,7 @@ const GoBack: React.FC<{onClick: () => void}> = ({ onClick}) => {
     return (
         <div>
         <button onClick={goBackClick} id="goBack" >
-            <img src='src/assets/left-arrow.svg' id='arrow' />
+            <img src='/src/assets/left-arrow.svg' id='arrow' />
             <span style={{ display: 'inline-block' }}>GO BACK</span>
             </button>
     </div>

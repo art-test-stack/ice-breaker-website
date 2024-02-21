@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import GameCard from '../atoms/GameCard'; 
 import './GameGrid.css';
-import cardImage from '../../assets/cards.webp'
 import { useSearch } from '../../SearchBar/Search';
 // @ts-ignore
 import { useNavigate } from 'react-router-dom';
+import { currentGamesList } from '../../firebase/gameprovider';
+import { categories, getCategoryList } from '../../App';
 
 
 export interface GameGridProps {
@@ -16,63 +17,66 @@ export interface GameGridProps {
     }[];
 }
 
-const hardCodedGames: GameGridProps = {
-    games: [
-        {
-        imgSrc: './assets/cards.webp',
-        imgAlt: 'Image 1',
-        title: 'Game 1',
-        category: 'Action',
-        },
-        {
-        imgSrc: 'image2.jpg',
-        imgAlt: 'Image 2',
-        title: 'Game 2',
-        category: 'Card',
-        },
-        {
-        imgSrc: 'image3.jpg',
-        imgAlt: 'Image 3',
-        title: 'Game 3',
-        category: 'Adventure',
-        },
-        {
-        imgSrc: 'image3.jpg',
-        imgAlt: 'Image 4',
-        title: 'Game 4',
-        category: 'Adventure',
-        }
-    ]}
+// const hardCodedGames: GameGridProps = {
+//     games: [
+//         {
+//         imgSrc: './assets/cards.webp',
+//         imgAlt: 'Image 1',
+//         title: 'Game 1',
+//         category: 'Action',
+//         },
+//         {
+//         imgSrc: 'image2.jpg',
+//         imgAlt: 'Image 2',
+//         title: 'Game 2',
+//         category: 'Card',
+//         },
+//         {
+//         imgSrc: 'image3.jpg',
+//         imgAlt: 'Image 3',
+//         title: 'Game 3',
+//         category: 'Adventure',
+//         },
+//         {
+//         imgSrc: 'image3.jpg',
+//         imgAlt: 'Image 4',
+//         title: 'Game 4',
+//         category: 'Adventure',
+//         }
+//     ]}
 
-const searchKeys = ['imgAlt', 'title', 'category']
+const searchKeys = ['name']
 
 const GameGrid: React.FC<GameGridProps> = () => {
     const navigate = useNavigate()
-    const handleClick = () => {
-        navigate ('/games');//change here to make dynamic later
+    const handleClick = (id: string) => {
+        navigate(`/games/${id}`)
     }
     const { searchQuery }: any = useSearch();
-    const filteredGames = searchQuery ? { games: hardCodedGames.games.filter((game) => {
+
+    const gamesList = useContext(currentGamesList);
+
+    const filteredGames = searchQuery ? Object.entries(gamesList).filter((game: any) => {
         for (const key in searchKeys) {
-            if (game[searchKeys[key]].toLowerCase().includes(searchQuery.toLowerCase())) {
+            if (game[1][searchKeys[key]].toLowerCase().includes(searchQuery.toLowerCase())) {
                 return true;
             }
         };
         return false;
-    })} : hardCodedGames
+    }) : Object.entries(gamesList)
 
     return (
         <div className="game-grid">
-            {filteredGames.games.map((game, index) => (
+            {filteredGames.map((game, index) => (
                 <GameCard
                     key={index}
-                    imgSrc={cardImage}
-                    imgAlt={game.imgAlt}
-                    title={game.title}
-                    category={game.category}
+                    imgSrc={'./src/assets/cards.webp'} // this is not currently from the database
+                    imgAlt={'Image 2'}
+                    title={game[1].name}
+                    category={getCategoryList(game[1].categories).join(', ')}
                     onClick={() => {
-                        handleClick(),
-                        console.log(`Clicked on ${game.title}`);
+                        handleClick(game[0]),
+                        console.log(`Clicked on ${game[1].title} (id: ${game[0]})`);
                     }} 
 
                 />
