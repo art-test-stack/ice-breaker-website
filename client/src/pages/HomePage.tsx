@@ -14,31 +14,33 @@ function HomePage() {
   return (
     <>
       <SearchProvider>
-        <div id='header'> 
-          <div id='titleContainer'>
-            <Title/>
-          </div>
-          <div id='searchContainer'>
-            <Search/>
-          </div>
-          <div id='loginContainer'>
-            <CurrentUserDataProvider>
-              <LoginMenu />
-            </CurrentUserDataProvider>
-          </div>
-          {/* <div><LoginButton /></div> */}
-        </div>
-        <div className ="gameSectionHeader">
-          <CategoryDropdown />
-          <CreateGameButton onClick={() => {
-                        console.log('create game button clicked');
-                    }}/>
-        </div>
-        <div className ="gameSection">
-            <CurrentGamesProvider>
-                <GameGrid games={[]}/>
-            </CurrentGamesProvider>
-          </div>
+            <div id='header'> 
+            <div id='titleContainer'>
+                <Title/>
+            </div>
+            <div id='searchContainer'>
+                    <Search/>
+            </div>
+            <div id='loginContainer'>
+                <CurrentUserDataProvider>
+                <LoginMenu />
+                </CurrentUserDataProvider>
+            </div>
+            {/* <div><LoginButton /></div> */}
+            </div>
+            <div className ="gameSectionHeader">
+            <CategoryDropdown />
+            <CreateGameButton onClick={() => {
+                            console.log('create game button clicked');
+                        }}/>
+            </div>
+            <div className ="gameSection">
+                
+                    <CurrentGamesProvider>
+                        <GameGrid games={[]}/>
+                    </CurrentGamesProvider>
+                
+            </div>
         </SearchProvider>
     </>
   );
