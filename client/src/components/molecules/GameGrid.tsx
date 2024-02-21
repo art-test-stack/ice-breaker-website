@@ -3,6 +3,9 @@ import GameCard from '../atoms/GameCard';
 import './GameGrid.css';
 import cardImage from '../../assets/cards.webp'
 import { useSearch } from '../../SearchBar/Search';
+// @ts-ignore
+import { useNavigate } from 'react-router-dom';
+
 
 export interface GameGridProps {
     games: {
@@ -44,6 +47,10 @@ const hardCodedGames: GameGridProps = {
 const searchKeys = ['imgAlt', 'title', 'category']
 
 const GameGrid: React.FC<GameGridProps> = () => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate ('/games');//change here to make dynamic later
+    }
     const { searchQuery }: any = useSearch();
     const filteredGames = searchQuery ? { games: hardCodedGames.games.filter((game) => {
         for (const key in searchKeys) {
@@ -63,7 +70,11 @@ const GameGrid: React.FC<GameGridProps> = () => {
                     imgAlt={game.imgAlt}
                     title={game.title}
                     category={game.category}
-                    onClick={() => console.log(`Clicked on ${game.title}`)} //displays in console which game you've clicked on
+                    onClick={() => {
+                        handleClick(),
+                        console.log(`Clicked on ${game.title}`);
+                    }} 
+
                 />
             ))}
         </div>
