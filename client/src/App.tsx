@@ -15,6 +15,13 @@ export const categories = [
     "Indoor",
 ]
 
+export const durations = [
+    "Quick",
+    "Medium",
+    "Long",
+    "All day",
+]
+
 function App() {
   return (
     <>
