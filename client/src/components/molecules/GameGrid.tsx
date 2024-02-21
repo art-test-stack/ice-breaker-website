@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import GameCard from '../atoms/GameCard'; 
 import './GameGrid.css';
 import cardImage from '../../assets/cards.webp'
 import { useSearch } from '../../SearchBar/Search';
 // @ts-ignore
 import { useNavigate } from 'react-router-dom';
+import { currentGamesList } from '../../firebase/gameprovider';
 
 
 export interface GameGridProps {
@@ -52,6 +53,10 @@ const GameGrid: React.FC<GameGridProps> = () => {
         navigate ('/games');//change here to make dynamic later
     }
     const { searchQuery }: any = useSearch();
+
+    const gamesList = useContext(currentGamesList);
+    console.log(gamesList)
+
     const filteredGames = searchQuery ? { games: hardCodedGames.games.filter((game) => {
         for (const key in searchKeys) {
             if (game[searchKeys[key]].toLowerCase().includes(searchQuery.toLowerCase())) {

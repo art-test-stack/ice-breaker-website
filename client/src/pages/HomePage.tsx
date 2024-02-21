@@ -8,6 +8,7 @@ import GameGrid from '../components/molecules/GameGrid';
 import CreateGameButton from "../CreateGamePage/CreateGameButton/CreateGameButton";
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import { CurrentGamesProvider } from '../firebase/gameprovider.tsx';
 
 function HomePage() {
   return (
@@ -34,7 +35,9 @@ function HomePage() {
                     }}/>
         </div>
         <div className ="gameSection">
-            <GameGrid games={[]}/>
+            <CurrentGamesProvider>
+                <GameGrid games={[]}/>
+            </CurrentGamesProvider>
           </div>
         </SearchProvider>
     </>
