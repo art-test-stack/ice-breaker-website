@@ -65,13 +65,12 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: left;
     position: absolute;
-    width: 150px;
+    width: 125px;
     max-height: calc(100vh - 120px);
 
     margin-top: 40px;
-    margin-right: 14px;
+    
     padding: 10px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -84,7 +83,12 @@
     transition: ease-in-out 0.3s;
 }
 
-
+#categoryDropdownContainer {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    margin-top: 30px;
+}
 
 
 
