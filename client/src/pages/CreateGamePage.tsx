@@ -69,17 +69,13 @@ export function CreateGamePage() {
                     <GameNameField/>
                     <DescriptionPrompt/>
                 </div>
-                <div id="createGameRightContainer">
+                <div id="createGameRightContainer" style={{minWidth: "240px"}}>
 
                     <div id="createGameSettingsBox">
                         <AddEquipment/>
                         <PlayerNoSlider/>
                         <AddCategoryDropdown/>
-                    </div>
-
-                    <CreateGameButton onClick={() => {
-                        console.log('create game button clicked');
-                    }}/>
+                    </div >
                         <PublishButton onClick={publishButtonClicked}/>
                     </div>
                 </div>
