@@ -76,10 +76,6 @@ export function CreateGamePage() {
                         <PlayerNoSlider/>
                         <AddCategoryDropdown/>
                     </div>
-
-                    <CreateGameButton onClick={() => {
-                        console.log('create game button clicked');
-                    }}/>
                         <PublishButton onClick={publishButtonClicked}/>
                     </div>
                 </div>
