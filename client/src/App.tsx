@@ -16,6 +16,7 @@ export const categories = [
 ]
 
 export function getCategoryList(map: boolean[]) {
+    if (!map) return [];
     let output = [];
     for (let i = 0; i < map.length; i++) {
         if (map[i]) {
