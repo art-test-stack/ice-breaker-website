@@ -1,0 +1,26 @@
+.durationSelectorButton {
+    border: 2px solid #bac8ff;
+    background-color: #5374a382;
+    
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Calibri', sans-serif;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.durationSelectorButton:hover {
+    background-color: #5374a3;
+    border: 2px solid #bac8ff;
+    transition: all 0.3s;
+}
+
+#durationSelectorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 20px;
+}

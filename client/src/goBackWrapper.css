@@ -1,0 +1,9 @@
+/* class for putting the go back button in a consistent place */
+.goBackWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 75vw;
+}
+
+/* we should really just make this part of the go back button component tbh */

@@ -1,23 +1,39 @@
 
-#categoriesButton {
+#addCategoriesButton {
     background-color: none;
     padding-left: 0px;
     margin-top: 5px;
-    width: 150px;
-    font-family: 'Galindo', sans-serif;
-    font-size: 20px;
+    width: 100%;
+    font-family: 'Calibri', sans-serif;
+    font-size: large;
+    font-weight: bold;
     background-color: transparent;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: all 0.3s;
+    transform-origin: 50% 50%;
 }
 
-.categoryOption{
+#addCategoriesButton:hover{
+    transform: scale(1.1);
+}
+
+#addCategoryContainer {
+    display: flex;
+    justify-content: left;
+    align-items: end;
+    flex-direction: column;
+    
+}
+
+.addCategoryOption {
     background-color: #0f1724;
     width: 100%;
     border-radius: 0px;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     overflow: auto;
     background-color: transparent;
@@ -29,14 +45,18 @@
     padding: -1px;
 }
 
-.categoryLabel {
-    margin-left: 10px;
-    padding: 5px;
+.addCategoryLabel {
     border-radius: 10px;
+    max-width: 30%;
     font-family: 'Encode Sans Semi Expanded', sans-serif;
-    font-size: 16px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
     animation: labelAppear 0.2s ease-out;
     transition: 0.5s ease-in-out;
+    white-space: nowrap;
+    margin: 3px;
+    padding: 2px;
 }
 
 @keyframes labelAppear {
@@ -50,27 +70,28 @@
     }
 }
 
-.categoryOptionEven:hover{
+.addCategoryOptionEven:hover{
     text-shadow: 0 0 20px #f581ff;
     background-color: #832e8b6d;
 }
 
-.categoryOptionOdd:hover{
+.addCategoryOptionOdd:hover{
     text-shadow: 0 0 20px #ffbda2;
     background-color: #894e348a;
 }
 
 
-#categoriesDropdown {
+#addCategoriesDropdown {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: left;
     position: absolute;
-    width: 125px;
+    width: 100px;
     max-height: calc(100vh - 120px);
 
-    margin-top: 40px;
-    
+    margin-top: 15px;
+    margin-right: 200px;
     padding: 10px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -78,17 +99,20 @@
 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-radius: 4px 4px 16px 16px;
-    transform-origin: top;
+    border-radius: 16px 4px 16px 16px;
+    transform-origin: top right;
     transition: ease-in-out 0.3s;
+    z-index: 10000;
 }
 
-#categoryDropdownContainer {
+/* list of all categories */
+#addCategoryLabelContainer {
     display: flex;
-    justify-content: left;
-    align-items: start;
-    margin-top: 30px;
+    flex-direction: row;
+    width: 200px;
+    flex-wrap: wrap;
 }
+
 
 
 

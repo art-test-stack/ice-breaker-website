@@ -1,9 +1,12 @@
-import './CategoryDropdown.css'
-import { useState } from 'react';
+import './AddCategoryDropdown.css'
+import { useEffect, useState } from 'react';
+import  {categories} from '../../App.tsx'
+import Tooltip from '@mui/material/Tooltip';
 
-import  {categories} from '../App.tsx'
+export let activeCategoriesOutput: boolean[] = []
 
-export function CategoryDropdown() {
+export function AddCategoryDropdown() {
+
     let [showDropdown, setShowDropdown] = useState(false);
 
     let [activeCategories, setActiveCategories] = useState(categories.map(() => false));
@@ -11,25 +14,17 @@ export function CategoryDropdown() {
     
     return (
         <>
-            <div id="categoryDropdownContainer">
-                <button id="categoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
-                    <img src='src/assets/dropdownIcon.svg' style={{marginRight: "10px"}}/>
-                    Categories
+            <div id="addCategoryContainer">
+                <button id="addCategoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
+                    <img src='src/assets/plus.svg' style={{marginRight: "10px"}}/>
+                    Add categories
                 </button>
-                {
-                    categories.map((category, i) => {
-                        if (activeCategories[i]) {
-                            const accentColor = getAccent(i);
-                            return <span key={i} className="categoryLabel" style={{backgroundColor: accentColor + "bb", border: "2px solid " + accentColor}}>{category}</span>
-                        }
-                    })
-                }
-                <div id="categoriesDropdown" style={{transform: showDropdown ? "" : "scaleY(0)", backgroundColor: showDropdown ? "#354b5ab1" : '#62effca5'}}>
+                <div id="addCategoriesDropdown" style={{transform: showDropdown ? "" : "scaleX(0) scaleY(0)", backgroundColor: showDropdown ? "#354b5ab1" : '#62effca5'}}>
                     {
                         
                         categories.map((category, i) => {
                             const accentColor = getAccent(i);
-                            return <button className={(i % 2==0 ? "categoryOptionEven" : "categoryOptionOdd")+" categoryOption"}  key={i} style={{
+                            return <button className={(i % 2==0 ? "addCategoryOptionEven" : "addCategoryOptionOdd")+" addCategoryOption"}  key={i} style={{
                                 opacity: showDropdown ? 1 : 0,
                                 color: showDropdown ? "white" : accentColor,
                                 transform: showDropdown ? "" : `translate(${i % 2==0 ? "10px" : "-10px"}, -20px)`,
@@ -40,7 +35,18 @@ export function CategoryDropdown() {
                                 let newActiveCategories = [...activeCategories];
                                 newActiveCategories[i] = !newActiveCategories[i];
                                 setActiveCategories(newActiveCategories);
+                                activeCategoriesOutput = newActiveCategories;
                             }}>{category}</button>
+                        })
+                    }
+                </div>
+                <div id="addCategoryLabelContainer">
+                    {
+                        categories.map((category, i) => {
+                            if (activeCategories[i]) {
+                                const accentColor = getAccent(i);
+                                return <Tooltip title={category}><span key={i} className="addCategoryLabel"  style={{backgroundColor: accentColor + "bb", border: "2px solid " + accentColor}}>{category}</span></Tooltip>
+                            }
                         })
                     }
                 </div>

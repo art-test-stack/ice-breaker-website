@@ -1,5 +1,4 @@
 .game-grid {
-    display: grid;
     gap: 20px;
     width: 80%;
     display: flex; 

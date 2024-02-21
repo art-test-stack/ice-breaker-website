@@ -4,19 +4,21 @@
     background-color: #26554D;
     padding: 35px 25px 35px 25px;
     text-align: left;
-    font-family: 'Encode Sans Semi Expanded', sans-serif;
+    font-family: 'Calibri Light', sans-serif;
+    font-size: large;
     margin: 10px 10px 10px 20px;
     height: fit-content;
 }
 
 .bolded {
+    font-family: 'Calibri';
     font-weight: bolder;
     display: inline-block;
     /* background-color: black; */
     /* margin: 0 0 20px 0; */
 }
 
-#numPlayers, #duration, #categories {
+#numPlayers, #duration, #categories #author {
     display: inline-block;
     margin: 0 0 0 7px;
     /* background-color: aqua;  */
@@ -27,5 +29,10 @@
     /* background-color: aqua;  */
 }
 
+#authorBox {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
 
 
