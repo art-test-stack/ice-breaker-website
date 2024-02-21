@@ -34,3 +34,8 @@
     text-align: center;
     font-weight: 700;
 }
+ 
+.publishButtonDisabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}

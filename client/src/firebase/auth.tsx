@@ -14,9 +14,14 @@ type UserDataValue = {
 
 // create a context for the user data
 export const currentUserData = createContext<UserDataValue | null>(null)
+export let currentUserDataValue: UserDataValue | null = null
 
 export const CurrentUserDataProvider = ({ children }: { children: any }) => {
-    const [userData, setUserData] = useState<UserDataValue | null>(null)
+    const [userData, setUserDataState] = useState<UserDataValue | null>(null)
+    const setUserData = (data: UserDataValue | null) => {
+        setUserDataState(data)
+        currentUserDataValue = data
+    }
     let userDataListener: any | null = null
     useEffect(() => {
         // listen for auth state changes
