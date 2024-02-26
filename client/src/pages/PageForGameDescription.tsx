@@ -40,7 +40,8 @@ function PageForGameDescription(){
 
     return (
         <>
-        <SearchProvider>
+        <CurrentUserDataProvider>
+        <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
               <div id='header'> 
         <div id='titleContainer'>
           <Title/>
@@ -49,11 +50,8 @@ function PageForGameDescription(){
           <Search/>
         </div>
         <div id='loginContainer'>
-          <CurrentUserDataProvider>
             <LoginMenu />
-          </CurrentUserDataProvider>
         </div>
-        {/* <div><LoginButton /></div> */}
       </div>
       <div className ="gameSectionHeader">
       <GoBack onClick={() => {
@@ -69,6 +67,7 @@ function PageForGameDescription(){
               categories={getCategoryList(game.categories).join(", ")}
               author={game.creator}/>
         </SearchProvider>
+        </CurrentUserDataProvider>
         </>   
     )
 }
