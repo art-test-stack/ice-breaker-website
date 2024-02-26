@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-
 export const Modal = ({ isOpen, onClose, children }: any) => {
   const modalStyle = {
     display: isOpen ? 'block' : 'none',
@@ -33,7 +32,7 @@ export const ModalExample = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
+  };  
 
   return (
     <div>

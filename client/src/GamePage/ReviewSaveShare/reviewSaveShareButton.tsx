@@ -1,5 +1,5 @@
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { ReviewGame } from './reviewButton';
+import { ReviewButton } from './reviewButton';
 import { SaveButton } from './saveButton';
 import { ShareButton } from './shareButton';
 
@@ -11,7 +11,7 @@ export default function ReviewSaveShareButton() {
         aria-label="review-save-share"
         border-radius={'50%'}
         >
-            <ReviewGame/>
+            <ReviewButton/>
             <SaveButton/>
             <ShareButton/>
       </ButtonGroup>

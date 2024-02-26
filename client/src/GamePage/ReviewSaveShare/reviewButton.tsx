@@ -1,16 +1,18 @@
 import { useState, useContext } from 'react';
 import { Modal } from './modal'
-// import { currentUserData } from '../../firebase/auth';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import EditIcon from '@mui/icons-material/Edit';
+import { useLocation } from 'react-router-dom';
+import { currentUserData } from '../../firebase/auth';
 
 interface ReviewFormData {
     rating: number;
     comment: string;
     username: string | undefined;
+    gameId: string
 }
 
 const placeholderStyle: React.CSSProperties = {
@@ -18,12 +20,14 @@ const placeholderStyle: React.CSSProperties = {
 };
   
 const ReviewForm: any = ({ onClose }: any) => {
-    // const userData = useContext(currentUserData)
+    const userData = useContext(currentUserData)
+    const currentLocation = useLocation();
+
     const initialFormData: ReviewFormData = {
         rating: 0,
         comment: '',
-        username: 'blabla'
-        // username: userData?.data?.username, //Have to make userData as context in App.ts
+        username: userData?.data?.username, // Issue: Appears as undefined on first submit but in console.log it is not
+        gameId: currentLocation.pathname.split("/")[2] // Supposed to be gameId
       };
 
     const [formData, setFormData] = useState<ReviewFormData>(initialFormData);
@@ -32,6 +36,7 @@ const ReviewForm: any = ({ onClose }: any) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({
         ...prevFormData,
+        username: userData?.data?.username, // Not nice fix to issue on line 31
         [name]: value,
         }));
     };
@@ -71,7 +76,7 @@ const ReviewForm: any = ({ onClose }: any) => {
     );
 };
 
-export const ReviewGame = () => {
+export const ReviewButton = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
   
     const openModal = () => {
@@ -85,7 +90,7 @@ export const ReviewGame = () => {
     return (
       <div>
         <Button onClick={openModal} startIcon={<EditIcon/>}>Review</Button>
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Modal isOpen={isModalOpen}>
             <ReviewForm onClose={closeModal}/>
         </Modal>
       </div>
