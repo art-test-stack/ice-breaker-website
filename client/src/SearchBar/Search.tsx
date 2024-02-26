@@ -2,18 +2,23 @@ import { createContext, useContext, useState } from 'react';
 import './Search.css';
 
 
+interface gamesQuery {
+  searchQuery: string;
+  categories: string[] | any;
+}
 interface SearchContextType {
-    searchQuery: string;
-    setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+    filters: gamesQuery;
+    setFilters: React.Dispatch<React.SetStateAction<gamesQuery>>;
   }
   
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
 export const SearchProvider = ({ children }: any) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const initialFilters = {searchQuery: '', categories: []}
+  const [filters, setFilters] = useState(initialFilters);
   
   return (
-    <SearchContext.Provider value={{ searchQuery, setSearchQuery }}>
+    <SearchContext.Provider value={{ filters, setFilters }}>
       {children}
     </SearchContext.Provider>
   );
@@ -22,12 +27,11 @@ export const SearchProvider = ({ children }: any) => {
 export const useSearch = () => useContext(SearchContext);
 
 export function Search(){
-    const { searchQuery, setSearchQuery }: any = useSearch();
+    const { filters, setFilters }: any = useSearch();
     
     const handleSearchInputChange = (event: any) => {
-        setSearchQuery(event.target.value);
+      setFilters( {...filters, searchQuery: event.target.value});
     };
-  
     return (
         <> 
         <form id="formSearch" style={SearchStyle}>
@@ -35,7 +39,7 @@ export function Search(){
                 id="searchbar" 
                 type="search" 
                 placeholder='Search'
-                value={searchQuery}
+                value={filters.searchQuery}
                 onChange={handleSearchInputChange}
             />
         </form>

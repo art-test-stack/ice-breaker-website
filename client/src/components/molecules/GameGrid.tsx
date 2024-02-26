@@ -17,34 +17,6 @@ export interface GameGridProps {
     }[];
 }
 
-// const hardCodedGames: GameGridProps = {
-//     games: [
-//         {
-//         imgSrc: './assets/cards.webp',
-//         imgAlt: 'Image 1',
-//         title: 'Game 1',
-//         category: 'Action',
-//         },
-//         {
-//         imgSrc: 'image2.jpg',
-//         imgAlt: 'Image 2',
-//         title: 'Game 2',
-//         category: 'Card',
-//         },
-//         {
-//         imgSrc: 'image3.jpg',
-//         imgAlt: 'Image 3',
-//         title: 'Game 3',
-//         category: 'Adventure',
-//         },
-//         {
-//         imgSrc: 'image3.jpg',
-//         imgAlt: 'Image 4',
-//         title: 'Game 4',
-//         category: 'Adventure',
-//         }
-//     ]}
-
 const searchKeys = ['name']
 
 const GameGrid: React.FC<GameGridProps> = () => {
@@ -52,18 +24,21 @@ const GameGrid: React.FC<GameGridProps> = () => {
     const handleClick = (id: string) => {
         navigate(`/games/${id}`)
     }
-    const { searchQuery }: any = useSearch();
-
+    const { filters }: any = useSearch();
     const gamesList = useContext(currentGamesList);
+    
+    const filteredOnCategoryGames = filters?.categories.length > 0 ? Object.entries(gamesList).filter((game: any) => {
+            return filters?.categories.every((e) => categories.filter((c, i) => game[1].categories[i]).includes(e))
+    }) : Object.entries(gamesList)
 
-    const filteredGames = searchQuery ? Object.entries(gamesList).filter((game: any) => {
+    const filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
         for (const key in searchKeys) {
-            if (game[1][searchKeys[key]].toLowerCase().includes(searchQuery.toLowerCase())) {
+            if (game[1][searchKeys[key]].toLowerCase().includes(filters?.searchQuery.toLowerCase())) {
                 return true;
             }
         };
         return false;
-    }) : Object.entries(gamesList)
+    }) : filteredOnCategoryGames
 
     return (
         <div className="game-grid">

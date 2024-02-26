@@ -2,13 +2,21 @@ import './CategoryDropdown.css'
 import { useState } from 'react';
 
 import  {categories} from '../App.tsx'
+import { useSearch } from '../SearchBar/Search.tsx';
 
 export function CategoryDropdown() {
     let [showDropdown, setShowDropdown] = useState(false);
 
     let [activeCategories, setActiveCategories] = useState(categories.map(() => false));
     // categories of ice breaker games
-    
+    const { filters, setFilters }: any = useSearch();
+    if (
+        (categories.filter((c, i) => activeCategories[i]).length != filters.categories.length)
+        && !(
+            JSON.stringify(filters.categories) === JSON.stringify(categories.filter((c, i) => activeCategories[i])))
+    ) {
+        setFilters({...filters, categories: categories.filter((c, i) => activeCategories[i])})
+    }
     return (
         <>
             <div id="categoryDropdownContainer">
@@ -26,7 +34,6 @@ export function CategoryDropdown() {
                 }
                 <div id="categoriesDropdown" style={{transform: showDropdown ? "" : "scaleY(0)", backgroundColor: showDropdown ? "#354b5ab1" : '#62effca5'}}>
                     {
-                        
                         categories.map((category, i) => {
                             const accentColor = getAccent(i);
                             return <button className={(i % 2==0 ? "categoryOptionEven" : "categoryOptionOdd")+" categoryOption"}  key={i} style={{
@@ -40,6 +47,7 @@ export function CategoryDropdown() {
                                 let newActiveCategories = [...activeCategories];
                                 newActiveCategories[i] = !newActiveCategories[i];
                                 setActiveCategories(newActiveCategories);
+
                             }}>{category}</button>
                         })
                     }
