@@ -2,7 +2,6 @@ import GameInfo from "../GameInfo/GameInfo"
 import GameDescription from "../GameDescription/GameDescription"
 import './GamePage.css'
 import ReviewSaveShareButton from "./ReviewSaveShare/reviewSaveShareButton";
-import ReviewComponent from "./ViewReviewComponent/ReviewComponent";
 
 interface Props{
     title: string;
@@ -15,15 +14,14 @@ interface Props{
 }
 
 function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration, equipments, categories, author}: Props) {
-    return (
+    return ( 
         <>
         <div className="GamePage">
             <GameDescription title={title} gameText={gameText}/>
             <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
-        </div>
+            </div>   
         <ReviewSaveShareButton/>
-        <ReviewComponent userName={'test'} givenReview={'rguibewub'} rating={5}/>
-        </>
+        </>    
     );
 }
 

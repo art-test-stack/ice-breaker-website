@@ -12,6 +12,7 @@ import { getGame } from '../firebase/gameprovider.tsx';
 import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
 import { durations, getCategoryList } from '../App.tsx';
+import ReviewComponent from '../GamePage/ReviewComponent/ReviewComponent.tsx';
 
 import { test } from 'mocha';
 
@@ -39,8 +40,14 @@ function PageForGameDescription(){
     if (!game) {
         return <div>Loading...</div>;
     }
+    const userNames = ['Test_user1', 'Test_user2', 'Test_user3'];
+    const review = ['Lorem ipsum', 
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
+    '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'];
+
 
     return (
+
         <>
         <CurrentUserDataProvider>
         
@@ -69,6 +76,15 @@ function PageForGameDescription(){
               equipments={game.equipment ?? []} 
               categories={getCategoryList(game.categories).join(", ")}
               author={game.creator}/>
+    
+    {/*everyReview css is located in App.css, */}
+    <ul className="everyReview">
+        <h2>Reviews</h2>
+            {userNames.map((name, index) => (
+            <ReviewComponent key={name} userName={name} givenReview={review[index]} rating={index+2}/>
+            ))}
+        </ul>
+
         </SearchProvider>
         </CurrentUserDataProvider>
         </>         

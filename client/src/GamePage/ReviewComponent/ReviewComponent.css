@@ -28,3 +28,9 @@
 .givenRating{
     float: right;
 }
+
+.everyReview{
+    padding: 0px;
+    margin: 0 auto;
+    width: 975px;
+  }
