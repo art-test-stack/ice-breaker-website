@@ -1,35 +1,28 @@
 import './ReviewComponent.css'
 
-import * as React from 'react';
 import Rating from '@mui/material/Rating';
 
+interface Props{
+    userName: string;
+    givenReview: string;
+    rating: number;
+}
 
-
-function ReviewComponent() {
-    const [value, setValue] = React.useState<number | null>(5);
-
+function ReviewComponent({userName, givenReview, rating}:Props) {
     return (
         
         <div className="background">
             <span>
                 <div className='givenRating'>
-                    <Rating name="read-only" value={value} readOnly />
+                    <Rating name="read-only" value={rating} readOnly />
                 </div>
             <div className='userName'>
-                test_username
+                {userName}
             </div>
-
-
             </span>
-
-
             <div className='review'>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut i ko maha
+                {givenReview}
             </div>
-
-
-        
-        
         </div>
 
     );
