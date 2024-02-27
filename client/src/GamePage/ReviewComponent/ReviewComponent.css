@@ -1,28 +1,30 @@
 .background {
     display: flex;
-    width: 500px;
     flex-direction: column;
 
+    width: 575px;
     min-height: 100px;
     height: fit-content;
+
     background-color: rgb(11, 49, 11);
     padding: 20px;
     border-radius: 30px;
+    margin: 20px 0;
 }
 
 .userName{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Calibri Light', sans-serif;
+    font-style:  bold;
     height: fit-content;
     font-size: 20px;
-
 }
 
 .review{
+    font-family: 'Calibri Light', sans-serif;
     margin-top: 0.5em;
-    width: 500px;
+    width: inherit;
 }
 
 .givenRating{
     float: right;
-
 }
