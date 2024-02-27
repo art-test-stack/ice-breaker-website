@@ -12,6 +12,7 @@ import { getGame } from '../firebase/gameprovider.tsx';
 import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
 import { durations, getCategoryList } from '../App.tsx';
+import ReviewComponent from '../GamePage/ViewReviewComponent/ReviewComponent.tsx';
 
 function PageForGameDescription(){
     // const gameExample = {
@@ -41,6 +42,7 @@ function PageForGameDescription(){
     return (
         <>
         <CurrentUserDataProvider>
+        <ReviewComponent/>
         <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
               <div id='header'> 
         <div id='titleContainer'>

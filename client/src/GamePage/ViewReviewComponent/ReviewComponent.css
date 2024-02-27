@@ -1,0 +1,28 @@
+.background {
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+
+    min-height: 100px;
+    height: fit-content;
+    background-color: rgb(11, 49, 11);
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.userName{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: fit-content;
+    font-size: 20px;
+
+}
+
+.review{
+    margin-top: 0.5em;
+    width: 500px;
+}
+
+.givenRating{
+    float: right;
+
+}
