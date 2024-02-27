@@ -14,7 +14,7 @@ function ReviewComponent({userName, givenReview, rating}:Props) {
         <div className="background">
             <span>
                 <div className='givenRating'>
-                    <Rating name="read-only" value={rating} readOnly />
+                    <Rating name="read-only" value={rating} readOnly style={{color: "ffff00"}} />
                 </div>
             <div className='userName'>
                 {userName}

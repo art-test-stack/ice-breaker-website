@@ -13,8 +13,9 @@
 }
 
 .userName{
-    font-family: 'Calibri Light', sans-serif;
+    font-family: 'Calibri', sans-serif;
     font-style:  bold;
+    font-weight: bolder;
     height: fit-content;
     font-size: 20px;
 }
@@ -23,6 +24,7 @@
     font-family: 'Calibri Light', sans-serif;
     margin-top: 0.5em;
     width: inherit;
+    font-size: 18px;
 }
 
 .givenRating{
@@ -34,3 +36,8 @@
     margin: 0 auto;
     width: 975px;
   }
+
+
+.MuiRating-iconFilled {
+    color: #ffcd2a;
+}
