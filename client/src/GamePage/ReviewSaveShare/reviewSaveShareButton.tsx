@@ -11,13 +11,25 @@ export default function ReviewSaveShareButton() {
       sx={{
         backgroundColor: '#4D6DAB',
         padding: '8px',
-        borderRadius: '25px',        
+        borderRadius: '25px',
         '& .MuiButtonBase-root': {
           color: '#ffffff', 
           backgroundColor: '#4D6DAB',
-          borderColor: '#ffffff',
-          '&:not(:last-child)': 
-          { borderRight: '1px solid #ffffff', }
+          '&:not(:last-child)': {
+            borderRight: 'none',
+          },
+          '&:first-child': {
+            borderTopLeftRadius: '25px',
+            borderBottomLeftRadius: '25px',
+          },
+          '&:last-child': {
+            borderTopRightRadius: '25px',
+            borderBottomRightRadius: '25px', 
+          },
+          '&:hover': {
+            backgroundColor: '#b4bfed',
+            color: '#4D6DAB',
+          },
         },
       }}
     >
