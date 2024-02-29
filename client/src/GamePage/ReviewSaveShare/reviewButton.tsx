@@ -21,11 +21,11 @@ const placeholderStyle: React.CSSProperties = {
     fontStyle: 'italic',
 };
 
-// Push reviews to database
 const submitClicked = (formData: ReviewFormData) => {
     console.log(formData)
+    // Push reviews to database
     push(ref(database, 'reviews'), formData).then((response) => {
-        // game id from database
+        // reviewId from database
         const reviewID = response._path.pieces_[1]
 
         // push reviewIDs to games.
