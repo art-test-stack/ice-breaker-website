@@ -66,8 +66,9 @@ const ReviewForm: any = ({ onClose }: any) => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
+        // checks if logged in
         if (!userData) {
-            window.alert("You must be logged in to create a game!")
+            window.alert("You must be logged in to review a game!")
         }else{
             console.log(formData);
             // Call API instead of console-log to register form data
