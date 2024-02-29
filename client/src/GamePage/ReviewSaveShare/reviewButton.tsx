@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
-import { Modal } from './modal'
+import { Modal } from './modal';
+import './reviewButton.css';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
@@ -65,10 +66,14 @@ const ReviewForm: any = ({ onClose }: any) => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        console.log(formData);
-        // Call API instead of console-log to register form data
-        submitClicked(formData);
-        setFormData(initialFormData);
+        if (!userData) {
+            window.alert("You must be logged in to create a game!")
+        }else{
+            console.log(formData);
+            // Call API instead of console-log to register form data
+            submitClicked(formData);
+            setFormData(initialFormData);
+        } 
     };
 
     return (
