@@ -10,6 +10,7 @@ import { currentUserData } from '../../firebase/auth';
 import { push, ref } from 'firebase/database';
 import { database } from '../../firebase/init';
 
+
 interface ReviewFormData {
     rating: number;
     comment: string;
@@ -93,7 +94,7 @@ const ReviewForm: any = ({ onClose }: any) => {
                     placeholder="Write your review here..."
                     style={placeholderStyle}/>
             </div>
-            <Button type="submit" onClick={onClose}>Submit</Button>
+            <Button type="submit" onClick={onClose} className={userData ? '': 'disabledSubmitButton'}>Submit</Button>
             </form>
         </>
     );
