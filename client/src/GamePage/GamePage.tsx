@@ -18,9 +18,12 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
         <>
         <div className="GamePage">
             <GameDescription title={title} gameText={gameText}/>
-            <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
-            </div>   
-        <ReviewSaveShareButton/>
+            <div className="Right-Section-GameInfo">
+                <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
+                <ReviewSaveShareButton/>  
+            </div>
+        </div>
+             
         </>    
     );
 }
