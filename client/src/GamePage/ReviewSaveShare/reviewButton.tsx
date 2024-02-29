@@ -7,6 +7,8 @@ import TextField from '@mui/material/TextField';
 import EditIcon from '@mui/icons-material/Edit';
 import { useLocation } from 'react-router-dom';
 import { currentUserData } from '../../firebase/auth';
+import { push, ref } from 'firebase/database';
+import { database } from '../../firebase/init';
 
 interface ReviewFormData {
     rating: number;
@@ -18,7 +20,27 @@ interface ReviewFormData {
 const placeholderStyle: React.CSSProperties = {
     fontStyle: 'italic',
 };
-  
+
+// Push reviews to database
+const submitClicked = (formData: ReviewFormData) => {
+    console.log(formData)
+    push(ref(database, 'reviews'), formData).then((response) => {
+        // game id from database
+        const reviewID = response._path.pieces_[1]
+
+        // push reviewIDs to games.
+        push(ref(database, 'games/' + formData.gameId +'/reviewIDs'), reviewID).then(() => {
+            window.alert("The review was added successfully!")
+            window.location.reload() 
+        }
+        )
+    
+    }).catch((error) => {
+        console.log('Error: ', error)
+        window.alert("Error adding review: " + error.message)
+    })
+}
+
 const ReviewForm: any = ({ onClose }: any) => {
     const userData = useContext(currentUserData)
     const currentLocation = useLocation();
@@ -45,6 +67,7 @@ const ReviewForm: any = ({ onClose }: any) => {
         event.preventDefault();
         console.log(formData);
         // Call API instead of console-log to register form data
+        submitClicked(formData);
         setFormData(initialFormData);
     };
 
