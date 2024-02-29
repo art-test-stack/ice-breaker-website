@@ -27,14 +27,13 @@ const submitClicked = (formData: ReviewFormData) => {
     // Push reviews to database
     push(ref(database, 'reviews'), formData).then((response) => {
         // reviewId from database
-        const reviewID = response._path.pieces_[1]
+        const reviewID = response.key
 
         // push reviewIDs to games.
         push(ref(database, 'games/' + formData.gameId +'/reviewIDs'), reviewID).then(() => {
             window.alert("The review was added successfully!")
             window.location.reload() 
-        }
-        )
+        })
     
     }).catch((error) => {
         console.log('Error: ', error)
