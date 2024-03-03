@@ -2,8 +2,6 @@ import { useState, useContext } from 'react';
 import { Modal } from './modal'
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import EditIcon from '@mui/icons-material/Edit';
 import { useLocation } from 'react-router-dom';
 import { currentUserData } from '../../firebase/auth';
@@ -14,10 +12,6 @@ interface ReviewFormData {
     username: string | undefined;
     gameId: string
 }
-
-const placeholderStyle: React.CSSProperties = {
-    fontStyle: 'italic',
-};
   
 const ReviewForm: any = ({ onClose }: any) => {
     const userData = useContext(currentUserData)
@@ -50,28 +44,28 @@ const ReviewForm: any = ({ onClose }: any) => {
 
     return (
         <>
-            <h2>Write a Review</h2>
+        <div>
+                <div className='writeReviewText'>Write a review</div>
             <form onSubmit={handleSubmit}>
-            <div>
-                <Typography component="legend">Rating: </Typography>
+            <div >
                 <Rating
+                    id='ratings'
                     name="rating"
                     value={formData.rating}
                     onChange={handleInputChange}
                 />
             </div>
-            <div>
-                <Typography component="legend">Rating: </Typography>
-                <TextField 
+            <div className='textFieldInReview'>
+                <textarea 
                     name="comment" 
                     id="comment" 
                     value={formData.comment} 
-                    onChange={handleInputChange}  
-                    placeholder="Write your review here..."
-                    style={placeholderStyle}/>
+                    onChange={handleInputChange}
+                    placeholder="Write your review here..."/>
             </div>
-            <Button type="submit" onClick={onClose}>Submit</Button>
+            <button id="submitReview" type="submit" onClick={onClose}>Submit</button>
             </form>
+            </div>
         </>
     );
 };
