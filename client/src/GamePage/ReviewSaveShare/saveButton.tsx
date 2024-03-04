@@ -7,16 +7,16 @@ import { currentUserData } from '../../firebase/auth';
 import { useLocation } from 'react-router-dom';
 
 type saveOnPlaylistProps = {
-  userId: string | undefined,
+  userId: any,
   gameId: string
 } 
 const saveOnDatabase = ({ userId, gameId}: saveOnPlaylistProps) => {
 
   console.log(gameId)
   // Push reviews to database
-  push(ref(database, 'playlists/save/' + userId + '/' + gameId)).then((res) => {
+  push(ref(database, 'userData/' + userData?.user.uid + '/favorites/' + gameId), "").then((res) => {
       // push reviewIDs to games.
-      console.log("here")
+      console.log("here->", res)
       window.alert('Game added to favorite !')
   }).catch((error) => {
       console.log('Error: ', error)
@@ -35,11 +35,11 @@ export const SaveButton = () => {
 
   const userData = useContext(currentUserData)
   const userId = userData?.data?.username
-
+  console.log("user ->", userData?.user.uid)
   const colorComp = {color: gameSaved ? "red" : "white"}
 
   const handleClick = () => {
-      !gameSaved ? saveOnDatabase({userId: userId, gameId: gameId}) : deleteFromDataBase()
+      !gameSaved ? saveOnDatabase({userId: userData, gameId: gameId}) : deleteFromDataBase()
       // window.alert(!gameSaved ? 'Game added to favorite !' : "Game deleted from favorite")
       setGameSaved(!gameSaved)
   }
