@@ -18,13 +18,8 @@ import { currentReviewsList } from '../firebase/reviewProvider.tsx';
 
 
 
-import { test } from 'mocha';
 
-interface Review {
-    username: string; 
-    givenReview: string; 
-    rating: number; 
-}
+import ReviewsList from '../GamePage/ReviewComponent/ReviewsList.tsx';
 
 function PageForGameDescription(){
     // const gameExample = {
@@ -37,20 +32,15 @@ function PageForGameDescription(){
 
     const { gameId } = useParams();
     const [game, setGame] = useState<any | null>(null);
-    const {reviewsList, getGameReviews} = useContext(currentReviewsList); 
 
     useEffect(() => {
-
-        console.log("Current Reviews List Context:", reviewsList);
-        console.log("getGameReviews function:", getGameReviews);
         const gameRef = getGame(gameId as string);
         onValue(gameRef, (snapshot) => {
             const data = snapshot.val();
             setGame(data);
-            getGameReviews(gameId); 
         });
 
-    }, [gameId, getGameReviews]);
+    }, [gameId]);
 
     if (!game) {
         return <div>Loading...</div>;
@@ -65,7 +55,7 @@ function PageForGameDescription(){
 
         <>
         <CurrentUserDataProvider>
-            <CurrentGameReviewsProvider>
+            <CurrentGameReviewsProvider gameId={gameId}>
         
         <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
               <div id='header'> 
@@ -96,13 +86,7 @@ function PageForGameDescription(){
     {/*everyReview css is located in App.css, */}
     <ul className="everyReview">
         <h2>Reviews</h2>
-        {reviewsList && reviewsList.map((review: Review, index: number) => (
-            <ReviewComponent
-                key={index}
-                userName={review.username}
-                givenReview={review.givenReview}
-                rating={review.rating}            />
-        ))}
+        <ReviewsList/>
         {/* {Object.entries(reviewsList).map(([userId, review]))} */}
             {/* {userNames.map((name, index) => (
             <ReviewComponent key={name} userName={name} givenReview={review[index]} rating={index+2}/> */}

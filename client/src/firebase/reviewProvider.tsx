@@ -6,30 +6,20 @@ import { database } from "./init"
 // create a context for the reviews list
 export const currentReviewsList = createContext<{[id: string]: any}>({})
 
-export const CurrentGameReviewsProvider = ({ children }: { children: any }) => {
+export const CurrentGameReviewsProvider = ({ children, gameId }: { children: any, gameId: string | undefined }) => {
     const [reviewsList, setReviewsList] = useState<{[id: string]: any}>({})
 
-    const getGameReviews = (gameId: string) => {
-        const gameRef = ref(database, `games/${gameId}/reviewIDs`); 
-        onValue(gameRef, async (snapshot) => {
+    useEffect(() => {
+        const gameReviewsRef = ref(database, `games/${gameId}/reviewIDs`); 
+        onValue(gameReviewsRef, async (snapshot) => {
             if (snapshot.exists()) {
                 const reviewIDs = snapshot.val();
-                const reviewsPromises = Object.keys(reviewIDs).map((reviewId) => {
+                const reviewsPromises = Object.values(reviewIDs).map((reviewId) => {
                     const reviewRef = ref(database, `reviews/${reviewId}`);
-                    return get(reviewRef).then((reviewSnapshot) => {
-                        if (reviewSnapshot.exists()) {
-                            return reviewSnapshot.val();
-                        } else {
-                            return null;
-                        }
-                    }).catch((error) => {
-                        console.error("Error getting review:", error);
-                        return null;
-                    });
+                    return get(reviewRef)
                 });
                 const reviews = await Promise.all(reviewsPromises);
-                const filteredReviews = reviews.filter(review => review !== null);
-                setReviewsList(filteredReviews);
+                setReviewsList(reviews.map((review) => review.val()));
             } else {
                 setReviewsList([]);
             }
@@ -37,10 +27,10 @@ export const CurrentGameReviewsProvider = ({ children }: { children: any }) => {
             console.error("Error getting review IDs:", error);
             setReviewsList([]);
         }); 
-    }; 
+    }, [gameId]); 
 
     return (
-        <currentReviewsList.Provider value={{ reviewsList, getGameReviews}}>
+        <currentReviewsList.Provider value={reviewsList}>
             {children}
         </currentReviewsList.Provider>
     ); 
