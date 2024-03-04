@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import LoginMenu from '../LoginRegisterMenu/LoginMenu.tsx';
 import { Search, SearchProvider } from '../SearchBar/Search.tsx';
 import { Title } from '../Title/Title.tsx';
@@ -13,8 +13,18 @@ import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
 import { durations, getCategoryList } from '../App.tsx';
 import ReviewComponent from '../GamePage/ReviewComponent/ReviewComponent.tsx';
+import { CurrentGameReviewsProvider} from '../firebase/reviewProvider.tsx';
+import { currentReviewsList } from '../firebase/reviewProvider.tsx';
+
+
 
 import { test } from 'mocha';
+
+interface Review {
+    username: string; 
+    givenReview: string; 
+    rating: number; 
+}
 
 function PageForGameDescription(){
     // const gameExample = {
@@ -27,29 +37,35 @@ function PageForGameDescription(){
 
     const { gameId } = useParams();
     const [game, setGame] = useState<any | null>(null);
+    const {reviewsList, getGameReviews} = useContext(currentReviewsList); 
 
     useEffect(() => {
+
+        console.log("Current Reviews List Context:", reviewsList);
+        console.log("getGameReviews function:", getGameReviews);
         const gameRef = getGame(gameId as string);
         onValue(gameRef, (snapshot) => {
             const data = snapshot.val();
             setGame(data);
+            getGameReviews(gameId); 
         });
 
-    }, [gameId]);
+    }, [gameId, getGameReviews]);
 
     if (!game) {
         return <div>Loading...</div>;
     }
-    const userNames = ['Test_user1', 'Test_user2', 'Test_user3'];
-    const review = ['Lorem ipsum', 
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
-    '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'];
+    // const userNames = ['Test_user1', 'Test_user2', 'Test_user3'];
+    // const review = ['Lorem ipsum', 
+    // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
+    // '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'];
 
 
     return (
 
         <>
         <CurrentUserDataProvider>
+            <CurrentGameReviewsProvider>
         
         <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
               <div id='header'> 
@@ -80,12 +96,21 @@ function PageForGameDescription(){
     {/*everyReview css is located in App.css, */}
     <ul className="everyReview">
         <h2>Reviews</h2>
-            {userNames.map((name, index) => (
-            <ReviewComponent key={name} userName={name} givenReview={review[index]} rating={index+2}/>
-            ))}
+        {reviewsList && reviewsList.map((review: Review, index: number) => (
+            <ReviewComponent
+                key={index}
+                userName={review.username}
+                givenReview={review.givenReview}
+                rating={review.rating}            />
+        ))}
+        {/* {Object.entries(reviewsList).map(([userId, review]))} */}
+            {/* {userNames.map((name, index) => (
+            <ReviewComponent key={name} userName={name} givenReview={review[index]} rating={index+2}/> */}
+            {/* ))} */}
         </ul>
 
         </SearchProvider>
+        </CurrentGameReviewsProvider>
         </CurrentUserDataProvider>
         </>         
     )
