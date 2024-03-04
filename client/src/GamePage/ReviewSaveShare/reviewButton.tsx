@@ -8,7 +8,8 @@ import { useLocation } from 'react-router-dom';
 import { currentUserData } from '../../firebase/auth';
 import { push, ref } from 'firebase/database';
 import { database } from '../../firebase/init';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+// import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 
 interface ReviewFormData {
