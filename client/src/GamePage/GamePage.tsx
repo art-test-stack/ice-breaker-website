@@ -38,7 +38,7 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
                 <GameDescription title={title} gameText={gameText}/> 
                 <CurrentGameReviewsProvider gameId={gameId}>  
                 <div className="reviewScoresSpan">
-                    <h2>Reviews</h2>  
+                    <div style={{fontSize:'30px', fontWeight:'bold'}}>Reviews</div>  
                     <div className="averageReviewScore">
                     <AverageReviewScore/>
                     </div>

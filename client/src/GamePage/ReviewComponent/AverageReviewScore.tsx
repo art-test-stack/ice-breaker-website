@@ -30,11 +30,10 @@ function AverageScore(){
 export default function AverageReviewScore() {
 
     return <>
-        {
-            
-        }
-        <div style={{margin:'0px'}}>
+
+        <div style={{margin:'0px', fontSize:'33px', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
             {AverageScore()}
+            <img src="/src/assets/star.svg" style={{margin:'0px', marginLeft:'5px'}} />
         </div>
     </>
 }
