@@ -19,9 +19,9 @@ interface ReviewFormData {
     gameId: string
 }
 
-// const placeholderStyle: React.CSSProperties = {
-//     fontStyle: 'italic',
-// };
+const placeholderStyle: React.CSSProperties = {
+    // fontStyle: 'italic',
+};
 
 const submitClicked = (formData: ReviewFormData) => {
     console.log(formData)
