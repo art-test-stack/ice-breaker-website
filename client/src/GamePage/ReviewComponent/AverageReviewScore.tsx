@@ -12,9 +12,10 @@ function AverageScore(){
     let array_test: number[] = []
    
     
-    reviewsList && Object.values(reviewsList).map((review: Review, index: number) => (
-        array_test[index] = parseInt(review.rating)
-    ))
+    reviewsList && Object.values(reviewsList).map((review: Review, index: number) => {
+        console.log(review.rating)
+        array_test[index] = parseFloat(review.rating)
+    })
 
     let getAverage = 0;
     
@@ -23,7 +24,7 @@ function AverageScore(){
     }
     getAverage = getAverage / array_test.length;
 
-    return array_test.length > 0 ? Math.round(getAverage).toFixed(2) : 'No reviews yet'
+    return array_test.length > 0 ? getAverage.toFixed(2) : 'No reviews yet'
     
 }
 
