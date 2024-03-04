@@ -55,7 +55,6 @@ function PageForGameDescription(){
 
         <>
         <CurrentUserDataProvider>
-            <CurrentGameReviewsProvider gameId={gameId}>
         
         <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
               <div id='header'> 
@@ -81,20 +80,12 @@ function PageForGameDescription(){
               duration={durations[game.duration]} 
               equipments={game.equipment ?? []} 
               categories={getCategoryList(game.categories).join(", ")}
-              author={game.creator}/>
+              author={game.creator}
+              gameId={gameId}/>
     
     {/*everyReview css is located in App.css, */}
-    <ul className="everyReview">
-        <h2>Reviews</h2>
-        <ReviewsList/>
-        {/* {Object.entries(reviewsList).map(([userId, review]))} */}
-            {/* {userNames.map((name, index) => (
-            <ReviewComponent key={name} userName={name} givenReview={review[index]} rating={index+2}/> */}
-            {/* ))} */}
-        </ul>
 
         </SearchProvider>
-        </CurrentGameReviewsProvider>
         </CurrentUserDataProvider>
         </>         
     )
