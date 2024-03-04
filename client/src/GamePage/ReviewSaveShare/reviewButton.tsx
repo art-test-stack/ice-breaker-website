@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { currentUserData } from '../../firebase/auth';
 import { push, ref } from 'firebase/database';
 import { database } from '../../firebase/init';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 
 interface ReviewFormData {
@@ -81,19 +82,12 @@ const ReviewForm: any = ({ onClose }: any) => {
         <div className='writeReviewText'>Write a review</div>
         <form onSubmit={handleSubmit}>
             <div>
-                Your star rating: 
                 <Rating
                     id='ratings'
                     name="rating"
                     value={formData.rating}
                     onChange={handleInputChange}
-                    style={{ 
-                        backgroundColor: 'white',
-                        borderRadius: '5px',
-                        marginLeft: '10px',
-                        marginTop: '10px',
-                        marginBottom: '15px'
-                    }}
+                    emptyIcon={<StarBorderIcon style={{ color:'white'}} fontSize="inherit" />}
                 />
             </div>
             <textarea 
