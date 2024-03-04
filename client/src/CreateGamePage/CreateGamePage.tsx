@@ -35,7 +35,6 @@ const publishButtonClicked = () => {
             window.alert("Error adding game: " + error.message)
         })
     }
-
 }
 
 

@@ -6,8 +6,10 @@ export const ShareButton = () =>  {
 
   const currentLocation = useLocation();
   const handleClick = () => {
-      // Create something to copy address + find format for domain 
-      console.log('Sharing game... game path:', currentLocation.pathname);
+        // Create something to copy address + find format for domain 
+        const url = `http://localhost:5173/${currentLocation.pathname}`
+        navigator.clipboard.writeText(url)
+        alert('Game link copied to clipboard!')
   }
 
     return (
