@@ -28,7 +28,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
     const gamesList = useContext(currentGamesList);
     
     const filteredOnCategoryGames = filters?.categories.length > 0 ? Object.entries(gamesList).filter((game: any) => {
-            return filters?.categories.every((e) => categories.filter((c, i) => game[1].categories[i]).includes(e))
+            return game[1].categories && filters?.categories.every((e) => categories.filter((c, i) => game[1].categories[i]).includes(e))
     }) : Object.entries(gamesList)
 
     const filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
