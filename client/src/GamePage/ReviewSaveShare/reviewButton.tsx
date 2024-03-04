@@ -3,13 +3,13 @@ import { Modal } from './modal';
 import './reviewButton.css';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import EditIcon from '@mui/icons-material/Edit';
 import { useLocation } from 'react-router-dom';
 import { currentUserData } from '../../firebase/auth';
 import { push, ref } from 'firebase/database';
 import { database } from '../../firebase/init';
+// import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 
 interface ReviewFormData {
@@ -20,7 +20,7 @@ interface ReviewFormData {
 }
 
 const placeholderStyle: React.CSSProperties = {
-    fontStyle: 'italic',
+    // fontStyle: 'italic',
 };
 
 const submitClicked = (formData: ReviewFormData) => {
@@ -78,30 +78,34 @@ const ReviewForm: any = ({ onClose }: any) => {
     };
 
     return (
-        <>
-            <h2>Write a Review</h2>
-            <form onSubmit={handleSubmit}>
+<>
+    <div className='modal-content'>
+        <div className='writeReviewText'>Write a review</div>
+        <form onSubmit={handleSubmit}>
             <div>
-                <Typography component="legend">Rating: </Typography>
                 <Rating
+                    id='ratings'
                     name="rating"
                     value={formData.rating}
                     onChange={handleInputChange}
+                    emptyIcon={<StarBorderIcon style={{ color:'white'}} fontSize="inherit" />}
                 />
             </div>
-            <div>
-                <Typography component="legend">Rating: </Typography>
-                <TextField 
-                    name="comment" 
-                    id="comment" 
-                    value={formData.comment} 
-                    onChange={handleInputChange}  
-                    placeholder="Write your review here..."
-                    style={placeholderStyle}/>
-            </div>
-            <Button type="submit" onClick={onClose} className={userData ? '': 'disabledSubmitButton'}>Submit</Button>
-            </form>
-        </>
+            <textarea 
+                name="comment" 
+                id="comment" 
+                value={formData.comment} 
+                onChange={handleInputChange}  
+                placeholder="Write your review here..."
+                style={placeholderStyle}
+            />
+            <Button id="submitReview" type="submit" onClick={onClose} className={userData ? '': 'disabledSubmitButton'}>
+                Submit
+            </Button>
+        </form>
+    </div>
+</>
+
     );
 };
 

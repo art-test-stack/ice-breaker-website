@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import './modal.css'
 
+//style={{ backgroundColor: 'white', margin: '15% auto', padding: '20px', border: '1px solid #888', width: '80%' 
 export const Modal = ({ isOpen, onClose, children }: any) => {
   const modalStyle = {
     display: isOpen ? 'block' : 'none',
@@ -15,33 +17,11 @@ export const Modal = ({ isOpen, onClose, children }: any) => {
 
   return (
     <div style={modalStyle}>
-      <div style={{ backgroundColor: 'white', margin: '15% auto', padding: '20px', border: '1px solid #888', width: '80%' }}>
-        <span style={{ float: 'right', cursor: 'pointer' }} onClick={onClose}>&times;</span>
+      <div className='reviewModal' >
+        <span className='closeModal' style={{ float: 'right', cursor: 'pointer' }} onClick={onClose}>&times;</span>
         {children}
       </div>
     </div>
   );
 };
 
-export const ModalExample = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };  
-
-  return (
-    <div>
-      <button onClick={openModal}>Review Game</button>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <h2>Modal Content</h2>
-        <p>This is the content of the modal.</p>
-        <button onClick={closeModal}>Close Modal</button>
-      </Modal>
-    </div>
-  );
-};
