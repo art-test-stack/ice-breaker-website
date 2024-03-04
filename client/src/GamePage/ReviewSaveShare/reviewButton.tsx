@@ -44,27 +44,32 @@ const ReviewForm: any = ({ onClose }: any) => {
 
     return (
         <>
-        <div>
+        <div className='modal-content'>
                 <div className='writeReviewText'>Write a review</div>
             <form onSubmit={handleSubmit}>
-            <div >
+            <div >Your star rating: 
                 <Rating
                     id='ratings'
                     name="rating"
                     value={formData.rating}
                     onChange={handleInputChange}
+                    style={{ 
+                      backgroundColor: 'white',
+                      borderRadius: '5px',
+                      marginLeft: '10px',
+                      marginTop: '10px',
+                      marginBottom: '15px'
+                  }}
                 />
             </div>
-            <div className='textFieldInReview'>
                 <textarea 
                     name="comment" 
                     id="comment" 
                     value={formData.comment} 
                     onChange={handleInputChange}
                     placeholder="Write your review here..."/>
-            </div>
-            <button id="submitReview" type="submit" onClick={onClose}>Submit</button>
             </form>
+            <button id="submitReview" type="submit" onClick={onClose}>Submit</button>
             </div>
         </>
     );

@@ -1,26 +1,27 @@
 .reviewModal{
     background-color: rgb(29, 44, 27);
     padding: 20px;
-    width: 30%;
+    width: auto;
     border-radius: 30px;
-    height: 40%;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin: 30%;
     margin-top: 10%;
-    position: fixed;  
+    position: relative;  
 }
 
 #comment{
-    width:90%;
+    width: 95%;
     height: 200px;
-    max-height: fit-content;
+    max-height: auto;
     color: rgb(245, 250, 255);
     font-size: 15px;
     border-radius:20px;
-    padding: 1.5%;
     gap: 20px;
-    
+    resize: none; 
+    padding-top: 10px;   
+    padding-left: 10px;
 }
 
 #submitReview{
@@ -57,3 +58,7 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+.closeModal{
+    display: flex;
+    flex-direction: row-reverse;
+}

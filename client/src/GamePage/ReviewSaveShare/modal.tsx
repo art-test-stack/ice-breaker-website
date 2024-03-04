@@ -18,7 +18,7 @@ export const Modal = ({ isOpen, onClose, children }: any) => {
   return (
     <div style={modalStyle}>
       <div className='reviewModal' >
-        <span style={{ float: 'right', cursor: 'pointer' }} onClick={onClose}>&times;</span>
+        <span className='closeModal' style={{ float: 'right', cursor: 'pointer' }} onClick={onClose}>&times;</span>
         {children}
       </div>
     </div>
