@@ -12,13 +12,19 @@ interface GameCardProps {
     onClick: () => void;
 }
 
+let rating_cache: any = {};
+
 const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, gameId, onClick }) => {
 
     let [rating, setRating] = React.useState("...");
-
-    getAverageRating({gameId: gameId}).then((result: any) => {
-        setRating(result.data.toFixed(2));
-    });
+    if (rating_cache[gameId]) {
+        rating = rating_cache[gameId];
+    } else {
+        getAverageRating({gameId: gameId}).then((result: any) => {
+            setRating(result.data.toFixed(2));
+            rating_cache[gameId] = result.data.toFixed(2);
+        });
+    }
     if (rating === "-1.00") {
         return (
             <div className="game-card" onClick={onClick}>
