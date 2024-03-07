@@ -21,11 +21,11 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
         rating = rating_cache[gameId];
     } else {
         getAverageRating({gameId: gameId}).then((result: any) => {
-            setRating(result.data.toFixed(2));
-            rating_cache[gameId] = result.data.toFixed(2);
+            setRating(result.data.toFixed(1));
+            rating_cache[gameId] = result.data.toFixed(1);
         });
     }
-    if (rating === "-1.00") {
+    if (rating === "-1.0") {
         return (
             <div className="game-card" onClick={onClick}>
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
