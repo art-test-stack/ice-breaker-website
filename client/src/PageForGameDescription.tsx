@@ -11,7 +11,8 @@ import './App.css'
 import { getGame } from './firebase/gameprovider.tsx';
 import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
-import { durations, getCategoryList } from './App.tsx';
+import { darkTheme, durations, getCategoryList } from './App.tsx';
+import { ThemeProvider } from '@mui/material/styles';
 
 
 function PageForGameDescription(){
@@ -58,7 +59,9 @@ function PageForGameDescription(){
           <Search/>
         </div>
         <div id='loginContainer'>
-            <LoginMenu />
+        <ThemeProvider theme={darkTheme}>
+            <LoginMenu/>
+            </ThemeProvider>
         </div>
       </div>
       <div className ="gameSectionHeader">
