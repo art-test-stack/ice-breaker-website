@@ -7,14 +7,8 @@ export default function FavoriteButton(){
         return(<MdFavorite/>)
     }
 
-    function handleClick(event: React.MouseEvent<HTMLElement>){
-        console.log("Fav button clicked.")
-        event.stopPropagation();
-        
-    }
-
     return(
-        <button className = "favorite-icon" onClick = {handleClick}>
+        <button className = "favorite-icon">
             <FavoriteIcon/>
         </button>
     )
