@@ -6,7 +6,7 @@ import ReviewsList from "./ReviewComponent/ReviewsList";
 import { CurrentGameReviewsProvider } from "../firebase/reviewProvider";
 import { useContext } from "react";
 import { currentReviewsList } from "../firebase/reviewProvider";
-import AverageReviewScore from "./ReviewComponent/AverageReviewScore";
+import AverageReviewScore, { averageScore } from "./ReviewComponent/AverageReviewScore";
 
 
 interface Props{
@@ -40,7 +40,7 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
                 <div className="reviewScoresSpan">
                     <div style={{fontSize:'30px', fontWeight:'bold'}}>Reviews</div>  
                     <div className="averageReviewScore">
-                    <AverageReviewScore/>
+                    <AverageReviewScore score={null}/>
                     </div>
                     
                 </div>
