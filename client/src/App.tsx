@@ -1,7 +1,7 @@
 import React from 'react';
-import Home from "./pages/HomePage"
-import PageForGameDescription from "./pages/PageForGameDescription"
-import CreateGamePage from "./pages/CreateGamePage"
+import Home from "./HomePage"
+import PageForGameDescription from "./PageForGameDescription"
+import CreateGamePage from "./CreateGamePage"
 // @ts-ignore //Routes have error, but still work. Ignore this.
 import { Route, Routes } from 'react-router-dom' 
 import './App.css';
