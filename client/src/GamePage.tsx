@@ -7,6 +7,9 @@ import { CurrentGameReviewsProvider } from "./firebase/reviewProvider";
 import { useContext } from "react";
 import { currentReviewsList } from "./firebase/reviewProvider";
 import AverageReviewScore, { averageScore } from "./components/tsx/AverageReviewScore";
+import AliasInfo from "./components/tsx/AliasInfo";
+import { ThemeProvider } from "@mui/material/styles";
+import { darkTheme } from "./App";
 
 
 interface Props{
@@ -23,6 +26,10 @@ interface Review {
     username: string; 
     comment: string; 
     rating: string; 
+}
+
+interface AliasList {
+    aliases: string[]; 
 }
 
 
@@ -52,12 +59,13 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
                                 
                 </CurrentGameReviewsProvider>
             </div>
-     
+            <ThemeProvider theme={darkTheme}>
             <div className="Right-Section-GameInfo">
                 <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
                 <ReviewSaveShareButton/>  
+                <AliasInfo aliases={equipments}/>
             </div>
-            
+            </ThemeProvider>
         </div>
         </>    
     );
