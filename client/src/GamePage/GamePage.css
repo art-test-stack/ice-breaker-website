@@ -29,3 +29,13 @@
 }
 
 /*Distance between pink container and green container is 20px*/
+
+.reviewScoresSpan{
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px;
+}
+

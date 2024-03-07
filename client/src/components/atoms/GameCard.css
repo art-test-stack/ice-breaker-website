@@ -32,3 +32,15 @@
     margin-top: auto;
     margin-bottom: 5px;
 }
+
+#rating-box {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    background-color: rgba(29, 54, 58, 0.515);
+    padding: 5px;
+    border-radius: 10px;
+    transform: translate(-5px, -20px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}

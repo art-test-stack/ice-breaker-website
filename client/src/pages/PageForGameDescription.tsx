@@ -12,14 +12,7 @@ import { getGame } from '../firebase/gameprovider.tsx';
 import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
 import { durations, getCategoryList } from '../App.tsx';
-import ReviewComponent from '../GamePage/ReviewComponent/ReviewComponent.tsx';
-import { CurrentGameReviewsProvider} from '../firebase/reviewProvider.tsx';
-import { currentReviewsList } from '../firebase/reviewProvider.tsx';
 
-
-
-
-import ReviewsList from '../GamePage/ReviewComponent/ReviewsList.tsx';
 
 function PageForGameDescription(){
     // const gameExample = {

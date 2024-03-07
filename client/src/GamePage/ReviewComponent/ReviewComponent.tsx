@@ -17,7 +17,7 @@ function ReviewComponent({userName, givenReview, rating}:Props) {
         <div className="background">
             <span>
                 <div className='givenRating'>
-                    <Rating name="read-only" value={rating} readOnly style={{color: "ffff00"}} emptyIcon={<StarBorderIcon style={{ color:'white'}} fontSize="inherit" />} />
+                    <Rating name="read-only" value={parseFloat(rating)} readOnly style={{color: "ffff00"}} emptyIcon={<StarBorderIcon style={{ color:'white'}} fontSize="inherit" />} />
                 </div>
             <div className='userName'>
                 {userName}
