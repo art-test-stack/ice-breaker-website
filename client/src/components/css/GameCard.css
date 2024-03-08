@@ -1,4 +1,5 @@
 .game-card {
+    position: relative; /* This is necessary for the positioning of the FavoriteButton to work, 06.03.24 */
     width: 30%;
     height: 100%;
     border-radius: 1rem;
