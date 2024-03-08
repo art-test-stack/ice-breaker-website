@@ -1,47 +1,68 @@
 import { useContext, useState } from 'react';
 import { Button } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { push, ref } from 'firebase/database';
+import { get, push, ref, remove } from 'firebase/database';
 import { database } from '../../firebase/init';
 import { currentUserData } from '../../firebase/auth';
 import { useLocation } from 'react-router-dom';
 
 type saveOnPlaylistProps = {
-  userId: any,
+  userDataId: any,
   gameId: string
 } 
-const saveOnDatabase = ({ userId, gameId}: saveOnPlaylistProps) => {
-
-  console.log(gameId)
-  // Push reviews to database
-  push(ref(database, 'userData/' + userData?.user.uid + '/favorites/' + gameId), "").then((res) => {
+const saveOnDatabase = async ({ userDataId, gameId }: saveOnPlaylistProps) => {
+  await push(ref(database, 'userData/' + userDataId + '/favorites/' + gameId), "").then((res) => {
       // push reviewIDs to games.
       console.log("here->", res)
       window.alert('Game added to favorite !')
+      return true
   }).catch((error) => {
       console.log('Error: ', error)
       window.alert("Error adding review: " + error.message)
+      return false
   })
 }
 
-const deleteFromDataBase = () => {
-  window.alert("Game deleted from favorite")
+const deleteFromDataBase = async ({ userDataId, gameId }: saveOnPlaylistProps) => {
+  await remove(ref(database, 'userData/' + userDataId + '/favorites/' + gameId)).then((res) => {
+    // push reviewIDs to games.
+    console.log("here->", res)
+    window.alert('Game deleted from favorite !')
+    return false
+}).catch((error) => {
+    console.log('Error: ', error)
+    window.alert("Error adding review: " + error.message)
+    return true
+})
+}
+
+const getIfGameIsInFavorites = async ({ userDataId, gameId }: saveOnPlaylistProps) => {
+  get(ref(database, 'userData/' + userDataId + '/favorites/' + gameId)).then((res) => {
+    // push reviewIDs to games.
+    console.log("here->", res)
+    return true
+}).catch((error) => {
+    console.log('Error: ', error)
+    return false
+})
 }
 
 export const SaveButton = () => {
-  const [gameSaved, setGameSaved] = useState(false)
   const currentLocation = useLocation();
   const gameId = currentLocation.pathname.split("/")[2]
 
   const userData = useContext(currentUserData)
-  const userId = userData?.data?.username
-  console.log("user ->", userData?.user.uid)
+  const userId = userData?.user?.uid
+
+  const isGameInFavorites = getIfGameIsInFavorites({userDataId: userId, gameId: gameId})
+  console.log('isGameInFavorites:', isGameInFavorites)
+  const [gameSaved, setGameSaved] = useState(isGameInFavorites)
   const colorComp = {color: gameSaved ? "red" : "white"}
 
   const handleClick = () => {
-      !gameSaved ? saveOnDatabase({userId: userData, gameId: gameId}) : deleteFromDataBase()
-      // window.alert(!gameSaved ? 'Game added to favorite !' : "Game deleted from favorite")
-      setGameSaved(!gameSaved)
+    const gameStatus = !gameSaved ? saveOnDatabase({userDataId: userId, gameId: gameId}).then((res) => console.log('res', res)) : deleteFromDataBase({userDataId: userId, gameId: gameId}) // .then(res => setGameSaved(res))
+    console.log('gameStatus', gameStatus)
+    setGameSaved(gameStatus)
   }
   
   return (
