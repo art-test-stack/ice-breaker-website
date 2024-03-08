@@ -1,35 +1,49 @@
 import '../css/DeleteGameButton.css'
 import { currentUserData } from "../../firebase/auth"
 import { useNavigate, useLocation } from 'react-router-dom'
-import { ref, remove, getDatabase } from 'firebase/database'
+import { ref, remove, getDatabase, onValue} from 'firebase/database'
+import { useContext } from 'react'
 // import { useContext } from 'react'
 
 
-const DeleteGameButton: React.FC<{onClick: () => void}> = ({onClick}) => {
+const DeleteGameButton: React.FC<{onClick: () => void}> = () => {
     const navigate = useNavigate()
-    const path = useLocation().pathname // url of page
-    const db = getDatabase()    // gets the database
-    const dbRef = ref(db, path) // makes database reference for game
 
-    // if delete button is clicked, the game is deleted from database 
-    // and we return to homepage
+    // game info
+    const path = useLocation().pathname
+    const db = getDatabase()    
+    const dbRef = ref(db, path)
+    
+    // user info
+    const userData = useContext(currentUserData)
+    const userID = userData?.user?.uid
+    const moderator = userData?.data?.moderator
+
+    // checks if user is game creator or admin -> button show/hidden
+    let canDelete = false
+    let creator
+    onValue(dbRef, (snapshot) => {
+        const data = snapshot.val()
+        creator = data.creator
+    })
+    if (moderator || userID == creator) {
+        canDelete = true
+    }
+
+    // if button is clicked, game is deleted from database 
+    // return to homepage
     const clicked = () => {
-        
         const del = confirm('Are you sure you want to delete this game?\nThis action is permanent.')
         if(del){
             remove(dbRef).then(() => console.log('Deleted'))    // removes reference from database
-            .catch((error) => console.log('Error occured when deleting: ' + error.message)) // catches error if not deleted
+            .catch((error) => console.log('Error occured when deleting: ' + error.message)) // catches error if cant delete
             navigate ('/') // navigates back to home when game is deleted
         }
     }
 
-    // if author of game is user or admin -> button shows
-    // user.key = game.creator or user.key = userData.key.moderator
-    
-    var canDelete = false
     return (
         <div>
-            <button onClick={clicked} id='deleteGameButton' className={canDelete ? 'hide': ''}>
+            <button onClick={clicked} id='deleteGameButton' className={canDelete? '': 'hide'}>
                 <span>Delete Game</span>
             </button>
         </div>
