@@ -21,3 +21,4 @@ const functions = getFunctions(app)
 
 // get cloud function
 export const createUserWithUsername = httpsCallable(functions, "createUserWithUsername")
+export const getAverageRating = httpsCallable(functions, "getAverageRating")

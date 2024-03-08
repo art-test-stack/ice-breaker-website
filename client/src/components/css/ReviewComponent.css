@@ -1,0 +1,42 @@
+.background {
+    display: flex;
+    flex-direction: column;
+
+    /* width: 575px; */
+    min-height: 100px;
+    height: fit-content;
+
+    background-color: rgb(11, 49, 11);
+    padding: 20px;
+    border-radius: 30px;
+    margin: 20px 0;
+}
+
+.userName{
+    font-family: 'Calibri', sans-serif;
+    font-style:  bold;
+    font-weight: bolder;
+    height: fit-content;
+    font-size: 20px;
+}
+
+.review{
+    font-family: 'Calibri Light', sans-serif;
+    margin-top: 0.5em;
+    width: inherit;
+    font-size: 18px;
+}
+
+.givenRating{
+    float: right;
+}
+
+.everyReview{
+    padding: 0px;
+    margin: 0px;
+  }
+
+
+.MuiRating-iconFilled {
+    color: #ffcd2a;
+}

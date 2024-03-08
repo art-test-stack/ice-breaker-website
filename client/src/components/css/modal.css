@@ -1,0 +1,66 @@
+.reviewModal{
+    background-color: rgb(29, 44, 27);
+    padding: 20px;
+    width: auto;
+    border-radius: 30px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 30%;
+    margin-top: 10%;
+    position: relative;  
+}
+
+#comment{
+    width: 95%;
+    height: 200px;
+    max-height: auto;
+    color: rgb(245, 250, 255);
+    font-size: 15px;
+    border-radius:20px;
+    gap: 20px;
+    resize: none; 
+    padding-top: 10px;   
+    padding-left: 10px;
+}
+
+#submitReview{
+   width: 6em;
+   margin-top: 5px;
+   padding: 0.5em;
+   font-size: 16px;
+   border-radius: 10px;
+   border: 13px;
+   -o-transition: all .4s ease-in-out;
+   -webkit-transition: all .4s ease-in-out;
+   transition: all .4s ease-in-out;
+   background-size: 300% 100%;
+
+   cursor: pointer;
+   background-image: linear-gradient(to right, #29642e, #1c8f08);
+}
+
+#submitReview:hover{
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+#ratings{
+   font-size: 30px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.writeReviewText{
+    font-size: x-large;
+    font-weight: 600;
+    width: fit-content;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.closeModal{
+    display: flex;
+    flex-direction: row-reverse;
+}

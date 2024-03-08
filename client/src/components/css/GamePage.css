@@ -1,0 +1,41 @@
+.GamePage{
+    display: flex;
+    flex-direction: column;
+    width: 575px;
+    margin-top: 10px;
+    gap: 25px;
+    /* width: 975px;
+    padding-bottom: 50px;
+    margin: 0 auto; */
+    
+    /* background-color: bisque; */
+}
+
+.Right-Section-GameInfo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.GamePageWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    gap: 16px;
+}
+
+/*Distance between pink container and green container is 20px*/
+
+.reviewScoresSpan{
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px;
+}
+
