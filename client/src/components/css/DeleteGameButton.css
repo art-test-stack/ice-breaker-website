@@ -24,3 +24,7 @@
     box-shadow: 0 5px #280d0d;
     transform: translateY(3px);
 }
+
+.hide {
+    visibility: hidden;
+}
