@@ -60,16 +60,17 @@ function PageForGameDescription(){
         <div id='loginContainer'>
             <LoginMenu />
         </div>
-      </div>
-      <div className ="gameSectionHeader">
-      <GoBack onClick={() => {
-                  console.log('go back button clicked');
-              }}/>
-      </div>
-      
-      <DeleteGameButton onClick={() => {
+        </div>
+        <div className ="gameSectionHeader">
+        <GoBack onClick={() => {
+                    console.log('go back button clicked');
+                }}/>
+        <DeleteGameButton onClick={() => {
             console.log('delete game button clicked')
         }}/>
+      </div>
+      
+      
         <GamePage 
               title={game.name} 
               gameText={game.description} 
