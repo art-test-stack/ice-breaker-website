@@ -19,7 +19,7 @@ export function CategoryDropdown() {
     }
     return (
         <>
-            <div id="categoryDropdownContainer">
+            <div id="categoryDropdownContainer" data-cy="category" >
                 <button id="categoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
                     <img src='src/assets/dropdownIcon.svg' style={{marginRight: "10px"}}/>
                     Categories
