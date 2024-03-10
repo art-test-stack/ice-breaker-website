@@ -9,6 +9,7 @@ import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
+import Favourites from './components/tsx/favouriteList.tsx';
 
 function HomePage() {
   return (
@@ -21,11 +22,17 @@ function HomePage() {
             <div id='searchContainer'>
                     <Search/>
             </div>
-            <div id='loginContainer'>
-                <CurrentUserDataProvider>
-                <LoginMenu />
-                </CurrentUserDataProvider>
+            <div id='favouriteAndLogIn'>
+                <div id='favouriteContainer'>
+                    <Favourites/>
+                </div>
+                <div id='loginContainer'>
+                    <CurrentUserDataProvider>
+                    <LoginMenu />
+                    </CurrentUserDataProvider>
+                </div>
             </div>
+
             {/* <div><LoginButton /></div> */}
             </div>
             <div className ="gameSectionHeader">
