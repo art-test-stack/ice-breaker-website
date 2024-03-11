@@ -20,6 +20,7 @@ import { DurationSelector, duration } from "./components/tsx/DurationSelector.ts
 const publishButtonClicked = () => {
     // get current context value
     const userData = currentUserDataValue;
+    
     /*if (gameName == ''){
         window.alert("All fields must be filled")*/
     if (!userData) {

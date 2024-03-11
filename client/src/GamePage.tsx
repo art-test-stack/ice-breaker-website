@@ -10,6 +10,7 @@ import AverageReviewScore, { averageScore } from "./components/tsx/AverageReview
 import AliasInfo from "./components/tsx/AliasInfo";
 import { ThemeProvider } from "@mui/material/styles";
 import { darkTheme } from "./App";
+import Timer from "./components/tsx/Timer"
 
 
 interface Props{
@@ -66,6 +67,9 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
                 <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
                 <ReviewSaveShareButton/>  
                 <AliasInfo aliases={aliases}/>
+                <div className="Timer-box">
+                    <Timer />
+                </div>
             </div>
             </ThemeProvider>
         </div>

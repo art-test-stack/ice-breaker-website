@@ -39,3 +39,15 @@
     margin: 0px;
 }
 
+.Timer-box {
+    width: 315px;
+    border-radius: 20px;
+    background-color: #2F0147;
+    padding: 30px 25px 10px 25px;
+    text-align: left;
+    font-family: 'Calibri Light', sans-serif;
+    font-size: large;
+    margin: 10px 10px 10px 10px;
+    height: fit-content;
+}
+
