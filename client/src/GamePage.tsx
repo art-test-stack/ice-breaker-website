@@ -21,6 +21,7 @@ interface Props{
     categories: string;
     author: string;
     gameId: string;
+    aliases: string[]; 
 }
 interface Review {
     username: string; 
@@ -34,7 +35,8 @@ interface AliasList {
 
 
 
-function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration, equipments, categories, author, gameId}: Props) {
+function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration, equipments, categories, author, gameId, aliases}: Props) {
+    console.log("asdfasfds", aliases)
 
  
 
@@ -63,7 +65,7 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
             <div className="Right-Section-GameInfo">
                 <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
                 <ReviewSaveShareButton/>  
-                <AliasInfo aliases={equipments}/>
+                <AliasInfo aliases={aliases}/>
             </div>
             </ThemeProvider>
         </div>

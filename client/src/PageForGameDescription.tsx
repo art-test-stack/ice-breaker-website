@@ -77,7 +77,8 @@ function PageForGameDescription(){
               equipments={game.equipment ?? []} 
               categories={getCategoryList(game.categories).join(", ")}
               author={game.creator}
-              gameId={gameId ?? ""}/>
+              gameId={gameId ?? ""}
+              aliases={game.aliases ?? []}/>
     
     {/*everyReview css is located in App.css, */}
 
