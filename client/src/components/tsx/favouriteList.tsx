@@ -10,13 +10,13 @@ import '../css/FavouriteList.css'
 */
 
 const Favourites = () => {
-    // path info
-    const db = getDatabase()
-    const dbRef = ref(db, '/')
-
     // user info
     const userData = useContext(currentUserData)
     const userID = userData?.user?.uid
+
+    // database info
+    const db = getDatabase()
+    const dbRef = ref(db, '/userData/' + userID + '/favorites')
 
     // if logged in, show heart
     let displayHeart = false
@@ -24,9 +24,19 @@ const Favourites = () => {
         displayHeart = true
     }
 
+    // gets favourite games
+    let favouriteGames = []
+    onValue(dbRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childKey = childSnapshot.key;
+          favouriteGames.push(childKey)
+        });
+    }, {
+        onlyOnce: true
+    });
+
     const handleClick = () => {
         console.log('favourites clicked')
-        console.log(userData)
     }
 
     return (
