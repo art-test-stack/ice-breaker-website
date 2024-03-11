@@ -12,7 +12,7 @@ import { getGame } from './firebase/gameprovider.tsx';
 import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
 import { durations, getCategoryList } from './App.tsx';
-
+import DeleteGameButton from "./components/tsx/DeleteGameButton";
 
 function PageForGameDescription(){
     // const gameExample = {
@@ -60,12 +60,17 @@ function PageForGameDescription(){
         <div id='loginContainer'>
             <LoginMenu />
         </div>
+        </div>
+        <div className ="gameSectionHeader">
+        <GoBack onClick={() => {
+                    console.log('go back button clicked');
+                }}/>
+        <DeleteGameButton onClick={() => {
+            console.log('delete game button clicked')
+        }}/>
       </div>
-      <div className ="gameSectionHeader">
-      <GoBack onClick={() => {
-                  console.log('go back button clicked');
-              }}/>
-      </div>
+      
+      
         <GamePage 
               title={game.name} 
               gameText={game.description} 
