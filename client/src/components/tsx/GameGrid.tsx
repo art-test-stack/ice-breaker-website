@@ -18,6 +18,7 @@ export interface GameGridProps {
 }
 
 const searchKeys = ['name', 'aliases']
+// const searchKeys = [{ key: 'name', type: 'string',},  { key: 'aliases', type: 'string[]'}]
 
 const GameGrid: React.FC<GameGridProps> = () => {
     const navigate = useNavigate()
@@ -27,16 +28,14 @@ const GameGrid: React.FC<GameGridProps> = () => {
     const { filters }: any = useSearch();
     const gamesList = useContext(currentGamesList);
     
-    console.log('gamesList', gamesList)
     const filteredOnCategoryGames = filters?.categories.length > 0 ? Object.entries(gamesList).filter((game: any) => {
             return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
     }) : Object.entries(gamesList)
 
     const filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
-        const gameKeys = searchKeys
-        for (const gameKey in searchKeys){ if (!game[1][searchKeys[gameKey]]){}}
-        for (const key in searchKeys) {
-            if (game[1][searchKeys[key]].toLowerCase().includes(filters?.searchQuery.toLowerCase())) {
+        const gameKeys = searchKeys.filter(key => Object.keys(game[1]).includes(key))
+        for (const gameKey in gameKeys) {
+            if (JSON.stringify(game[1][gameKeys[gameKey]]).toLowerCase().includes(filters?.searchQuery.toLowerCase())) {
                 return true;
             }
 
