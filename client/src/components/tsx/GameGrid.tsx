@@ -17,7 +17,7 @@ export interface GameGridProps {
     }[];
 }
 
-const searchKeys = ['name']
+const searchKeys = ['name', 'aliases']
 
 const GameGrid: React.FC<GameGridProps> = () => {
     const navigate = useNavigate()
@@ -27,6 +27,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
     const { filters }: any = useSearch();
     const gamesList = useContext(currentGamesList);
     
+    console.log('gamesList', gamesList)
     const filteredOnCategoryGames = filters?.categories.length > 0 ? Object.entries(gamesList).filter((game: any) => {
             return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
     }) : Object.entries(gamesList)
