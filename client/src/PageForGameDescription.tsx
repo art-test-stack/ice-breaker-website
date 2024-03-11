@@ -13,7 +13,6 @@ import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
 import { darkTheme, durations, getCategoryList } from './App.tsx';
 import { ThemeProvider } from '@mui/material/styles';
-import { durations, getCategoryList } from './App.tsx';
 import DeleteGameButton from "./components/tsx/DeleteGameButton";
 
 function PageForGameDescription(){
