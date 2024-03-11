@@ -9,7 +9,7 @@ import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
-import Favourites from './components/tsx/favouriteList.tsx';
+import Favourites from './components/tsx/FavouriteList.tsx';
 
 function HomePage() {
   return (
