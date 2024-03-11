@@ -18,7 +18,6 @@ export interface GameGridProps {
 }
 
 const searchKeys = ['name', 'aliases']
-// const searchKeys = [{ key: 'name', type: 'string',},  { key: 'aliases', type: 'string[]'}]
 
 const GameGrid: React.FC<GameGridProps> = () => {
     const navigate = useNavigate()
@@ -38,7 +37,6 @@ const GameGrid: React.FC<GameGridProps> = () => {
             if (JSON.stringify(game[1][gameKeys[gameKey]]).toLowerCase().includes(filters?.searchQuery.toLowerCase())) {
                 return true;
             }
-
         };
         return false;
     }) : filteredOnCategoryGames
