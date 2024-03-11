@@ -66,10 +66,11 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
             <div className="Right-Section-GameInfo">
                 <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
                 <ReviewSaveShareButton/>  
-                <AliasInfo aliases={aliases}/>
                 <div className="Timer-box">
                     <Timer />
                 </div>
+
+                <AliasInfo aliases={aliases}/>
             </div>
             </ThemeProvider>
         </div>
