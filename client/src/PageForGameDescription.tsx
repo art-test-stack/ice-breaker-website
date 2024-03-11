@@ -11,7 +11,8 @@ import './App.css'
 import { getGame } from './firebase/gameprovider.tsx';
 import { useParams } from 'react-router-dom';
 import { get, onValue } from 'firebase/database';
-import { durations, getCategoryList } from './App.tsx';
+import { darkTheme, durations, getCategoryList } from './App.tsx';
+import { ThemeProvider } from '@mui/material/styles';
 import DeleteGameButton from "./components/tsx/DeleteGameButton";
 
 function PageForGameDescription(){
@@ -58,7 +59,9 @@ function PageForGameDescription(){
           <Search/>
         </div>
         <div id='loginContainer'>
-            <LoginMenu />
+        <ThemeProvider theme={darkTheme}>
+            <LoginMenu/>
+            </ThemeProvider>
         </div>
         </div>
         <div className ="gameSectionHeader">
@@ -79,7 +82,8 @@ function PageForGameDescription(){
               equipments={game.equipment ?? []} 
               categories={getCategoryList(game.categories).join(", ")}
               author={game.creator}
-              gameId={gameId ?? ""}/>
+              gameId={gameId ?? ""}
+              aliases={game.aliases ?? []}/>
     
     {/*everyReview css is located in App.css, */}
 
