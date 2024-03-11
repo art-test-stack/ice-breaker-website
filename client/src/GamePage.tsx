@@ -38,7 +38,7 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
             <div className="GamePage">
                 <GameDescription title={title} gameText={gameText}/> 
                 <CurrentGameReviewsProvider gameId={gameId}>  
-                <div className="reviewScoresSpan">
+                <div className="reviewScoresSpan" data-cy="greviewScoresSpan">
                     <div style={{fontSize:'30px', fontWeight:'bold'}}>Reviews</div>  
                     <div className="averageReviewScore">
                     <AverageReviewScore score={null}/>
@@ -46,7 +46,7 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
                     
                 </div>
 
-                <ul className="everyReview">
+                <ul className="everyReview" data-cy="everyReview">
                     <ReviewsList/>
                 </ul>
 
@@ -57,7 +57,7 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
             <div className="Right-Section-GameInfo">
                 <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
                 <ReviewSaveShareButton/>  
-                <div className="Timer-box">
+                <div className="Timer-box" data-cy="Timer-box">
                     <Timer />
                 </div>
             </div>

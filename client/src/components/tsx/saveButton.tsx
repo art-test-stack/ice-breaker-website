@@ -14,7 +14,7 @@ export const SaveButton = () => {
   
   return (
     // <Fragment>
-      <Button 
+      <Button data-cy="saveButton"
         onClick={handleClick} 
         startIcon={<FavoriteIcon style={colorComp}/>}
         > 

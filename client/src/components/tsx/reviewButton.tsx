@@ -122,7 +122,7 @@ export const ReviewButton = () => {
   
     return (
       <div>
-        <Button onClick={openModal} startIcon={<EditIcon/>}>Review</Button>
+        <Button data-cy="reviewButton" onClick={openModal} startIcon={<EditIcon/>}>Review</Button>
         <Modal isOpen={isModalOpen} onClose={closeModal}>
             <ReviewForm onClose={closeModal}/>
         </Modal>

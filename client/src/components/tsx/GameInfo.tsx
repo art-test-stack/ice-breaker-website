@@ -35,7 +35,7 @@ function GameInfo({numPlayers, duration, categories, equipments, author}: GameIn
 
     return (
     <>
-    <div id='infoBox'>
+    <div id='infoBox' data-cy="infoBox">
         <div>
             <p className='bolded'>Number of players:</p>
             <p id='numPlayers'>{numPlayers} players</p>
