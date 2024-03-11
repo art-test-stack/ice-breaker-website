@@ -33,10 +33,13 @@ const GameGrid: React.FC<GameGridProps> = () => {
     }) : Object.entries(gamesList)
 
     const filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
+        const gameKeys = searchKeys
+        for (const gameKey in searchKeys){ if (!game[1][searchKeys[gameKey]]){}}
         for (const key in searchKeys) {
             if (game[1][searchKeys[key]].toLowerCase().includes(filters?.searchQuery.toLowerCase())) {
                 return true;
             }
+
         };
         return false;
     }) : filteredOnCategoryGames
