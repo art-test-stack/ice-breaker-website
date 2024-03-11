@@ -37,7 +37,6 @@ interface AliasList {
 
 
 function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration, equipments, categories, author, gameId, aliases}: Props) {
-    console.log("asdfasfds", aliases)
 
  
 
