@@ -31,7 +31,7 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
                 <div className="game-card-textbox">
                     <h2 className="game-card-heading">{title}</h2>
-                    <p className="game-card-category">{category}</p>
+                    <p className="game-card-category" data-cy="gameCardCategory">{category}</p>
                 </div>
             </div>
         );
