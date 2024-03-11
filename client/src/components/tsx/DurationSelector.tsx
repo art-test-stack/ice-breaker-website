@@ -17,7 +17,7 @@ export function DurationSelector() {
         <div id="durationSelectorContainer">
             {
                 durations.map((duration, i) => {
-                    return <button className="durationSelectorButton" key={i} onClick={() => setDuration(i)} style={
+                    return <button className="durationSelectorButton" data-cy={duration} key={i} onClick={() => setDuration(i)} style={
                         {
                             ...(i == 0 ? {
                                 borderTopLeftRadius: "10px",

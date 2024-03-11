@@ -15,7 +15,7 @@ export function AddCategoryDropdown() {
     return (
         <>
             <div id="addCategoryContainer">
-                <button id="addCategoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
+                <button id="addCategoriesButton" data-cy="addCategoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
                     <img src='src/assets/plus.svg' style={{marginRight: "10px"}}/>
                     Add categories
                 </button>
@@ -36,7 +36,7 @@ export function AddCategoryDropdown() {
                                 newActiveCategories[i] = !newActiveCategories[i];
                                 setActiveCategories(newActiveCategories);
                                 activeCategoriesOutput = newActiveCategories;
-                            }}>{category}</button>
+                            }} data-cy={category}>{category}</button>
                         })
                     }
                 </div>
