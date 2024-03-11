@@ -3,7 +3,6 @@ import { currentUserData } from "../../firebase/auth"
 import { useNavigate, useLocation } from 'react-router-dom'
 import { ref, remove, getDatabase, onValue} from 'firebase/database'
 import { useContext } from 'react'
-// import { useContext } from 'react'
 
 
 const DeleteGameButton: React.FC<{onClick: () => void}> = () => {
@@ -33,6 +32,7 @@ const DeleteGameButton: React.FC<{onClick: () => void}> = () => {
     // if button is clicked, game is deleted from database 
     // return to homepage
     const clicked = () => {
+        console.log(userID, moderator)
         const del = confirm('Are you sure you want to delete this game?\nThis action is permanent.')
         if(del){
             remove(dbRef).then(() => console.log('Deleted'))    // removes reference from database

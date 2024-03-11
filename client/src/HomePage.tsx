@@ -24,14 +24,14 @@ function HomePage() {
             </div>
 
             <div id='favouriteAndLogIn'>
+                    <CurrentUserDataProvider>
                 <div id='favouriteContainer'>
                     <Favourites/>
                 </div>
                 <div id='loginContainer'>
-                    <CurrentUserDataProvider>
                     <LoginMenu />
-                    </CurrentUserDataProvider>
                 </div>
+                    </CurrentUserDataProvider>
             </div>
 
             {/* <div><LoginButton /></div> */}
