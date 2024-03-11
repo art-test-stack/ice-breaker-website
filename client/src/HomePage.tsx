@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { CategoryDropdown } from './components/tsx/CategoryDropdown.tsx';
 import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
-import Favourites from './components/tsx/favouriteList.tsx';
+import Favourites from './components/tsx/FavouriteList.tsx';
 import GameGrid from './components/tsx/GameGrid.tsx';
 import LoginMenu from './components/tsx/LoginMenu.tsx';
 import { Search, SearchProvider } from './components/tsx/Search.tsx';
