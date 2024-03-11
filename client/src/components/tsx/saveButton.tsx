@@ -43,13 +43,15 @@ export const SaveButton = () => {
   const userData = useContext(currentUserData)
   const isInFavorites = userData?.data?.favorites ? (userData?.data?.favorites[gameId] ? true : false) : false
   const userId = userData?.user.uid
-
+  
   const [gameSaved, setGameSaved] = useState(isInFavorites)
   if (gameSaved != isInFavorites) {setGameSaved(isInFavorites)}
   const handleClick = () => {
-    !gameSaved ? 
+    userData ?
+    (!gameSaved ? 
       saveOnDatabase({userDataId: userId, gameId: gameId}).then((res) => setGameSaved(res)) : 
-      deleteFromDataBase({userDataId: userId, gameId: gameId}).then((res) => setGameSaved(res))
+      deleteFromDataBase({userDataId: userId, gameId: gameId}).then((res) => setGameSaved(res)))
+      : window.alert("You must log in before adding that game to favorite")
   }
   
   const colorComp = {color: gameSaved ? "red" : "white"}
