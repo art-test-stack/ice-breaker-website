@@ -5,6 +5,14 @@ import CreateGamePage from "./CreateGamePage"
 // @ts-ignore //Routes have error, but still work. Ignore this.
 import { Route, Routes } from 'react-router-dom' 
 import './App.css';
+import { createTheme } from '@mui/material/styles';
+
+
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 export const categories = [
     "Chill",
