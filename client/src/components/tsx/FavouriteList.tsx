@@ -1,6 +1,5 @@
-import { currentUserData } from "../../firebase/auth"
+import { currentUserData } from "../../firebase/auth.tsx"
 import { useContext } from 'react'
-import { getDatabase, ref, onValue } from "firebase/database"
 import '../css/FavouriteList.css'
 import { useSearch } from './Search.tsx'
 
@@ -13,35 +12,16 @@ import { useSearch } from './Search.tsx'
 const Favourites = () => {
     const { filters, setFilters }: any = useSearch();
 
-    // user info
     const userData = useContext(currentUserData)
-    const userID = userData?.user?.uid
-    const favouriteGames = userData?.data?.favorites 
-
-    // database info
-    // const db = getDatabase()
-    // const dbRef = ref(db, '/userData/' + userID + '/favorites')
-
     // if logged in, display heart
     let displayHeart = false
     if(userData){
         displayHeart = true
     }
 
-    // gets favourite games
-    // let favouriteGames : Array<string> = []
-    // onValue(dbRef, (snapshot) => {
-    //     snapshot.forEach((childSnapshot) => {
-    //       const childKey = childSnapshot.key;
-    //       favouriteGames.push(childKey)
-    //     });
-    // }, {
-    //     onlyOnce: true
-    // });
-
     const handleClick = () => {
         console.log('favourites clicked')
-        console.log(favouriteGames)
+        // console.log(favoritesGameIds)
         setFilters( {...filters, favourites: !filters.favourites})
     }
 
