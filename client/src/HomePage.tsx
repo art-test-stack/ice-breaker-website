@@ -1,15 +1,17 @@
 import React from 'react';
-import { Search, SearchProvider } from './components/tsx/Search.tsx';
-import LoginMenu from './components/tsx/LoginMenu.tsx';
-import { Title } from './components/tsx/Title.tsx';
-import { CategoryDropdown } from './components/tsx/CategoryDropdown.tsx';
-import { AuthUI, CurrentUserDataProvider } from "./firebase/auth.tsx";
-import GameGrid from './components/tsx/GameGrid.tsx';
-import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
 import { useNavigate } from 'react-router-dom';
-import './App.css';
-import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
+
+import { CategoryDropdown } from './components/tsx/CategoryDropdown.tsx';
+import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
 import Favourites from './components/tsx/FavouriteList.tsx';
+import GameGrid from './components/tsx/GameGrid.tsx';
+import LoginMenu from './components/tsx/LoginMenu.tsx';
+import { Search, SearchProvider } from './components/tsx/Search.tsx';
+import { Title } from './components/tsx/Title.tsx';
+import { AuthUI, CurrentUserDataProvider } from "./firebase/auth.tsx";
+import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
+
+import './App.css';
 
 function HomePage() {
   return (
