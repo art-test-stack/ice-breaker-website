@@ -1,5 +1,3 @@
-import { getDatabase, onValue, ref } from "firebase/database"
-// import { useContext } from 'react-router-dom'
 import { useContext } from 'react'
 import { currentUserData } from "../../firebase/auth"
 import '../css/FavouriteList.css'
@@ -7,7 +5,8 @@ import { useSearch } from "./Search"
 
 
 const Favourites = () => {
-    const {filters, setFilters}: any = useSearch();
+    const {filters, setFilters}: any = useSearch()
+
     // user info
     const userData = useContext(currentUserData)
 
@@ -19,7 +18,7 @@ const Favourites = () => {
 
     const handleClick = () => {
         console.log('favourites clicked')
-        setFilters( {...filters, favourites: !filters.favourites})
+        setFilters({...filters, favourites: !filters.favourites})
     }
 
     return (
