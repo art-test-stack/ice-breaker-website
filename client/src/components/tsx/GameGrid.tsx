@@ -33,15 +33,16 @@ const GameGrid: React.FC<GameGridProps> = () => {
     const userData = useContext(currentUserData)
     const favouriteGames = userData?.data?.favorites
     const favoritesGameIds = favouriteGames ? Object.keys(favouriteGames) : []
-
+    // console.log(favoritesGameIds)
     const filterFavourite = filters.favourites ? Object.entries(gamesList).filter((game: any) => {
-        // console.log(favoritesGameIds.includes(game[0]))
+        console.log('hello', favoritesGameIds.includes(game[0]))
+        console.log('gqameinfo', game[0])
         return favoritesGameIds.includes(game[0]) 
     }) : Object.entries(gamesList)
-
-    const filteredOnCategoryGames = filters?.categories.length > 0 ? Object.entries(gamesList).filter((game: any) => {
+    
+    const filteredOnCategoryGames = filters?.categories.length > 0 ? filterFavourite.filter((game: any) => {
             return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
-    }) : Object.entries(gamesList)
+    }) : filterFavourite
 
     const filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
         const gameKeys = searchKeys.filter(key => Object.keys(game[1]).includes(key))
@@ -52,6 +53,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
         };
         return false;
     }) : filteredOnCategoryGames
+
 
     return (
         <div className="game-grid">

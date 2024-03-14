@@ -22,9 +22,13 @@ const Favourites = () => {
     }
 
     return (
-        <button id="addButtonEquipment" onClick={handleClick} style={{marginTop: '10px'}} className={displayHeart? '': 'hideHeart'}>
-            <img src='src/assets/favorite-svgrepo-com.svg'/>
-        </button>
+        <div style={{display: 'flex', padding: '0px', margin: '0'}} className={displayHeart? '': 'hideHeart'}>
+            
+            {/* <button id="addButtonEquipment" onClick={handleClick} style={{padding: '0', margin: '0'}} className={displayHeart? '': 'hideHeart'}> */}
+            <img src='src/assets/favorite-svgrepo-com.svg' onClick={handleClick}  style={{padding: '0', margin: '0', background: 'blue'}}/>
+            {/* </button> */}
+            <p style={{alignContent: 'center', fontFamily: 'Galindo', fontSize: 'larger', marginLeft: '10px'}}>Favourites</p>
+        </div> 
     );
 }
 

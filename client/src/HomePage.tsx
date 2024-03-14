@@ -29,24 +29,24 @@ function HomePage() {
                     <Search/>
             </div>
 
-            <div id='favouriteAndLogIn'>
-                    <CurrentUserDataProvider>
-                <div id='favouriteContainer'>
-                    <Favourites/>
-                </div>
-                <div id='loginContainer'>
-                    <LoginMenu />
-                </div>
-                    </CurrentUserDataProvider>
+                <CurrentUserDataProvider>
+            <div id='loginContainer'>
+                <LoginMenu />
             </div>
+                </CurrentUserDataProvider>
 
             {/* <div><LoginButton /></div> */}
             </div>
             <div className ="gameSectionHeader">
-            <CategoryDropdown />
-            <CreateGameButton onClick={() => {
-                            console.log('create game button clicked');
-                        }}/>
+                <div className='FavAndCat'>
+                    <CurrentUserDataProvider>
+                        <Favourites/>
+                    </CurrentUserDataProvider>
+                        <CategoryDropdown />
+                </div>
+                <CreateGameButton onClick={() => {
+                                console.log('create game button clicked');
+                            }}/>
             </div>
             <div className ="gameSection">
                 

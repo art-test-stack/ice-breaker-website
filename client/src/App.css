@@ -25,7 +25,7 @@
   /* justify-content: left;  */
   flex-direction: row;
   justify-content: space-between; 
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
   margin-left: 10vw;
   margin-right: 10vw;
@@ -38,7 +38,9 @@
   align-items: center;
 }
 
-#favouriteAndLogIn{
+.FavAndCat {
   display: flex;
-  flex-direction: row;
+  row-gap: 0;
+  flex-direction: column;
+  justify-content:space-around;
 }
