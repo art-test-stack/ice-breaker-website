@@ -13,9 +13,9 @@ const Favourites = () => {
     //     redHeart = false
     // }
     // if logged in, show heart
-    let displayHeart = true
+    let displayFavourites = true
     if(!userData){
-        displayHeart = false
+        displayFavourites = false
         redHeart = false
     }
 
@@ -27,7 +27,7 @@ const Favourites = () => {
     }
     
     return (
-        <button id='favButton'style={{display: 'flex', padding: '0px', margin: '0'}} className={displayHeart? '': 'hideHeart'} onClick={handleClick}>
+        <button id='favButton'style={{display: 'flex', padding: '0px', margin: '0'}} className={displayFavourites? '': 'hideFavourites'} onClick={handleClick}>
             <img className={redHeart ? 'redHeart':''} src='src/assets/favorite-svgrepo-com.svg'  style={{padding: '0', marginRight: '10px'}}/>
             Favourites
         </button> 
