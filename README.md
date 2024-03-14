@@ -15,13 +15,13 @@ This will run the whole application.
 
 ## Running Tests
 
-1. Run the application before testing with `npm start`.
+1. Run the application before testing
 
-2. Make sure you are in the root directory. Run vitest test with `npm test`.
+2. Open a new terminal 
 
 3. To run the E2E testing with Cypress explorer run `npx cypress open`.
 
-4. To run Cypress headlessly run `npx cypress run ` in your terminal.
+3. To run Cypress headlessly run `npx cypress run ` in your terminal.
 
 
 ## Suggestions for a good README
