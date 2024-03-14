@@ -42,7 +42,7 @@ const submitClicked = (formData: ReviewFormData) => {
     })
 }
 
-const ReviewForm: any = ({ onClose }: any) => {
+export const ReviewForm: any = ({ onClose }: any) => {
     const userData = useContext(currentUserData)
     const currentLocation = useLocation();
 
