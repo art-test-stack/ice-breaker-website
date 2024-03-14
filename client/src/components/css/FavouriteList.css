@@ -1,4 +1,18 @@
 .hideHeart {
+    display: none;
     visibility: hidden;
+}
+
+.redHeart{
+    filter: invert(47%) sepia(38%) saturate(803%) hue-rotate(314deg) brightness(91%) contrast(86%);
+}
+
+#favButton{
+    align-content: center;
+    font-family: 'Galindo', 'sans-serif';
+    font-size: larger;
+    margin-left: 10px;
+    background: none;
+    border: none;
 }
 

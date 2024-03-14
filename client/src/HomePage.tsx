@@ -35,7 +35,7 @@ function HomePage() {
                 <LoginMenu />
             </div>
                 </CurrentUserDataProvider>
-
+            </div>
             {/* <div><LoginButton /></div> */}
             </div>
             <div className ="gameSectionHeader">

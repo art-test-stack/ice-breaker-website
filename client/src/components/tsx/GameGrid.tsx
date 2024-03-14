@@ -35,8 +35,8 @@ const GameGrid: React.FC<GameGridProps> = () => {
     const favoritesGameIds = favouriteGames ? Object.keys(favouriteGames) : []
     // console.log(favoritesGameIds)
     const filterFavourite = filters.favourites ? Object.entries(gamesList).filter((game: any) => {
-        console.log('hello', favoritesGameIds.includes(game[0]))
-        console.log('gqameinfo', game[0])
+        // console.log('hello', favoritesGameIds.includes(game[0]))
+        // console.log('gqameinfo', game[0])
         return favoritesGameIds.includes(game[0]) 
     }) : Object.entries(gamesList)
     

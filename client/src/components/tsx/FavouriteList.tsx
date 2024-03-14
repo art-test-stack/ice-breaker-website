@@ -3,32 +3,34 @@ import { currentUserData } from "../../firebase/auth"
 import '../css/FavouriteList.css'
 import { useSearch } from "./Search"
 
-
+let redHeart = false
 const Favourites = () => {
     const {filters, setFilters}: any = useSearch()
 
     // user info
     const userData = useContext(currentUserData)
-
+    // if(!userData){
+    //     redHeart = false
+    // }
     // if logged in, show heart
-    let displayHeart = false
-    if(userData){
-        displayHeart = true
+    let displayHeart = true
+    if(!userData){
+        displayHeart = false
+        redHeart = false
     }
 
     const handleClick = () => {
         console.log('favourites clicked')
+        redHeart  = redHeart ? false : true
+        console.log('redHeart', redHeart)
         setFilters({...filters, favourites: !filters.favourites})
     }
-
+    
     return (
-        <div style={{display: 'flex', padding: '0px', margin: '0'}} className={displayHeart? '': 'hideHeart'}>
-            
-            {/* <button id="addButtonEquipment" onClick={handleClick} style={{padding: '0', margin: '0'}} className={displayHeart? '': 'hideHeart'}> */}
-            <img src='src/assets/favorite-svgrepo-com.svg' onClick={handleClick}  style={{padding: '0', margin: '0', background: 'blue'}}/>
-            {/* </button> */}
-            <p style={{alignContent: 'center', fontFamily: 'Galindo', fontSize: 'larger', marginLeft: '10px'}}>Favourites</p>
-        </div> 
+        <button id='favButton'style={{display: 'flex', padding: '0px', margin: '0'}} className={displayHeart? '': 'hideHeart'} onClick={handleClick}>
+            <img className={redHeart ? 'redHeart':''} src='src/assets/favorite-svgrepo-com.svg'  style={{padding: '0', marginRight: '10px'}}/>
+            Favourites
+        </button> 
     );
 }
 
