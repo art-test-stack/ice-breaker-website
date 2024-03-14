@@ -1,5 +1,12 @@
 import { ReactP5Wrapper, Sketch } from "@p5-wrapper/react";
 import "./components/css/SpinTheWheel.css";
+import { Title } from "./components/tsx/Title";
+import { CurrentUserDataProvider } from "./firebase/auth";
+import LoginMenu from "./components/tsx/LoginMenu";
+import GoBack from "./components/tsx/GoBack";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { set } from "firebase/database";
+import zIndex from "@mui/material/styles/zIndex";
 const CANVAS_MARGIN: number = 100;
 
 const temp_favorites_list = [
@@ -16,10 +23,10 @@ let holding = false;
 let base_angle = 0;
 let base_mouse = 0;
 let mouse_angle_history: number[] = [];
+let spinning = false;
 
 const frame_delta = 1 / 60;
 
-let spinning = false;
 let spinning_velocity = 0;
 
 const colors = [
@@ -28,13 +35,8 @@ const colors = [
     "#FFA07A",
 ]
 
-function spinWheel(speed: number) {
-    spinning = true;
-    spinning_velocity = speed;
-}
-
 const sketch: Sketch = p5 => {
-    p5.setup = () => p5.createCanvas(p5.windowWidth - CANVAS_MARGIN, (p5.windowWidth - CANVAS_MARGIN) * 0.4 + 40);
+    p5.setup = () => p5.createCanvas(p5.windowWidth - CANVAS_MARGIN, (p5.windowWidth - CANVAS_MARGIN) * 0.4 + 20);
 
     p5.draw = () => {
         p5.background(0);
@@ -44,11 +46,10 @@ const sketch: Sketch = p5 => {
         // get angle of mouse position
         const mouse_angle = p5.atan2(p5.mouseY - p5.height / 2, p5.mouseX - p5.width / 2);
         if (spinning) {
-            wheel_angle += spinning_velocity * frame_delta;
-            spinning_velocity -= 2 * frame_delta * Math.sign(spinning_velocity);
-            console.log(spinning_velocity)
+            wheel_angle += Math.max(spinning_velocity, 0.05) * frame_delta;
+            spinning_velocity -= frame_delta * Math.sign(spinning_velocity) * 2;
             if (Math.abs(spinning_velocity) < 0.02) {
-                spinning = false;
+                spinning = (false);
                 spinning_velocity = 0;
             }
         } else if (p5.mouseIsPressed) {
@@ -77,7 +78,7 @@ const sketch: Sketch = p5 => {
             mouse_angle_history = [];
         }
 
-        function normalize_angle(angle) {
+        function normalize_angle(angle: number) {
             const twoPi = 2 * Math.PI;
             return ((angle % twoPi) + twoPi) % twoPi;
         }
@@ -136,15 +137,45 @@ const sketch: Sketch = p5 => {
 
     // change canvas size on window resize
     p5.windowResized = () => {
-        p5.resizeCanvas(p5.windowWidth - CANVAS_MARGIN, p5.windowHeight - CANVAS_MARGIN);
+        p5.resizeCanvas(p5.windowWidth - CANVAS_MARGIN, (p5.windowWidth - CANVAS_MARGIN) * 0.4 + 20);
     };
 };
 
+function spinWheel(speed: number) {
+    spinning = (true);
+    spinning_velocity = speed;
+}
+
+
 export function SpinTheWheelPage() {
-    return <> 
-        <div id="spinTheWheelContainer">
-            <ReactP5Wrapper sketch={sketch} />
-            <button id="spinButton" onClick={() => spinWheel(10)}>Spin</button>
+
+    return <>
+        <div>
+            <div id='header'> 
+                <div id='titleContainer'>
+                    <Title/>
+                </div>
+                <div id='searchContainer'></div>
+                <div id='loginContainer'>
+                    <CurrentUserDataProvider>
+                    <LoginMenu />
+                    </CurrentUserDataProvider>
+                </div>
+            </div>
+        </div>
+        
+        <div className="goBackWrapper">
+            <div style={{margin: "10px"}}>
+                <GoBack onClick={() => {
+                    console.log('go back button clicked');
+                }}/>
+            </div>
+            <div id="spinTheWheelContainer">
+                <div style={{zIndex: "-10000"}}>
+                    <ReactP5Wrapper sketch={sketch} style={{padding: "20px"}} />
+                </div>
+                <button id={"spinButton"} onClick={() => spinWheel(8 * Math.random() * 2)}>Spin</button>
+            </div>
         </div>
     </>
 }

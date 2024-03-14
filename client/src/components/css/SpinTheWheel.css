@@ -1,10 +1,9 @@
-#spinButton {
+#spinButton, #disabledSpinButton {
     font-family: 'Galindo', sans-serif;
     font-size: 36px;
     padding: 25px;
     font-weight: 600;
     color: #fff;
-    cursor: pointer;
     text-align: center;
     border: none;
     background-size: 300% 100%;
@@ -12,9 +11,21 @@
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+}
 
+
+#spinButton {
+    cursor: pointer;
     background-image: linear-gradient(to right, #6253e1, #852D91, #3dbdd4, #45ba51);
     box-shadow: 0 4px 15px 0 rgba(106, 50, 132, 0.75);
+    z-index: 100;
+}
+
+#disabledSpinButton {
+    cursor: not-allowed;
+    background-image: linear-gradient(to right, #6253e1, #852D91, #3dbdd4, #45ba51);
+    box-shadow: 0 4px 15px 0 rgba(106, 50, 132, 0.75);
+    opacity: 0.5;
 }
 
 #spinButton:hover {
@@ -30,5 +41,5 @@
     align-items: center;
     justify-content: space-around;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 200px);
 }
