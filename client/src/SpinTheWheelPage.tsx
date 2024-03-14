@@ -102,7 +102,7 @@ const sketch: Sketch = p5 => {
                 p5.fill(p5.color(colors[index % colors.length]));
             }
             p5.stroke(0);
-            p5.strokeWeight(1);
+            p5.strokeWeight(3);
             
             p5.arc(p5.width / 2, p5.height / 2, diameter, diameter, p5.TWO_PI / temp_favorites_list.length * index + wheel_angle, p5.TWO_PI / temp_favorites_list.length * (index + 1) + wheel_angle, p5.PIE);
             // add text to slice
@@ -116,12 +116,21 @@ const sketch: Sketch = p5 => {
             p5.text(game, diameter * 0.3, 0);
             p5.pop();
         });
+        
+        p5.noFill();
+        p5.stroke(100);
+        p5.strokeWeight(2);
+        p5.ellipse(p5.width / 2, p5.height / 2, diameter + 10, diameter + 10)
+
 
         // draw center of wheel
+        p5.fill(0, 50)
+        p5.noStroke();
+        p5.ellipse(p5.width / 2, p5.height / 2 + 2, diameter * 0.33, diameter * 0.33);
         p5.fill(255);
         p5.stroke(0);
-        p5.strokeWeight(2);
-        p5.ellipse(p5.width / 2, p5.height / 2, diameter * 0.2, diameter * 0.2);
+        p5.strokeWeight(3);
+        p5.ellipse(p5.width / 2, p5.height / 2, diameter * 0.3, diameter * 0.3);
 
         // draw arrow on top of wheel
         p5.fill(255);
