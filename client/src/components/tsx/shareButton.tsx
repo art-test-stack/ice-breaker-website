@@ -13,7 +13,7 @@ export const ShareButton = () =>  {
   }
 
     return (
-      <Button onClick={handleClick} startIcon={<IosShareIcon/>}>
+      <Button data-cy="shareButton" onClick={handleClick} startIcon={<IosShareIcon/>}>
           Share
       </Button>
     );

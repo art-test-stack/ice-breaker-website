@@ -17,8 +17,8 @@ export const Modal = ({ isOpen, onClose, children }: any) => {
 
   return (
     <div style={modalStyle as any}>
-      <div className='reviewModal' >
-        <span className='closeModal' style={{ float: 'right', cursor: 'pointer' }} onClick={onClose}>&times;</span>
+      <div className='reviewModal'  data-cy="reviewModal">
+        <span className='closeModal' data-cy="closeModal" style={{ float: 'right', cursor: 'pointer' }} onClick={onClose}>&times;</span>
         {children}
       </div>
     </div>
