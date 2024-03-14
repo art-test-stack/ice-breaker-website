@@ -7,6 +7,9 @@ import { CurrentGameReviewsProvider } from "./firebase/reviewProvider";
 import { useContext } from "react";
 import { currentReviewsList } from "./firebase/reviewProvider";
 import AverageReviewScore, { averageScore } from "./components/tsx/AverageReviewScore";
+import AliasInfo from "./components/tsx/AliasInfo";
+import { ThemeProvider } from "@mui/material/styles";
+import { darkTheme } from "./App";
 import Timer from "./components/tsx/Timer"
 
 
@@ -19,6 +22,7 @@ interface Props{
     categories: string;
     author: string;
     gameId: string;
+    aliases: string[]; 
 }
 interface Review {
     username: string; 
@@ -26,9 +30,13 @@ interface Review {
     rating: string; 
 }
 
+interface AliasList {
+    aliases: string[]; 
+}
 
 
-function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration, equipments, categories, author, gameId}: Props) {
+
+function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration, equipments, categories, author, gameId, aliases}: Props) {
 
  
 
@@ -53,15 +61,17 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
                                 
                 </CurrentGameReviewsProvider>
             </div>
-     
+            <ThemeProvider theme={darkTheme}>
             <div className="Right-Section-GameInfo">
                 <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
                 <ReviewSaveShareButton/>  
                 <div className="Timer-box" data-cy="Timer-box">
                     <Timer />
                 </div>
+
+                <AliasInfo aliases={aliases}/>
             </div>
-            
+            </ThemeProvider>
         </div>
         </>    
     );

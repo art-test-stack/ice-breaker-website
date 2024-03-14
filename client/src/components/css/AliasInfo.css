@@ -1,0 +1,38 @@
+#aliasBox {
+    width: 315px;
+    border-radius: 20px;
+    background-color: #26554D;
+    padding: 5px 25px 15px 25px;
+    text-align: left;
+    font-family: 'Calibri Light', sans-serif;
+    font-size: large;
+    margin: 10px 10px 10px 10px;
+    height: fit-content;
+}
+
+.bolded {
+    font-family: 'Calibri';
+    font-weight: bolder;
+    display: inline-block;
+    /* background-color: black; */
+    /* margin: 0 0 20px 0; */
+}
+
+/* #numPlayers, #duration, #categories #author {
+    display: inline-block;
+    margin: 0 0 0 7px;
+    background-color: aqua; 
+} */
+
+.listAliases {
+    margin: 0 0 3px 0;
+    /* background-color: aqua;  */
+}
+
+/* #authorBox {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+} */
+
+
