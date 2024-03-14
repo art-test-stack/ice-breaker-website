@@ -15,7 +15,7 @@ export function AddCategoryDropdown() {
     return (
         <>
             <div id="addCategoryContainer">
-                <button id="addCategoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
+                <button id="addCategoriesButton" data-cy="addCategoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
                     <img src='src/assets/plus.svg' style={{marginRight: "10px"}}/>
                     Add categories
                 </button>
@@ -36,7 +36,7 @@ export function AddCategoryDropdown() {
                                 newActiveCategories[i] = !newActiveCategories[i];
                                 setActiveCategories(newActiveCategories);
                                 activeCategoriesOutput = newActiveCategories;
-                            }}>{category}</button>
+                            }} data-cy={category}>{category}</button>
                         })
                     }
                 </div>
@@ -45,7 +45,7 @@ export function AddCategoryDropdown() {
                         categories.map((category, i) => {
                             if (activeCategories[i]) {
                                 const accentColor = getAccent(i);
-                                return <Tooltip title={category}><span key={i} className="addCategoryLabel"  style={{backgroundColor: accentColor + "bb", border: "2px solid " + accentColor}}>{category}</span></Tooltip>
+                                return <Tooltip title={category}><span key={i} className="addCategoryLabel" data-cy="categoryLabel"  style={{backgroundColor: accentColor + "bb", border: "2px solid " + accentColor}}>{category}</span></Tooltip>
                             }
                         })
                     }

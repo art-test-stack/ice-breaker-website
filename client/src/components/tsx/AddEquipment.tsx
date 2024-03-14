@@ -47,7 +47,7 @@ function AddEquipment () {
             <p style={{fontFamily:"Calibri", marginBottom:'5px'}}>Equipments:</p>
             <form>
                 <input id="inputBoxEquipment" type='text' value={inputValue.trimStart()} placeholder='Enter equipment...' onChange={handleChange}
-                onKeyDown={handleEnter}/>
+                onKeyDown={handleEnter} data-cy="inputBoxEquipment"/>
                 <button id="addButtonEquipment" onClick={handleSubmit}>
                     <img src='src/assets/check.svg'/>
                 </button>

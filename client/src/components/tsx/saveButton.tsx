@@ -59,7 +59,8 @@ export const SaveButton = () => {
   const buttonText = gameSaved ? "Saved" : "Save"
 
   return (
-      <Button 
+    // <Fragment>
+      <Button data-cy="saveButton"
         onClick={handleClick} 
         startIcon={favoriteIcon}
         > 

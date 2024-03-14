@@ -13,7 +13,7 @@ export function Title() {
             <div id='title'>
                 {
                     letters.map((letter, i) => (
-                        <div className='titleLetter' data-letter={letter} style={
+                        <div className='titleLetter' data-cy="title" data-letter={letter} style={
                             {
                                 zIndex: letters.length - i,
                             }
