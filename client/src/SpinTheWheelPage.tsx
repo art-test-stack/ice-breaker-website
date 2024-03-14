@@ -4,9 +4,7 @@ import { Title } from "./components/tsx/Title";
 import { CurrentUserDataProvider } from "./firebase/auth";
 import LoginMenu from "./components/tsx/LoginMenu";
 import GoBack from "./components/tsx/GoBack";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { set } from "firebase/database";
-import zIndex from "@mui/material/styles/zIndex";
+
 const CANVAS_MARGIN: number = 100;
 
 const temp_favorites_list = [
@@ -122,7 +120,6 @@ const sketch: Sketch = p5 => {
         p5.strokeWeight(2);
         p5.ellipse(p5.width / 2, p5.height / 2, diameter + 10, diameter + 10)
 
-
         // draw center of wheel
         p5.fill(0, 50)
         p5.noStroke();
@@ -140,8 +137,6 @@ const sketch: Sketch = p5 => {
             p5.width / 2 - 10, p5.height / 2 - diameter * 0.5 - 10,
             p5.width / 2, p5.height / 2 - diameter * 0.5 + 10, 
             p5.width / 2 + 10, p5.height / 2 - diameter * 0.5 - 10);
-
-        
     };
 
     // change canvas size on window resize

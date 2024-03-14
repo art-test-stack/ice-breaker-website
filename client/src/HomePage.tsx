@@ -9,6 +9,7 @@ import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
+import SpinTheWheelButton from './components/tsx/SpinTheWheelButton.tsx';
 
 function HomePage() {
   return (
@@ -30,9 +31,12 @@ function HomePage() {
             </div>
             <div className ="gameSectionHeader">
             <CategoryDropdown />
-            <CreateGameButton onClick={() => {
-                            console.log('create game button clicked');
-                        }}/>
+            <div style={{display: "flex", flexDirection: "row"}}>
+                <SpinTheWheelButton/>
+                <CreateGameButton onClick={() => {
+                                console.log('create game button clicked');
+                            }}/>
+            </div>
             </div>
             <div className ="gameSection">
                 
