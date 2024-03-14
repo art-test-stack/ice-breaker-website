@@ -39,8 +39,9 @@
 }
 
 .FavAndCat {
+  width: fit-content;
   display: flex;
-  row-gap: 0;
   flex-direction: column;
-  /* justify-content:space-around; */
+  justify-content:space-around;
+  flex-wrap: wrap;
 }
