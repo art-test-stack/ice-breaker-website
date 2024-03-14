@@ -24,7 +24,7 @@ function ReviewComponent({userName, givenReview, rating}:Props) {
             <div className='userName'>
                 {userName}
                 <CurrentUserDataProvider>
-                    <EditReviewIcon userName={userName}  />
+                    <EditReviewIcon userName={userName} givenReview={givenReview} rating={parseInt(rating)} />
                 </CurrentUserDataProvider>
             </div>
             </span>

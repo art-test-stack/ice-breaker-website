@@ -5,10 +5,12 @@ import { Modal } from './modal';
 
 interface Data{
     userName: string;
+    givenReview: string;
+    rating: number;
 }
 
 
-function EditReviewIcon({userName}:Data) {
+function EditReviewIcon({userName, givenReview, rating}:Data) {
     const userData = useContext(currentUserData);
     const [isModalOpen, setIsModalOpen] = useState(false);
   
@@ -27,7 +29,7 @@ function EditReviewIcon({userName}:Data) {
             <img src='/src/assets/edit-icon.svg' />
         </button>
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-            <ReviewForm onClose={closeModal}/>
+            <ReviewForm onClose={closeModal} givenReview={givenReview} givenRating={rating}/>
         </Modal>
     </div>
     ); 

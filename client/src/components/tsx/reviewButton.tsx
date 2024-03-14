@@ -42,13 +42,13 @@ const submitClicked = (formData: ReviewFormData) => {
     })
 }
 
-export const ReviewForm: any = ({ onClose }: any) => {
+export const ReviewForm: any = ({ givenRating, givenReview , onClose }: { givenRating: number, givenReview: string, onClose: any }) => {
     const userData = useContext(currentUserData)
     const currentLocation = useLocation();
 
     const initialFormData: ReviewFormData = {
-        rating: 0,
-        comment: '',
+        rating: givenRating,
+        comment: givenReview,
         username: userData?.data?.username, // Issue: Appears as undefined on first submit but in console.log it is not
         gameId: currentLocation.pathname.split("/")[2] // Supposed to be gameId
       };
