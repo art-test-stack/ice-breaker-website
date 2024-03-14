@@ -34,7 +34,7 @@ function spinWheel(speed: number) {
 }
 
 const sketch: Sketch = p5 => {
-    p5.setup = () => p5.createCanvas(p5.windowWidth - CANVAS_MARGIN, (p5.windowWidth - CANVAS_MARGIN) * 0.4);
+    p5.setup = () => p5.createCanvas(p5.windowWidth - CANVAS_MARGIN, (p5.windowWidth - CANVAS_MARGIN) * 0.4 + 40);
 
     p5.draw = () => {
         p5.background(0);
@@ -76,10 +76,30 @@ const sketch: Sketch = p5 => {
             holding = false;
             mouse_angle_history = [];
         }
+
+        function normalize_angle(angle) {
+            const twoPi = 2 * Math.PI;
+            return ((angle % twoPi) + twoPi) % twoPi;
+        }
+
+        function is_selected(gameindex: number) {
+            let a = (p5.TWO_PI / temp_favorites_list.length * gameindex + wheel_angle)
+            let b = (p5.TWO_PI / temp_favorites_list.length * (gameindex + 1) + wheel_angle)
+
+            // normalize angles 0 to 2PI
+            a = normalize_angle(a);
+            b = normalize_angle(b);
+            
+            return a < p5.PI * 1.5 && b > p5.PI * 1.5;
+        }
         
         temp_favorites_list.forEach((game, index) => {
             // create slice of rulette wheel
-            p5.fill(p5.color(colors[index % colors.length]));
+            if (is_selected(index)) {
+                p5.fill(255, 255, 0);
+            } else {
+                p5.fill(p5.color(colors[index % colors.length]));
+            }
             p5.stroke(0);
             p5.strokeWeight(1);
             
@@ -101,6 +121,16 @@ const sketch: Sketch = p5 => {
         p5.stroke(0);
         p5.strokeWeight(2);
         p5.ellipse(p5.width / 2, p5.height / 2, diameter * 0.2, diameter * 0.2);
+
+        // draw arrow on top of wheel
+        p5.fill(255);
+        p5.stroke(0);
+        p5.strokeWeight(2);
+        p5.triangle(
+            p5.width / 2 - 10, p5.height / 2 - diameter * 0.5 - 10,
+            p5.width / 2, p5.height / 2 - diameter * 0.5 + 10, 
+            p5.width / 2 + 10, p5.height / 2 - diameter * 0.5 - 10);
+
         
     };
 
