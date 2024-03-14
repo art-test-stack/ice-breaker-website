@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Button } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { push, ref, remove } from 'firebase/database';
+import { push, ref, remove, set } from 'firebase/database';
 import { database } from '../../firebase/init';
 import { currentUserData } from '../../firebase/auth';
 import { useLocation } from 'react-router-dom';
@@ -11,8 +11,7 @@ type saveOnPlaylistProps = {
   gameId: string
 } 
 const saveOnDatabase = async ({ userDataId, gameId }: saveOnPlaylistProps) => {
-  const result = await push(ref(database, 'userData/' + userDataId + '/favorites/' + gameId), "").then((res) => {
-      console.log("here->", res)
+  const result = await set(ref(database, 'userData/' + userDataId + '/favorites/' + gameId), "").then((res) => {
       window.alert('Game added to favorite !')
       return true
   }).catch((error) => {
@@ -41,7 +40,7 @@ export const SaveButton = () => {
   const gameId = currentLocation.pathname.split("/")[2]
 
   const userData = useContext(currentUserData)
-  const isInFavorites = userData?.data?.favorites ? (userData?.data?.favorites[gameId] ? true : false) : false
+  const isInFavorites = userData?.data?.favorites ? (userData?.data?.favorites[gameId]=="" ? true : false) : false
   const userId = userData?.user.uid
   
   const [gameSaved, setGameSaved] = useState(isInFavorites)
