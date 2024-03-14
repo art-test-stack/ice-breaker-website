@@ -21,6 +21,22 @@ export interface GameGridProps {
 
 const searchKeys = ['name', 'aliases']
 
+const gameImgs = { 
+    'Active': './src/assets/active.webp', 
+    'Card Game': './src/assets/cards.webp', 
+    'Chill': './src/assets/chill.webp', 
+    'Indoor': './src/assets/indoor.webp', 
+    'Outdoor': './src/assets/outdoor.webp', 
+    'Team Building': './src/assets/teambuilding.webp', 
+}
+
+const getGameCardImg = (game: any) => {
+    const gameCategories = getCategoryList(game[1].categories)
+    const randomIndex = Math.floor(Math.random() * gameCategories.length)
+
+    return gameCategories.length > 0 ? gameImgs[gameCategories[randomIndex]] : gameImgs['Card Game']
+}
+
 const GameGrid: React.FC<GameGridProps> = () => {
     const navigate = useNavigate()
     const handleClick = (id: string) => {
@@ -54,13 +70,12 @@ const GameGrid: React.FC<GameGridProps> = () => {
         return false;
     }) : filteredOnCategoryGames
 
-
     return (
         <div className="game-grid" data-cy="game-grid">
             {filteredGames.map((game, index) => (
                 <GameCard
                     key={index}
-                    imgSrc={'./src/assets/cards.webp'} // this is not currently from the database
+                    imgSrc={getGameCardImg(game)}
                     imgAlt={'Image 2'}
                     title={game[1].name}
                     category={getCategoryList(game[1].categories).join(', ')}
