@@ -56,7 +56,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
 
 
     return (
-        <div className="game-grid">
+        <div className="game-grid" data-cy="game-grid">
             {filteredGames.map((game, index) => (
                 <GameCard
                     key={index}

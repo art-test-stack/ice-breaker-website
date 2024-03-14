@@ -25,10 +25,11 @@ function HomePage() {
             <div id='titleContainer'>
                 <Title/>
             </div>
-            <div id='searchContainer'>
+            <div id='searchContainer' data-cy="search">
                     <Search/>
             </div>
 
+            <div id='loginContainer' data-cy="login">
                 <CurrentUserDataProvider>
             <div id='loginContainer'>
                 <LoginMenu />

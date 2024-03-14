@@ -12,7 +12,7 @@ export default function GameNameField() {
   return (
     <div style={{width:"100%"}}>
         <form>
-            <input id="namePrompt" type='text' onChange={handleChange}  placeholder='What is the name of the game?' />
+            <input id="namePrompt" type='text' onChange={handleChange}  placeholder='What is the name of the game?' data-cy="GameNameField" />
         </form>
     </div>
   );

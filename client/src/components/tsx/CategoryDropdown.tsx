@@ -19,8 +19,8 @@ export function CategoryDropdown() {
     }
     return (
         <>
-            <div id="categoryDropdownContainer">
-                <button id="categoriesButton" onClick={() => setShowDropdown(!showDropdown)}>
+            <div id="categoryDropdownContainer"  >
+                <button id="categoriesButton" data-cy="category" onClick={() => setShowDropdown(!showDropdown)}>
                     <img src='src/assets/dropdownIcon.svg' style={{marginRight: "10px"}}/>
                     Categories
                 </button>
@@ -28,11 +28,11 @@ export function CategoryDropdown() {
                     categories.map((category, i) => {
                         if (activeCategories[i]) {
                             const accentColor = getAccent(i);
-                            return <span key={i} className="categoryLabel" style={{backgroundColor: accentColor + "bb", border: "2px solid " + accentColor}}>{category}</span>
+                            return <span key={i} className="categoryLabel" data-cy="categoryLabel" style={{backgroundColor: accentColor + "bb", border: "2px solid " + accentColor}}>{category}</span>
                         }
                     })
                 }
-                <div id="categoriesDropdown" style={{transform: showDropdown ? "" : "scaleY(0)", backgroundColor: showDropdown ? "#354b5ab1" : '#62effca5'}}>
+                <div id="categoriesDropdown" data-cy="categoryDropdown" style={{transform: showDropdown ? "" : "scaleY(0)", backgroundColor: showDropdown ? "#354b5ab1" : '#62effca5'}}>
                     {
                         categories.map((category, i) => {
                             const accentColor = getAccent(i);
@@ -48,7 +48,7 @@ export function CategoryDropdown() {
                                 newActiveCategories[i] = !newActiveCategories[i];
                                 setActiveCategories(newActiveCategories);
 
-                            }}>{category}</button>
+                            }}data-cy={category}>{category}</button>
                         })
                     }
                 </div>

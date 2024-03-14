@@ -83,6 +83,7 @@ export default function PlayerNoSlider() {
             max={14}
             valueLabelDisplay="auto"   
             valueLabelFormat={formatLabel}
+            data-cy="playerNumberSlider"
             sx={{
                 color: '#7bb3fc',
                 '& .MuiSlider-valueLabel': {
