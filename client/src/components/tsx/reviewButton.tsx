@@ -6,7 +6,7 @@ import Rating from '@mui/material/Rating';
 import EditIcon from '@mui/icons-material/Edit';
 import { useLocation } from 'react-router-dom';
 import { currentUserData } from '../../firebase/auth';
-import { push, ref } from 'firebase/database';
+import { push, ref, set } from 'firebase/database';
 import { database } from '../../firebase/init';
 // import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -23,7 +23,7 @@ const placeholderStyle: React.CSSProperties = {
     // fontStyle: 'italic',
 };
 
-const submitClicked = (formData: ReviewFormData) => {
+const submitReview = (formData: ReviewFormData) => {
     console.log(formData)
     // Push reviews to database
     push(ref(database, 'reviews'), formData).then((response) => {
@@ -42,7 +42,20 @@ const submitClicked = (formData: ReviewFormData) => {
     })
 }
 
-export const ReviewForm: any = ({ givenRating, givenReview , onClose }: { givenRating: number, givenReview: string, onClose: any }) => {
+const editReview = (formData: ReviewFormData, reviewId: string) => {
+    
+    const contentPromise = set(ref(database, `reviews/${reviewId}/comment`), formData.comment)
+    const ratingPromise = set(ref(database, `reviews/${reviewId}/rating`), formData.rating)
+    Promise.all([contentPromise, ratingPromise]).then(() => {
+        window.alert("The review was edited successfully!")
+        window.location.reload() 
+    }).catch((error) => {
+        console.log('Error: ', error)
+        window.alert("Error editing review: " + error.message)
+    })
+}
+
+export const ReviewForm: any = ({ givenRating, givenReview , onClose, editReviewId }: { givenRating: number, givenReview: string, onClose: any, editReviewId: string | null }) => {
     const userData = useContext(currentUserData)
     const currentLocation = useLocation();
 
@@ -72,7 +85,11 @@ export const ReviewForm: any = ({ givenRating, givenReview , onClose }: { givenR
         }else{
             console.log(formData);
             // Call API instead of console-log to register form data
-            submitClicked(formData);
+            if (editReviewId){
+                editReview(formData, editReviewId);
+            } else {
+                submitReview(formData);
+            }
             setFormData(initialFormData);
         } 
     };

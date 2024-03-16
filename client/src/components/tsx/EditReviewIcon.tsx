@@ -7,13 +7,14 @@ interface Data{
     userName: string;
     givenReview: string;
     rating: number;
+    review_id: string;
 }
 
 
-function EditReviewIcon({userName, givenReview, rating}:Data) {
+function EditReviewIcon({userName, givenReview, rating, review_id}:Data) {
     const userData = useContext(currentUserData);
     const [isModalOpen, setIsModalOpen] = useState(false);
-  
+    
     const openModal = () => {
       setIsModalOpen(true);
     };
@@ -22,16 +23,16 @@ function EditReviewIcon({userName, givenReview, rating}:Data) {
       setIsModalOpen(false);
     };
 
-    if (userData?.data?.username == userName){
-    return (
-        <div >
-        <button className='editReviewIcon' onClick={openModal}>
-            <img src='/src/assets/edit-icon.svg' />
-        </button>
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-            <ReviewForm onClose={closeModal} givenReview={givenReview} givenRating={rating}/>
-        </Modal>
-    </div>
+    if (userData?.data?.username == userName || userData?.data?.moderator) {
+        return (
+            <div >
+            <button className='editReviewIcon' onClick={openModal}>
+                <img src='/src/assets/edit-icon.svg' />
+            </button>
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <ReviewForm onClose={closeModal} givenReview={givenReview} givenRating={rating} editReviewId={review_id}/>
+            </Modal>
+        </div>
     ); 
 }
 }

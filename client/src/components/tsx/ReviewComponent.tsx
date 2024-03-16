@@ -12,9 +12,10 @@ interface Props {
     userName: string;
     givenReview: string;
     rating: string;
+    review_id: string;
 }
 
-function ReviewComponent({userName, givenReview, rating}:Props) {
+function ReviewComponent({userName, givenReview, rating, review_id}:Props) {
     return (
         <div className="background">
             <span>
@@ -24,7 +25,7 @@ function ReviewComponent({userName, givenReview, rating}:Props) {
             <div className='userName'>
                 {userName}
                 <CurrentUserDataProvider>
-                    <EditReviewIcon userName={userName} givenReview={givenReview} rating={parseInt(rating)} />
+                    <EditReviewIcon userName={userName} givenReview={givenReview} rating={parseInt(rating)} review_id={review_id} />
                 </CurrentUserDataProvider>
             </div>
             </span>
