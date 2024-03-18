@@ -282,7 +282,7 @@ export function SpinTheWheelPage() {
                         </div>
                         <button id={spinning ? "disabledSpinButton" : "spinButton"} onClick={() => spinWheel(8 * Math.random() * 2)}>Spin</button>
                     </div>
-                    <div id="winnerContainer">
+                    <div id="winnerContainer" style={{transform: `scale(${spinning ? 0.6 : 1}) rotate(${spinning ? "10deg":0})`, opacity: spinning ? 0 : 1}}>
                         { winner ? 
                         <GameCard
                             imgSrc={'./src/assets/cards.webp'} // this is not currently from the database
