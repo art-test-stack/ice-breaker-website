@@ -1,25 +1,17 @@
 // import { get, ref } from '@firebase/database';
 // import { database } from '../../firebase/init';
 import '../css/AliasInfo.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField'; 
 import * as React from 'react';
 import { IconButton, InputAdornment } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { push, ref } from 'firebase/database';
+import { onValue, push, ref } from 'firebase/database';
 import { database } from '../../firebase/init';
 import { useLocation } from 'react-router-dom';
 
 
 
-interface AliasInfoProps {
-    aliases: string[];
-}
-
-interface AliasFormData {
-    alias: string; 
-    gameID: string; 
-}
 
 /* <GameInfo numPlayers="string" duration = "string" categories="string" equipments={[string,string]} /> */
 
@@ -27,8 +19,19 @@ interface AliasFormData {
 
 
 
-function AliasInfo({aliases}: AliasInfoProps){
+function AliasInfo({gameId}: {gameId: string}){
     const currentLocation = useLocation();
+
+    let [aliases, setAliases] = useState<string[]>([]);
+
+    // get aliases from database
+    useEffect(() => {
+        onValue(ref(database, 'games/' + gameId + '/aliases'), (snapshot) => {
+            if (snapshot.exists()) {
+                setAliases(snapshot.val());
+            }
+        });
+    }, [gameId]);
 
     const listAliases = Object.values(aliases).map((aliases, i) => 
         <li key={i}>
