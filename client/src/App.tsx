@@ -6,6 +6,8 @@ import CreateGamePage from "./CreateGamePage"
 import { Route, Routes } from 'react-router-dom' 
 import './App.css';
 import SpinTheWheelPage from './SpinTheWheelPage';
+import { CurrentUserDataProvider } from './firebase/auth';
+
 
 export const categories = [
     "Chill",
@@ -41,7 +43,11 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/games/:gameId" element={<PageForGameDescription />}/>
         <Route path="/createGame" element={<CreateGamePage />}/>
-        <Route path="/spinTheWheel" element={<SpinTheWheelPage />}/>
+        <Route path="/spinTheWheel" element={
+            <CurrentUserDataProvider>
+                <SpinTheWheelPage />
+            </CurrentUserDataProvider>
+        }/>
       </Routes>
     </>
 

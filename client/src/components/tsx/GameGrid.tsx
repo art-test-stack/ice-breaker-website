@@ -54,6 +54,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
                         console.log(`Clicked on ${game[1].title} (id: ${game[0]})`);
                     }} 
                     gameId={game[0]}
+                    style={{}}
                 />
             ))}
         </div>
