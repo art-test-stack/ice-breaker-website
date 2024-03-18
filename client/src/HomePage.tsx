@@ -1,15 +1,13 @@
-import React from 'react';
 import { Search, SearchProvider } from './components/tsx/Search.tsx';
 import LoginMenu from './components/tsx/LoginMenu.tsx';
 import { Title } from './components/tsx/Title.tsx';
 import { CategoryDropdown } from './components/tsx/CategoryDropdown.tsx';
-import { AuthUI, CurrentUserDataProvider } from "./firebase/auth.tsx";
+import { CurrentUserDataProvider } from "./firebase/auth.tsx";
 import GameGrid from './components/tsx/GameGrid.tsx';
 import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
-import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from './App.tsx';
 
 

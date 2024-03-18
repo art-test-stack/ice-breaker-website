@@ -57,12 +57,6 @@ export default function PlayerNoSlider() {
 
   return (
     <Box sx={{ width: "90%"}}>
-        {/* 
-        add styling:
-        font-family: 'Calibri Light', sans-serif;
-        font-weight: bold;
-        font-size: large;
-         */}
         <Typography variant="h6" gutterBottom
         sx={{
             fontFamily: 'Calibri',

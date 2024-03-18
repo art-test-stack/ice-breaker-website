@@ -1,5 +1,4 @@
  #header {
-    /* menu along the top of the page */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,7 +21,6 @@
 
 .gameSectionHeader {
   display: flex; 
-  /* justify-content: left;  */
   flex-direction: row;
   justify-content: space-between; 
   margin-top: 20px;

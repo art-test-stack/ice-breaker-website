@@ -4,8 +4,6 @@ import './components/css/GamePage.css'
 import ReviewSaveShareButton from "./components/tsx/reviewSaveShareButton";
 import ReviewsList from "./components/tsx/ReviewsList";
 import { CurrentGameReviewsProvider } from "./firebase/reviewProvider";
-import { useContext } from "react";
-import { currentReviewsList } from "./firebase/reviewProvider";
 import AverageReviewScore, { averageScore } from "./components/tsx/AverageReviewScore";
 import AliasInfo from "./components/tsx/AliasInfo";
 import { ThemeProvider } from "@mui/material/styles";

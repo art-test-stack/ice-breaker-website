@@ -1,4 +1,3 @@
-import React from 'react';
 import Home from "./HomePage"
 import PageForGameDescription from "./PageForGameDescription"
 import CreateGamePage from "./CreateGamePage"

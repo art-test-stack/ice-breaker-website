@@ -1,6 +1,4 @@
 import '../css/ReviewComponent.css'
-
-// import StarBorderIcon from '@mui/icons/StarBorder';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import Rating from '@mui/material/Rating';
 

@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 import { currentUserData } from '../../firebase/auth';
 import { push, ref } from 'firebase/database';
 import { database } from '../../firebase/init';
-// import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 
@@ -20,7 +19,6 @@ interface ReviewFormData {
 }
 
 const placeholderStyle: React.CSSProperties = {
-    // fontStyle: 'italic',
 };
 
 const submitClicked = (formData: ReviewFormData) => {
@@ -49,8 +47,8 @@ const ReviewForm: any = ({ onClose }: any) => {
     const initialFormData: ReviewFormData = {
         rating: 0,
         comment: '',
-        username: userData?.data?.username, // Issue: Appears as undefined on first submit but in console.log it is not
-        gameId: currentLocation.pathname.split("/")[2] // Supposed to be gameId
+        username: userData?.data?.username, 
+        gameId: currentLocation.pathname.split("/")[2]
       };
 
     const [formData, setFormData] = useState<ReviewFormData>(initialFormData);
@@ -59,7 +57,7 @@ const ReviewForm: any = ({ onClose }: any) => {
         const { name, value } = event.target;
         setFormData((prevFormData) => ({
         ...prevFormData,
-        username: userData?.data?.username, // Not nice fix to issue on line 31
+        username: userData?.data?.username,
         [name]: value,
         }));
     };

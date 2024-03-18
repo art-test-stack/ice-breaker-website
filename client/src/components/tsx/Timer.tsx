@@ -3,36 +3,24 @@
 import React, { useState, useEffect } from "react";
 import "../css/Timer.css";
 const Stopwatch = () => {
-  // state to store time
   const [time, setTime] = useState(0);
-
-  // state to check stopwatch running or not
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     let intervalId: string | number | NodeJS.Timeout | undefined;
     if (isRunning) {
-      // setting time from 0 to 1 every 10 milisecond
       intervalId = setInterval(() => setTime(time + 1), 10);
     }
     return () => clearInterval(intervalId);
   }, [isRunning, time]);
-
-  // Hours calculation
   const hours = Math.floor(time / 360000);
-
-  // Minutes calculation
   const minutes = Math.floor((time % 360000) / 6000);
-
-  // Seconds calculation
   const seconds = Math.floor((time % 6000) / 100);
 
-  // Make timer start and stop 
   const startAndStop = () => {
     setIsRunning(!isRunning);
   };
 
-  // Reset time to 0
   const reset = () => {
     setTime(0);
   };

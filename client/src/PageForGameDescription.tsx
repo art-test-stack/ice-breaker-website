@@ -16,13 +16,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import DeleteGameButton from "./components/tsx/DeleteGameButton";
 
 function PageForGameDescription(){
-    // const gameExample = {
-    //     title: 'GameName',
-    //     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Enim eu turpis egestas pretium aenean pharetra magna ac.',
-    //     numPlayers: '1-6',
-    //     duration: '1-5 hours',
-    //     equipments: ['dice','timer','paper'],
-    //     categories: 'dice game'
 
     const { gameId } = useParams();
     const [game, setGame] = useState<any | null>(null);
@@ -39,18 +32,12 @@ function PageForGameDescription(){
     if (!game) {
         return <div>Loading...</div>;
     }
-    // const userNames = ['Test_user1', 'Test_user2', 'Test_user3'];
-    // const review = ['Lorem ipsum', 
-    // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 
-    // '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'];
-
-
     return (
 
         <>
         <CurrentUserDataProvider>
         
-        <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
+        <SearchProvider> 
               <div id='header'> 
         <div id='titleContainer'>
           <Title/>
@@ -84,8 +71,6 @@ function PageForGameDescription(){
               author={game.creator}
               gameId={gameId ?? ""}
               aliases={game.aliases ?? []}/>
-    
-    {/*everyReview css is located in App.css, */}
 
         </SearchProvider>
         </CurrentUserDataProvider>

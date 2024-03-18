@@ -18,11 +18,8 @@ import { push, ref } from "@firebase/database";
 import { DurationSelector, duration } from "./components/tsx/DurationSelector.tsx";
 
 const publishButtonClicked = () => {
-    // get current context value
     const userData = currentUserDataValue;
     
-    /*if (gameName == ''){
-        window.alert("All fields must be filled")*/
     if (!userData) {
         window.alert("You must be logged in to create a game!")
     } else if (gameName == '' || gameDescription == '') {

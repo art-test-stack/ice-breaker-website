@@ -3,7 +3,6 @@ import { currentUserData } from "../../firebase/auth"
 import { useNavigate, useLocation } from 'react-router-dom'
 import { ref, remove, getDatabase, onValue} from 'firebase/database'
 import { useContext } from 'react'
-// import { useContext } from 'react'
 
 
 const DeleteGameButton: React.FC<{onClick: () => void}> = () => {

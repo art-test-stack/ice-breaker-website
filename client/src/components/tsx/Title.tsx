@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../css/Title.css'
 
 export function Title() {
-    const letters = Array.from("ICE-BREAKER"); // Your title
+    const letters = Array.from("ICE-BREAKER");
 
     return (
         <>
