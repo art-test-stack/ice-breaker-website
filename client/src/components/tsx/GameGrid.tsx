@@ -30,7 +30,9 @@ const gameImgs: any = {
 
 export const getGameCardImg = (game: any) => {
     const gameCategories = getCategoryList(game.categories)
-    const randomIndex = Math.floor(Math.random() * gameCategories.length)
+    // choose num based on game name
+    const num = game.name.split('').reduce((acc: number, char: string) => acc + char.charCodeAt(0) * 2, 0)
+    const randomIndex = num % gameCategories.length
 
     return gameCategories.length > 0 ? gameImgs[gameCategories[randomIndex]] : gameImgs['Card Game']
 }
