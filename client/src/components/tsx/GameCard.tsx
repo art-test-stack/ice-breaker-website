@@ -10,11 +10,12 @@ interface GameCardProps {
     category: string;
     gameId: string;
     onClick: () => void;
+    style: React.CSSProperties;
 }
 
 let rating_cache: any = {};
 
-const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, gameId, onClick }) => {
+const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, gameId, onClick, style }) => {
 
     let [rating, setRating] = React.useState("...");
     if (rating_cache[gameId]) {
@@ -27,7 +28,7 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
     }
     if (rating === "-1.0") {
         return (
-            <div className="game-card" data-cy="game-card" onClick={onClick}>
+            <div className="game-card" onClick={onClick} style={style} data-cy="game-card">
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
                 <div className="game-card-textbox">
                     <h2 className="game-card-heading">{title}</h2>
@@ -37,7 +38,7 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
         );
     } else {
         return (
-            <div className="game-card" onClick={onClick}>
+            <div className="game-card" onClick={onClick} style={style}>
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
                 <div style={{width: "100%", height: 0, display: "flex", flexDirection: "row", justifyContent: "flex-end"}}>
                     <div id="rating-box">

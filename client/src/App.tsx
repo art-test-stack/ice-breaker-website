@@ -5,6 +5,10 @@ import CreateGamePage from "./CreateGamePage"
 // @ts-ignore //Routes have error, but still work. Ignore this.
 import { Route, Routes } from 'react-router-dom' 
 import './App.css';
+
+import SpinTheWheelPage from './SpinTheWheelPage';
+import { CurrentUserDataProvider } from './firebase/auth';
+
 import { createTheme } from '@mui/material/styles';
 
 
@@ -48,6 +52,11 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/games/:gameId" element={<PageForGameDescription />}/>
         <Route path="/createGame" element={<CreateGamePage />}/>
+        <Route path="/spinTheWheel" element={
+            <CurrentUserDataProvider>
+                <SpinTheWheelPage />
+            </CurrentUserDataProvider>
+        }/>
       </Routes>
     </>
 
