@@ -21,11 +21,6 @@ interface AliasFormData {
     gameID: string; 
 }
 
-/* <GameInfo numPlayers="string" duration = "string" categories="string" equipments={[string,string]} /> */
-
-
-
-
 
 function AliasInfo({aliases}: AliasInfoProps){
     const currentLocation = useLocation();
@@ -37,26 +32,10 @@ function AliasInfo({aliases}: AliasInfoProps){
         );
 
     const [userAddedAlias, setUserAddedAlias] = React.useState(''); 
-
-    // let [userName, setUserName] = useState<string | null>(null);
-
-    // get author username from database
-    // get(ref(database, 'userData/' + author + "/username")).then((snapshot: any) => {
-    //     if (snapshot.exists()) {
-    //         setUserName(snapshot.val());
-    //     }
-    // }).catch((error: any) => {
-    //     console.error(error);
-    // });
-
     const gameID = currentLocation.pathname.split("/")[2]
 
     const submitAlias = () => {
-        // console.log(formData)
-        // Push reviews to database
         push(ref(database, 'games/' + gameID +'/aliases'), userAddedAlias).then((response) => {
-            // reviewId from database
-            // const reviewID = response.key   
             setUserAddedAlias('') 
             console.log(response)
         }).catch((error) => {
@@ -78,7 +57,6 @@ function AliasInfo({aliases}: AliasInfoProps){
                 label="Add alias"
                 variant="standard"
                 size="small"
-                // type="password"
                 value={userAddedAlias}
                 onChange={(e) => setUserAddedAlias(e.target.value)}
                 InputProps={{

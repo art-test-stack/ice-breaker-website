@@ -15,7 +15,6 @@ function AddEquipment () {
     }
 
     function handleEnter(e: React.KeyboardEvent<HTMLInputElement>){
-        // e.preventDefault()
         if(e.key === 'Enter' && e.target instanceof HTMLInputElement){
             setInputValue(e.target.value)
         }

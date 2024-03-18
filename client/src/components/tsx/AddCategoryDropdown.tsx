@@ -6,11 +6,8 @@ import Tooltip from '@mui/material/Tooltip';
 export let activeCategoriesOutput: boolean[] = []
 
 export function AddCategoryDropdown() {
-
     let [showDropdown, setShowDropdown] = useState(false);
-
     let [activeCategories, setActiveCategories] = useState(categories.map(() => false));
-    // categories of ice breaker games
     
     return (
         <>
