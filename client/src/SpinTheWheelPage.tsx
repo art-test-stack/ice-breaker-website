@@ -76,6 +76,7 @@ const sketch: Sketch = p5 => {
                     }
                 }
                 set_winner(favorites_list[winner_index]);
+                console.log(favorites_list[winner_index]);
                 spinning_velocity = 0;
             }
         } else if (p5.mouseIsPressed) {
@@ -218,12 +219,14 @@ export function SpinTheWheelPage() {
             });
 
             Promise.all(promises).then((values): void => {
-                const fav = values.map((value) => value.val()).filter(game => !!game).map((value, index) => {
-                    
+                const fav = values.map((value) => value.val()).map((value, index) => {
+                    if (!value) {
+                        return null;
+                    }
                     let game: any = value;
                     game.id = favorites_ids_list[index];
                     return game;
-                });
+                }).filter(game => !!game);
                 setFavorites(fav);
 
                 //setWinner(fav[0]);
