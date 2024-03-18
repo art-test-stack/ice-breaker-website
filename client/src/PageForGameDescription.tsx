@@ -48,7 +48,7 @@ function PageForGameDescription(){
     return (
 
         <>
-        <CurrentUserDataProvider>
+        
         
         <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
               <div id='header'> 
@@ -68,9 +68,11 @@ function PageForGameDescription(){
         <GoBack onClick={() => {
                     console.log('go back button clicked');
                 }}/>
-        <DeleteGameButton onClick={() => {
-            console.log('delete game button clicked')
-        }}/>
+        <CurrentUserDataProvider>
+            <DeleteGameButton onClick={() => {
+                console.log('delete game button clicked')
+            }}/>
+        </CurrentUserDataProvider>
       </div>
       
       
@@ -88,7 +90,6 @@ function PageForGameDescription(){
     {/*everyReview css is located in App.css, */}
 
         </SearchProvider>
-        </CurrentUserDataProvider>
         </>         
     )
 }
