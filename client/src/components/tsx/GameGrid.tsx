@@ -49,7 +49,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
             return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
     }) : Object.entries(gamesList)
 
-    const filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
+    let filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
         const gameKeys = searchKeys.filter(key => Object.keys(game[1]).includes(key))
         for (const gameKey in gameKeys) {
             if (JSON.stringify(game[1][gameKeys[gameKey]]).toLowerCase().includes(filters?.searchQuery.toLowerCase())) {
@@ -58,6 +58,20 @@ const GameGrid: React.FC<GameGridProps> = () => {
         };
         return false;
     }) : filteredOnCategoryGames
+
+    // sort by number of reviews
+    filteredGames = filteredGames.sort((a: any, b: any) => {
+        if (a[1].reviewIDs && b[1].reviewIDs) {
+            return Object.keys(b[1].reviewIDs).length - Object.keys(a[1].reviewIDs).length
+        } else if (a[1].reviewIDs) {
+            return -1
+        } else if (b[1].reviewIDs) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+
     return (
         <div className="game-grid" data-cy="game-grid">
             {filteredGames.map((game, index) => (
