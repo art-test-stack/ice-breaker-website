@@ -13,7 +13,7 @@ export default function DescriptionPrompt() {
     <div style={{width:"100%"}}>
         <h2 id='addGameTitle'>Game Description:</h2>
         <form>
-            <textarea id="descriptionPrompt" onChange={handleChange}  placeholder='What are the rules of the game?' />
+            <textarea id="descriptionPrompt" onChange={handleChange}  placeholder='What are the rules of the game?' data-cy="descriptionPrompt" />
         </form>
     </div>
   );

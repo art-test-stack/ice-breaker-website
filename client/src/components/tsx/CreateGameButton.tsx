@@ -11,7 +11,7 @@ const handleClick = () => {
             <head>
                 <link href='https://fonts.googleapis.com/css?family=Galindo' rel='stylesheet'></link>
             </head>
-            <button onClick={handleClick} id="createGameButton">Create new game</button>
+            <button onClick={handleClick} id="createGameButton"  data-cy="createNewGameButton">Create new game</button>
         </div>
     );
 }

@@ -1,0 +1,31 @@
+#deleteGameButton {
+    font-family: 'Galindo', sans-serif;
+    padding: 10px 10px 10px 10px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #ee3838;
+    background-color: #000000;
+    border: solid 1px;
+    border-radius: 5px;
+    /* box-shadow: 0 9px #000000; */
+}
+
+#deleteGameButton:hover {
+    background-color: #540000;
+    color: white;
+    border: solid 1px #540000;
+} 
+
+#deleteGameButton:active {
+    background-color: #3c1a1a;
+    border: solid 1px #3c1a1a;
+    box-shadow: 0 5px #280d0d;
+    transform: translateY(3px);
+}
+
+.hide {
+    visibility: hidden;
+}
+

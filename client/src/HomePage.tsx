@@ -9,20 +9,26 @@ import CreateGameButton from "./components/tsx/CreateGameButton.tsx";
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
+
 import SpinTheWheelButton from './components/tsx/SpinTheWheelButton.tsx';
+
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { darkTheme } from './App.tsx';
+
 
 function HomePage() {
   return (
     <>
+    <ThemeProvider theme={darkTheme}>
       <SearchProvider>
             <div id='header'> 
             <div id='titleContainer'>
                 <Title/>
             </div>
-            <div id='searchContainer'>
+            <div id='searchContainer' data-cy="search">
                     <Search/>
             </div>
-            <div id='loginContainer'>
+            <div id='loginContainer' data-cy="login">
                 <CurrentUserDataProvider>
                 <LoginMenu />
                 </CurrentUserDataProvider>
@@ -46,6 +52,7 @@ function HomePage() {
                 
             </div>
         </SearchProvider>
+        </ThemeProvider>
     </>
   );
 }
