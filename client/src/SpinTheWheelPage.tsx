@@ -200,16 +200,19 @@ export function SpinTheWheelPage() {
     useEffect(() => {
         // get list of favorite games
         let favorites_ids = (userData?.data as any)?.favorites;
+        
 
         // get game data from favorites
         if (favorites_ids) {
             let favorites_ids_list: string[] = Object.keys(favorites_ids)
+            
             const promises = favorites_ids_list.map((id) => {
                 return get(ref(database, `games/${id}`))
             });
 
-            Promise.all(promises).then((values) => {
-                const fav = Object.values(values.map((value) => value.val())).map((value, index) => {
+            Promise.all(promises).then((values): void => {
+                const fav = values.map((value) => value.val()).filter(game => !!game).map((value, index) => {
+                    
                     let game: any = value;
                     game.id = favorites_ids_list[index];
                     return game;
