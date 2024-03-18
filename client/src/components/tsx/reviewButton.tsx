@@ -103,7 +103,7 @@ export const ReviewForm: any = ({ givenRating, givenReview , onClose, editReview
                 <Rating
                     id='ratings'
                     name="rating"
-                    value={formData.rating}
+                    value={formData.rating ?? 0}
                     onChange={handleInputChange}
                     emptyIcon={<StarBorderIcon style={{ color:'white'}} fontSize="inherit" />}
                 />
@@ -111,7 +111,7 @@ export const ReviewForm: any = ({ givenRating, givenReview , onClose, editReview
             <textarea 
                 name="comment" 
                 id="comment" 
-                value={formData.comment} 
+                value={formData.comment ?? ""} 
                 onChange={handleInputChange}  
                 placeholder="Write your review here..."
                 style={placeholderStyle}
