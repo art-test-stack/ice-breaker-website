@@ -19,7 +19,7 @@ export interface GameGridProps {
 
 const searchKeys = ['name', 'aliases']
 
-const gameImgs = { 
+const gameImgs: any = { 
     'Active': './src/assets/active.webp', 
     'Card Game': './src/assets/cards.webp', 
     'Chill': './src/assets/chill.webp', 
@@ -28,9 +28,11 @@ const gameImgs = {
     'Team Building': './src/assets/teambuilding.webp', 
 }
 
-const getGameCardImg = (game: any) => {
-    const gameCategories = getCategoryList(game[1].categories)
-    const randomIndex = Math.floor(Math.random() * gameCategories.length)
+export const getGameCardImg = (game: any) => {
+    const gameCategories = getCategoryList(game.categories)
+    // choose num based on game name
+    const num = game.name.split('').reduce((acc: number, char: string) => acc + char.charCodeAt(0) * 2, 0)
+    const randomIndex = num % gameCategories.length
 
     return gameCategories.length > 0 ? gameImgs[gameCategories[randomIndex]] : gameImgs['Card Game']
 }
@@ -61,7 +63,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
             {filteredGames.map((game, index) => (
                 <GameCard
                     key={index}
-                    imgSrc={getGameCardImg(game)}
+                    imgSrc={getGameCardImg(game[1])}
                     imgAlt={'Image 2'}
                     title={game[1].name}
                     category={getCategoryList(game[1].categories).join(', ')}
@@ -70,6 +72,7 @@ const GameGrid: React.FC<GameGridProps> = () => {
                         console.log(`Clicked on ${game[1].title} (id: ${game[0]})`);
                     }} 
                     gameId={game[0]}
+                    style={{}}
                 />
             ))}
         </div>
