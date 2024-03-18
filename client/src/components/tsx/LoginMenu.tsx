@@ -19,14 +19,14 @@ import {currentUserData, loginUser, registerUser, signOutUser} from '../../fireb
 import { useContext } from 'react';
 import { register } from 'module';
 import Box from '@mui/material/Box';
-import { useSearch } from './Search';
+// import { useSearch } from './Search';
 
 export default function LoginMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [email, setEmail] = React.useState(''); 
   const [password, setPassword] = React.useState('');
 
-  const { filters, setFilters} = useSearch()
+//   const { filters, setFilters} = useSearch()
   let [errorMessage, setErrorMessage] = React.useState<string | null>(null)
 
   const userData = useContext(currentUserData);
@@ -89,7 +89,7 @@ export default function LoginMenu() {
                 <Tooltip title="Log out">
                 <IconButton
                     onClick={() => {
-                        setFilters({...filters, favourites: false})
+                        // setFilters({...filters, favourites: false})
                         setErrorMessage(null)
                         setAnchorEl(null)
                         signOutUser()
