@@ -33,7 +33,6 @@ const submitReview = (formData: ReviewFormData) => {
         // push reviewIDs to games.
         push(ref(database, 'games/' + formData.gameId +'/reviewIDs'), reviewID).then(() => {
             window.alert("The review was added successfully!")
-            window.location.reload() 
         })
     
     }).catch((error) => {
@@ -48,7 +47,6 @@ const editReview = (formData: ReviewFormData, reviewId: string) => {
     const ratingPromise = set(ref(database, `reviews/${reviewId}/rating`), formData.rating)
     Promise.all([contentPromise, ratingPromise]).then(() => {
         window.alert("The review was edited successfully!")
-        window.location.reload() 
     }).catch((error) => {
         console.log('Error: ', error)
         window.alert("Error editing review: " + error.message)
