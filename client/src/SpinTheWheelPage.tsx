@@ -13,15 +13,6 @@ import { useNavigate } from "react-router-dom";
 
 const CANVAS_MARGIN: number = 100;
 
-const temp_favorites_list = [
-    "game1",
-    "game2",
-    "game3",
-    "game4",
-    "game5",
-    "game6",
-]
-
 let favorites_list: any[] = [];
 
 let wheel_angle = 0;
@@ -102,10 +93,14 @@ const sketch: Sketch = p5 => {
                     (mouse_angle_history[mouse_angle_history.length - 1] - mouse_angle_history[Math.max(mouse_angle_history.length - 15, 0)]) 
                             / Math.min(mouse_angle_history.length, 15) 
                             / frame_delta;
+
+                console.log(speed, mouse_angle_history);
+
                 if (Math.abs(speed) > p5.PI && Math.abs(speed) < p5.PI * 10) {
                     // start spinning
                     set_wheel_spinning(true);
-                    spinning_velocity = speed;
+                    spinning_velocity = Math.min(Math.abs(speed), 15);
+                    
                 }
             }
             holding = false;
