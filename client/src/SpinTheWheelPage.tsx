@@ -10,6 +10,7 @@ import { database } from "./firebase/init";
 import GameCard from "./components/tsx/GameCard";
 import { getCategoryList } from "./App";
 import { useNavigate } from "react-router-dom";
+import { getGameCardImg } from "./components/tsx/GameGrid";
 
 const CANVAS_MARGIN: number = 100;
 
@@ -94,7 +95,6 @@ const sketch: Sketch = p5 => {
                             / Math.min(mouse_angle_history.length, 15) 
                             / frame_delta;
 
-                console.log(speed, mouse_angle_history);
 
                 if (Math.abs(speed) > p5.PI && Math.abs(speed) < p5.PI * 10) {
                     // start spinning
@@ -281,7 +281,7 @@ export function SpinTheWheelPage() {
                         <h1>Winner:</h1>
                         { winner ? 
                         <GameCard
-                            imgSrc={'./src/assets/cards.webp'} // this is not currently from the database
+                            imgSrc={getGameCardImg(winner)} // this is not currently from the database
                             imgAlt={'Image 2'}
                             title={winner.name}
                             category={getCategoryList(winner.categories).join(', ')}
