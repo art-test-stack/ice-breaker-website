@@ -221,7 +221,7 @@ export function SpinTheWheelPage() {
                 });
                 setFavorites(fav);
 
-                setWinner(fav[0]);
+                //setWinner(fav[0]);
             });
         }
     }, [userData]);
@@ -283,6 +283,7 @@ export function SpinTheWheelPage() {
                         <button id={spinning ? "disabledSpinButton" : "spinButton"} onClick={() => spinWheel(8 * Math.random() * 2)}>Spin</button>
                     </div>
                     <div id="winnerContainer" style={{transform: `scale(${spinning ? 0.6 : 1}) rotate(${spinning ? "10deg":0})`, opacity: spinning ? 0 : 1}}>
+                        <h1>Winner:</h1>
                         { winner ? 
                         <GameCard
                             imgSrc={'./src/assets/cards.webp'} // this is not currently from the database
@@ -295,7 +296,7 @@ export function SpinTheWheelPage() {
                             }} 
                             gameId={winner.id}
                             style={{width: "100%"}}
-                        /> : null }
+                        /> : <div> Spin the wheel to choose a game! </div> }
                         
                     </div>
                 </div>
