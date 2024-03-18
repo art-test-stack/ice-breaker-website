@@ -29,7 +29,7 @@ function PageForGameDescription(){
 
     useEffect(() => {
         const gameRef = getGame(gameId as string);
-        onValue(gameRef, (snapshot) => {
+        get(gameRef).then((snapshot) => {
             const data = snapshot.val();
             setGame(data);
         });
@@ -60,7 +60,9 @@ function PageForGameDescription(){
         </div>
         <div id='loginContainer'>
         <ThemeProvider theme={darkTheme}>
+            <CurrentUserDataProvider>
             <LoginMenu/>
+            </CurrentUserDataProvider>
             </ThemeProvider>
         </div>
         </div>

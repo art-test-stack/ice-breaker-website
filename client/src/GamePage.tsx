@@ -72,7 +72,7 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
                     <Timer />
                 </div>
 
-                <AliasInfo aliases={aliases}/>
+                <AliasInfo gameId={gameId}/>
             </div>
             </ThemeProvider>
         </div>
