@@ -14,7 +14,7 @@ interface GameCardProps {
     category: string;
     gameId: string;
     onClick: () => void;
-    style: React.CSSProperties;
+style: React.CSSProperties;
 }
 
 let rating_cache: any = {};
