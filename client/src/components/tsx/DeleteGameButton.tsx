@@ -3,17 +3,16 @@ import { currentUserData } from "../../firebase/auth"
 import { useNavigate, useLocation } from 'react-router-dom'
 import { ref, remove, getDatabase, onValue} from 'firebase/database'
 import { useContext } from 'react'
-// import { useContext } from 'react'
 
 
 const DeleteGameButton: React.FC<{onClick: () => void}> = () => {
     const navigate = useNavigate()
 
     // game info
-    const path = useLocation().pathname
+    const path = useLocation().pathname /* /games/gameID */
     const db = getDatabase()    
     const dbRef = ref(db, path)
-    
+
     // user info
     const userData = useContext(currentUserData)
     const userID = userData?.user?.uid
@@ -26,7 +25,8 @@ const DeleteGameButton: React.FC<{onClick: () => void}> = () => {
         const data = snapshot.val()
         creator = data.creator
     })
-    if (moderator || userID == creator) {
+
+    if (moderator || (userData && userID == creator)) {
         canDelete = true
     }
 

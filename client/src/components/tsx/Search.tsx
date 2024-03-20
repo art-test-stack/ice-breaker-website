@@ -5,7 +5,9 @@ import '../css/Search.css';
 interface gamesQuery {
   searchQuery: string;
   categories: string[] | any;
+  favourites: boolean;
 }
+
 interface SearchContextType {
     filters: gamesQuery;
     setFilters: React.Dispatch<React.SetStateAction<gamesQuery>>;
@@ -14,7 +16,7 @@ interface SearchContextType {
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
 export const SearchProvider = ({ children }: any) => {
-  const initialFilters = {searchQuery: '', categories: []}
+  const initialFilters = {searchQuery: '', categories: [], favourites: false}
   const [filters, setFilters] = useState(initialFilters);
   
   return (

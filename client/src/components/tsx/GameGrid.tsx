@@ -6,6 +6,7 @@ import { useSearch } from './Search';
 import { useNavigate } from 'react-router-dom';
 import { currentGamesList } from '../../firebase/gameprovider';
 import { categories, getCategoryList } from '../../App';
+import { currentUserData } from '../../firebase/auth';
 
 
 export interface GameGridProps {
@@ -45,9 +46,20 @@ const GameGrid: React.FC<GameGridProps> = () => {
     const { filters }: any = useSearch();
     const gamesList = useContext(currentGamesList);
     
-    const filteredOnCategoryGames = filters?.categories.length > 0 ? Object.entries(gamesList).filter((game: any) => {
-            return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
+    // favourites
+    const userData = useContext(currentUserData)
+    const favouriteGames = userData?.data?.favorites
+    const favoritesGameIds = favouriteGames ? Object.keys(favouriteGames) : []
+    // console.log(favoritesGameIds)
+    const filterFavourite = filters.favourites ? Object.entries(gamesList).filter((game: any) => {
+        // console.log('hello', favoritesGameIds.includes(game[0]))
+        // console.log('gqameinfo', game[0])
+        return favoritesGameIds.includes(game[0]) 
     }) : Object.entries(gamesList)
+
+    const filteredOnCategoryGames = filters?.categories.length > 0 ? filterFavourite.filter((game: any) => {
+        return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
+}) : filterFavourite
 
     let filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
         const gameKeys = searchKeys.filter(key => Object.keys(game[1]).includes(key))
