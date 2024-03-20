@@ -19,6 +19,9 @@ import {currentUserData, loginUser, registerUser, signOutUser} from '../../fireb
 import { useContext } from 'react';
 import { register } from 'module';
 import Box from '@mui/material/Box';
+import { useSearch } from './Search';
+import { useLocation } from 'react-router-dom';
+
 // import { useSearch } from './Search';
 
 export default function LoginMenu() {
@@ -26,12 +29,20 @@ export default function LoginMenu() {
   const [email, setEmail] = React.useState(''); 
   const [password, setPassword] = React.useState('');
 
-//   const { filters, setFilters} = useSearch()
+  const location = useLocation()
+  
   let [errorMessage, setErrorMessage] = React.useState<string | null>(null)
 
   const userData = useContext(currentUserData);
 
-  // const [showRegisterMenu, setShowRegisterMenu] = React.useState(false); 
+  if (location.pathname == '/'){
+    const { filters, setFilters } = useSearch()
+
+    if (!(userData || filters.favourites == false)){ 
+        setFilters({...filters, favourites: false})
+    }
+  }
+
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -51,10 +62,6 @@ export default function LoginMenu() {
         }
     })
   }
-  // const handleRegisterClick = () => {
-  //   setShowRegisterMenu(true); 
-  //   handleClose(); 
-  // }
 
   const handleRegister = () => {
     registerUser(email, password, (err: string | null) => {
@@ -89,7 +96,6 @@ export default function LoginMenu() {
                 <Tooltip title="Log out">
                 <IconButton
                     onClick={() => {
-                        // setFilters({...filters, favourites: false})
                         setErrorMessage(null)
                         setAnchorEl(null)
                         signOutUser()
