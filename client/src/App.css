@@ -41,7 +41,11 @@
 .FavAndCat {
   width: fit-content;
   display: flex;
-  flex-direction: column;
-  justify-content:space-around;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 20px;
+  align-items: center;
   flex-wrap: wrap;
 }
+
+

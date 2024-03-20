@@ -56,10 +56,10 @@ const GameGrid: React.FC<GameGridProps> = () => {
         // console.log('gqameinfo', game[0])
         return favoritesGameIds.includes(game[0]) 
     }) : Object.entries(gamesList)
-    
+
     const filteredOnCategoryGames = filters?.categories.length > 0 ? filterFavourite.filter((game: any) => {
-            return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
-    }) : filterFavourite
+        return game[1].categories && filters?.categories.every((e: any) => categories.filter((c, i) => game[1].categories[i]).includes(e))
+}) : filterFavourite
 
     let filteredGames = filters?.searchQuery ? filteredOnCategoryGames.filter((game: any) => {
         const gameKeys = searchKeys.filter(key => Object.keys(game[1]).includes(key))

@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { currentUserData } from "../../firebase/auth"
 import '../css/FavouriteList.css'
 import { useSearch } from "./Search"
+import { Filter } from '@mui/icons-material'
 
 let redHeart = false
 const Favourites = () => {
@@ -27,8 +28,13 @@ const Favourites = () => {
     }
     
     return (
-        <button id='favButton'style={{display: 'flex', padding: '0px', margin: '0'}} className={displayFavourites? '': 'hideFavourites'} onClick={handleClick}>
-            <img className={redHeart ? 'redHeart':''} src='src/assets/favorite-svgrepo-com.svg'  style={{padding: '0', marginRight: '10px'}}/>
+        <button id='favButton'style={{display: 'flex', padding: '0px'}} className={displayFavourites? '': 'hideFavourites'} onClick={handleClick}>
+            <img id="favButtonHeart" src='src/assets/heart.png'  style={{
+                padding: '0',
+                marginRight: '10px',
+                width: "32px",
+                filter: redHeart ? null : 'saturate(0%) brightness(200%)' as any,
+            }}/>
             Favourites
         </button> 
     );

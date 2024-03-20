@@ -55,7 +55,6 @@ function PageForGameDescription(){
         <div id='titleContainer'>
           <Title/>
         </div>
-        
         <div id='loginContainer'>
         <ThemeProvider theme={darkTheme}>
             <CurrentUserDataProvider>

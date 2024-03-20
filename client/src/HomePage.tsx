@@ -40,18 +40,18 @@ function HomePage() {
             {/* <div><LoginButton /></div> */}
             </div>
             <div className ="gameSectionHeader">
-            <CurrentUserDataProvider>
                 <div className='FavAndCat'>
+                    <CategoryDropdown />
+                    <CurrentUserDataProvider>
                         <Favourites/>
-                        <CategoryDropdown />
+                    </CurrentUserDataProvider>
                 </div>
                 <div style={{display: "flex", flexDirection: "row"}}>
                     <SpinTheWheelButton/>
                     <CreateGameButton onClick={() => {
-                                    console.log('create game button clicked');
-                                }}/>
-                </div>    
-                </CurrentUserDataProvider>            
+                                        console.log('create game button clicked');
+                                    }}/>
+                </div>
             </div>
             <div className ="gameSection">
                 
