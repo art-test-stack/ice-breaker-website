@@ -10,6 +10,9 @@ import { Search, SearchProvider } from './components/tsx/Search.tsx';
 import { Title } from './components/tsx/Title.tsx';
 import { AuthUI, CurrentUserDataProvider } from "./firebase/auth.tsx";
 import { CurrentGamesProvider } from './firebase/gameprovider.tsx';
+
+import SpinTheWheelButton from './components/tsx/SpinTheWheelButton.tsx';
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { darkTheme } from './App.tsx';
 
@@ -45,9 +48,12 @@ function HomePage() {
                     </CurrentUserDataProvider>
                         <CategoryDropdown />
                 </div>
-                <CreateGameButton onClick={() => {
-                                console.log('create game button clicked');
-                            }}/>
+                <div style={{display: "flex", flexDirection: "row"}}>
+                    <SpinTheWheelButton/>
+                    <CreateGameButton onClick={() => {
+                                        console.log('create game button clicked');
+                                    }}/>
+                </div>
             </div>
             <div className ="gameSection">
                 

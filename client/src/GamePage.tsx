@@ -11,6 +11,7 @@ import AliasInfo from "./components/tsx/AliasInfo";
 import { ThemeProvider } from "@mui/material/styles";
 import { darkTheme } from "./App";
 import Timer from "./components/tsx/Timer"
+import { CurrentUserDataProvider } from "./firebase/auth";
 
 
 interface Props{
@@ -63,13 +64,15 @@ function GameDescriptionAndAdditionalInfo({title, gameText, numPlayers, duration
             </div>
             <ThemeProvider theme={darkTheme}>
             <div className="Right-Section-GameInfo">
-                <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
-                <ReviewSaveShareButton/>  
+                <CurrentUserDataProvider>
+                    <GameInfo numPlayers={numPlayers} duration={duration} equipments={equipments} categories={categories} author={author}/>
+                    <ReviewSaveShareButton/>
+                </CurrentUserDataProvider>
                 <div className="Timer-box" data-cy="Timer-box">
                     <Timer />
                 </div>
 
-                <AliasInfo aliases={aliases}/>
+                <AliasInfo gameId={gameId}/>
             </div>
             </ThemeProvider>
         </div>

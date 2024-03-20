@@ -29,7 +29,7 @@ function PageForGameDescription(){
 
     useEffect(() => {
         const gameRef = getGame(gameId as string);
-        onValue(gameRef, (snapshot) => {
+        get(gameRef).then((snapshot) => {
             const data = snapshot.val();
             setGame(data);
         });
@@ -48,19 +48,18 @@ function PageForGameDescription(){
     return (
 
         <>
-        <CurrentUserDataProvider>
+        
         
         <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
               <div id='header'> 
         <div id='titleContainer'>
           <Title/>
         </div>
-        <div id='searchContainer'>
-          <Search/>
-        </div>
         <div id='loginContainer'>
         <ThemeProvider theme={darkTheme}>
+            <CurrentUserDataProvider>
             <LoginMenu/>
+            </CurrentUserDataProvider>
             </ThemeProvider>
         </div>
         </div>
@@ -68,9 +67,11 @@ function PageForGameDescription(){
         <GoBack onClick={() => {
                     console.log('go back button clicked');
                 }}/>
-        <DeleteGameButton onClick={() => {
-            console.log('delete game button clicked')
-        }}/>
+        <CurrentUserDataProvider>
+            <DeleteGameButton onClick={() => {
+                console.log('delete game button clicked')
+            }}/>
+        </CurrentUserDataProvider>
       </div>
       
       
@@ -88,7 +89,6 @@ function PageForGameDescription(){
     {/*everyReview css is located in App.css, */}
 
         </SearchProvider>
-        </CurrentUserDataProvider>
         </>         
     )
 }

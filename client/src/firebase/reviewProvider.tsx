@@ -7,7 +7,7 @@ import { database } from "./init"
 export const currentReviewsList = createContext<{[id: string]: any}>({})
 
 export const CurrentGameReviewsProvider = ({ children, gameId }: { children: any, gameId: string | undefined }) => {
-    const [reviewsList, setReviewsList] = useState<{[id: string]: any}>({})
+    const [reviewsList, setReviewsList] = useState<any[]>([])
 
     useEffect(() => {
         const gameReviewsRef = ref(database, `games/${gameId}/reviewIDs`); 
@@ -19,7 +19,12 @@ export const CurrentGameReviewsProvider = ({ children, gameId }: { children: any
                     return get(reviewRef)
                 });
                 const reviews = await Promise.all(reviewsPromises);
-                setReviewsList(reviews.map((review) => review.val()));
+                const reviewsList = reviews.map((review) => review.val());
+                // add review ids as properties to the reviews objects
+                reviewsList.forEach((review, index) => {
+                    review.id = Object.values(reviewIDs)[index];
+                });
+                setReviewsList(reviewsList);
             } else {
                 setReviewsList([]);
             }
