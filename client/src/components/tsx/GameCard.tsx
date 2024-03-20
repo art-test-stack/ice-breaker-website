@@ -22,9 +22,9 @@ let rating_cache: any = {};
 const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, gameId, style, onClick }) => {
     
     const userData = useContext(currentUserData);
-    const favoriteGames = Object.keys(userData?.data?.favorites??{});
+    const favoriteGames = Object.keys((userData?.data as any)?.favorites ?? {});
 
-    const favIconPath = "src/assets/favorite-svgrepo-com.svg"
+    const favIconPath = "src/assets/heart.png"
 
     let isFavorite = favoriteGames.includes(gameId);
     
@@ -43,10 +43,10 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
             <div className="game-card" onClick={onClick} style={style} data-cy="game-card">
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
                 {isFavorite ? (
-  <div style={{ filter: 'drop-shadow(2px 2px 4px rgba(221, 198, 210, 0.8))' }}>
-    <img src={favIconPath} className="redHeartIcon" />
-  </div>
-) : null}
+                    <div className="redHeartIconBox">
+                        <img src={favIconPath} className="redHeartIcon" />
+                    </div>
+                ) : null}
                 <div className="game-card-textbox">
                     <h2 className="game-card-heading">{title}</h2>
                     <p className="game-card-category" data-cy="gameCardCategory">{category}</p>
@@ -58,10 +58,10 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
             <div className="game-card" onClick={onClick} style={style}>
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
                 {isFavorite ? (
-  <div style={{ filter: 'drop-shadow(2px 2px 4px rgba(221, 198, 210, 0.8))' }}>
-    <img src={favIconPath} className="redHeartIcon" />
-  </div>
-) : null}
+                    <div className="redHeartIconBox">
+                        <img src={favIconPath} className="redHeartIcon" />
+                    </div>
+                ) : null}
                 <div style={{width: "100%", height: 0, display: "flex", flexDirection: "row", justifyContent: "flex-end"}}>
                     <div id="rating-box">
                         <AverageReviewScore score={rating} />
