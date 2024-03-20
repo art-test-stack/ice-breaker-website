@@ -19,7 +19,7 @@ style: React.CSSProperties;
 
 let rating_cache: any = {};
 
-const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, gameId, onClick }) => {
+const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, gameId, style, onClick }) => {
     
     const userData = useContext(currentUserData);
     const favoriteGames = Object.keys(userData?.data?.favorites??{});
