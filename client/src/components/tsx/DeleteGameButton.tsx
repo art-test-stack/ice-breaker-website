@@ -25,7 +25,8 @@ const DeleteGameButton: React.FC<{onClick: () => void}> = () => {
         const data = snapshot.val()
         creator = data.creator
     })
-    if (moderator || userID == creator) {
+
+    if (moderator || (userData && userID == creator)) {
         canDelete = true
     }
 
