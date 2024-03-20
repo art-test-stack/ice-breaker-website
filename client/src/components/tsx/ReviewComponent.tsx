@@ -2,18 +2,21 @@ import '../css/ReviewComponent.css'
 
 // import StarBorderIcon from '@mui/icons/StarBorder';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import EditReviewIcon from './EditReviewIcon';
 import Rating from '@mui/material/Rating';
+import {CurrentUserDataProvider,} from '../../firebase/auth'
+
+
 
 interface Props {
     userName: string;
     givenReview: string;
     rating: string;
+    review_id: string;
 }
 
-function ReviewComponent({userName, givenReview, rating}:Props) {
-    console.log(userName, givenReview, rating);
+function ReviewComponent({userName, givenReview, rating, review_id}:Props) {
     return (
-        
         <div className="background">
             <span>
                 <div className='givenRating'>
@@ -21,13 +24,15 @@ function ReviewComponent({userName, givenReview, rating}:Props) {
                 </div>
             <div className='userName'>
                 {userName}
+                <CurrentUserDataProvider>
+                    <EditReviewIcon userName={userName} givenReview={givenReview} rating={parseInt(rating)} review_id={review_id} />
+                </CurrentUserDataProvider>
             </div>
             </span>
             <div className='review'>
                 {givenReview}
             </div>
         </div>
-
     );
   }
 

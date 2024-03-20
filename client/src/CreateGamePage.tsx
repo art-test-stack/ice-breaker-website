@@ -16,6 +16,8 @@ import './App.css';
 import { database } from './firebase/init.ts';
 import { push, ref } from "@firebase/database";
 import { DurationSelector, duration } from "./components/tsx/DurationSelector.tsx";
+import { ThemeProvider } from "@mui/material";
+import { darkTheme } from "./App.tsx";
 
 const publishButtonClicked = () => {
     // get current context value
@@ -57,11 +59,13 @@ export function CreateGamePage() {
           </div>
           <div id='searchContainer'>
           </div>
+          <ThemeProvider theme={darkTheme}>
           <div id='loginContainer'>
             <CurrentUserDataProvider>
               <LoginMenu />
             </CurrentUserDataProvider>
           </div>
+          </ThemeProvider>
           {/* <div><LoginButton /></div> */}
         </div>
         <div className="createGamePageContent">

@@ -14,6 +14,7 @@ interface GameCardProps {
     category: string;
     gameId: string;
     onClick: () => void;
+    style: React.CSSProperties;
 }
 
 let rating_cache: any = {};
@@ -39,7 +40,7 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
     }
     if (rating === "-1.0") {
         return (
-            <div className="game-card" data-cy="game-card" onClick={onClick}>
+            <div className="game-card" onClick={onClick} style={style} data-cy="game-card">
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
                 {isFavorite ? (
   <div style={{ filter: 'drop-shadow(2px 2px 4px rgba(221, 198, 210, 0.8))' }}>
@@ -54,7 +55,7 @@ const GameCard: React.FC<GameCardProps> = ({ imgSrc, imgAlt, title, category, ga
         );
     } else {
         return (
-            <div className="game-card" onClick={onClick}>
+            <div className="game-card" onClick={onClick} style={style}>
                 <img src={imgSrc} alt={imgAlt} className="game-card-img" />
                 {isFavorite ? (
   <div style={{ filter: 'drop-shadow(2px 2px 4px rgba(221, 198, 210, 0.8))' }}>
