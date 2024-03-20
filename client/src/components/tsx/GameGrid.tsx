@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { currentGamesList } from '../../firebase/gameprovider';
 import { categories, getCategoryList } from '../../App';
 import { currentUserData } from '../../firebase/auth';
-import Favourites from './FavouriteList';
 
 
 export interface GameGridProps {

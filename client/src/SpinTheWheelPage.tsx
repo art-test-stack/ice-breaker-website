@@ -8,9 +8,10 @@ import { useContext, useEffect, useState } from "react";
 import { get, ref } from "firebase/database";
 import { database } from "./firebase/init";
 import GameCard from "./components/tsx/GameCard";
-import { getCategoryList } from "./App";
+import { darkTheme, getCategoryList } from "./App.tsx";
 import { useNavigate } from "react-router-dom";
 import { getGameCardImg } from "./components/tsx/GameGrid";
+import { ThemeProvider } from '@mui/material/styles';
 
 const CANVAS_MARGIN: number = 100;
 
@@ -263,6 +264,7 @@ export function SpinTheWheelPage() {
         </>
     } else {
         return <>
+            <ThemeProvider theme={darkTheme}>
             <div>
                 <div id='header'> 
                     <div id='titleContainer'>
@@ -274,8 +276,10 @@ export function SpinTheWheelPage() {
                         <LoginMenu />
                         </CurrentUserDataProvider>
                     </div>
+                    
                 </div>
             </div>
+            </ThemeProvider>
             
             <div className="goBackWrapper">
                 <div style={{margin: "10px"}}>

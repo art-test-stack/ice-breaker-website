@@ -51,7 +51,7 @@ function PageForGameDescription(){
         
         
         <SearchProvider> {/* NOTE: make no sense to let that here isnt it? Shouldnt we remove the search bar in gamepage?*/}
-              <div id='header'> 
+        <div id='header'> 
         <div id='titleContainer'>
           <Title/>
         </div>

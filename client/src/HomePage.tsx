@@ -34,9 +34,7 @@ function HomePage() {
 
             <div id='loginContainer' data-cy="login">
                 <CurrentUserDataProvider>
-            <div id='loginContainer'>
                 <LoginMenu />
-            </div>
                 </CurrentUserDataProvider>
             </div>
             {/* <div><LoginButton /></div> */}
