@@ -4,6 +4,7 @@
     border-radius: 1rem;
     cursor: pointer; /* making the pointer change on hover */
     overflow: hidden;
+    position: relative; /*Necessary for .readHeart's positioning to work*/
 }
 
 .game-card-img {
@@ -43,4 +44,15 @@
     transform: translate(-5px, -20px);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+}
+
+.redHeartIcon{
+    position: absolute;
+    bottom: 22.5%;
+    left: 5%;
+    filter: invert(47%) sepia(38%) saturate(803%) hue-rotate(314deg) brightness(91%) contrast(86%);
+    /* color: #ff3643; */
+    /* border: black solid 1px;;
+    outline: white solid 1px; */
+    /* filter: drop-shadow(2px 2px 4px rgba(201, 21, 27, 0.5)); */
 }
