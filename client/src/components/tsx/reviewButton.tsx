@@ -78,10 +78,15 @@ export const ReviewForm: any = ({ givenRating, givenReview , onClose, editReview
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
+        if (!formData.rating || !formData.comment) {
+            window.alert("Please fill in all fields!");
+            return;
+        }
+        
         // checks if logged in
         if (!userData) {
             window.alert("You must be logged in to review a game!")
-        }else{
+        } else {
             console.log(formData);
             // Call API instead of console-log to register form data
             if (editReviewId){
@@ -115,7 +120,7 @@ export const ReviewForm: any = ({ givenRating, givenReview , onClose, editReview
                 placeholder="Write your review here..."
                 style={placeholderStyle}
             />
-            <Button id="submitReview" type="submit" onClick={onClose} className={userData ? '': 'disabledSubmitButton'}>
+            <Button id="submitReview" type="submit" onClick={formData.rating && formData.comment ? onClose : null} className={userData && formData.rating && formData.comment ? '': 'disabledSubmitButton'}>
                 Submit
             </Button>
         </form>
