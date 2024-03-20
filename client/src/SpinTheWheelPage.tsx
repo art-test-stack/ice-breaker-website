@@ -77,6 +77,7 @@ const sketch: Sketch = p5 => {
                     }
                 }
                 set_winner(favorites_list[winner_index]);
+                console.log(favorites_list[winner_index]);
                 spinning_velocity = 0;
             }
         } else if (p5.mouseIsPressed) {
@@ -114,14 +115,21 @@ const sketch: Sketch = p5 => {
         }
 
         function is_selected(gameindex: number) {
-            let a = (p5.TWO_PI / favorites_list.length * gameindex + wheel_angle)
-            let b = (p5.TWO_PI / favorites_list.length * (gameindex + 1) + wheel_angle)
+            let a = ((p5.TWO_PI / favorites_list.length) * gameindex + wheel_angle)
+            let b = ((p5.TWO_PI / favorites_list.length) * (gameindex + 1) + wheel_angle)
 
             // normalize angles 0 to 2PI
             a = normalize_angle(a);
             b = normalize_angle(b);
             
-            return a < p5.PI * 1.5 && b > p5.PI * 1.5;
+            
+            const targetAngle = p5.PI * 1.5;
+            
+            if (b < a) {
+                return targetAngle > a || targetAngle < b;
+            } else {
+                return targetAngle > a && targetAngle < b;
+            }
         }
         
         favorites_list.forEach((game, index) => {
@@ -201,20 +209,25 @@ export function SpinTheWheelPage() {
     useEffect(() => {
         // get list of favorite games
         let favorites_ids = (userData?.data as any)?.favorites;
+        
 
         // get game data from favorites
         if (favorites_ids) {
             let favorites_ids_list: string[] = Object.keys(favorites_ids)
+            
             const promises = favorites_ids_list.map((id) => {
                 return get(ref(database, `games/${id}`))
             });
 
-            Promise.all(promises).then((values) => {
-                const fav = Object.values(values.map((value) => value.val())).map((value, index) => {
+            Promise.all(promises).then((values): void => {
+                const fav = values.map((value) => value.val()).map((value, index) => {
+                    if (!value) {
+                        return null;
+                    }
                     let game: any = value;
                     game.id = favorites_ids_list[index];
                     return game;
-                });
+                }).filter(game => !!game);
                 setFavorites(fav);
 
                 //setWinner(fav[0]);
