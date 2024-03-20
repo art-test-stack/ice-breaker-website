@@ -4,16 +4,23 @@
     visibility: hidden;
 }
 
-.redHeart{
-    filter: invert(47%) sepia(38%) saturate(803%) hue-rotate(314deg) brightness(91%) contrast(86%);
-}
+
 
 #favButton{
-    align-content: center;
+    align-items: center;
     font-family: 'Galindo', 'sans-serif';
-    font-size: larger;
+    font-size: 20px;
     margin-left: 10px;
     background: none;
     border: none;
+    margin-top: 5px;
+}
+
+#favButtonHeart {
+    transition: 0.3s ease;
+}
+
+#favButton:hover #favButtonHeart {
+    transform: scale(1.2);
 }
 

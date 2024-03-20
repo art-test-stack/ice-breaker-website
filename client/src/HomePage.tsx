@@ -43,10 +43,10 @@ function HomePage() {
             </div>
             <div className ="gameSectionHeader">
                 <div className='FavAndCat'>
+                    <CategoryDropdown />
                     <CurrentUserDataProvider>
                         <Favourites/>
                     </CurrentUserDataProvider>
-                        <CategoryDropdown />
                 </div>
                 <div style={{display: "flex", flexDirection: "row"}}>
                     <SpinTheWheelButton/>
