@@ -16,11 +16,13 @@ export const getAverageRating = onCall(async (data, context) => {
     const reviewIDs: string[] = Object.values(reviewID_data)
     logger.info(`Found ${reviewIDs} for game ${gameId}`)
 
-    const reviews = await Promise.all(
+    let reviews = await Promise.all(
         reviewIDs.map(async (id: string) => {
             return (await db.ref(`reviews/${id}`).get()).val()
         })
     )
+
+    reviews = reviews.filter((review: any) => review)
 
     const ratings = reviews.map((review: any) => parseFloat(review.rating))
     const averageRating = ratings.reduce((acc: number, rating: number) => acc + rating, 0) / ratings.length
