@@ -91,6 +91,9 @@ export default function LoginMenu() {
                     <Avatar sx={{ width: 32, height: 32, borderRadius: 2, marginRight: '5px' }} />
                     <Typography sx={{ color: 'primary', opacity: 0.6 }}>Logged in as </Typography>
                     <Typography sx={{ color: 'primary', fontWeight: 'bold', marginLeft: '5px' }}>{userData.data?.username}</Typography>
+                    {
+                        userData?.data?.moderator ? <Typography sx={{ color: 'red', fontWeight: 'bold', marginLeft: '5px' }}> [moderator]</Typography> : null
+                    }
                 </Box>
 
                 <Tooltip title="Log out">
