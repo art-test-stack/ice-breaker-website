@@ -19,11 +19,12 @@ export const CurrentGameReviewsProvider = ({ children, gameId }: { children: any
                     return get(reviewRef)
                 });
                 const reviews = await Promise.all(reviewsPromises);
-                const reviewsList = reviews.map((review) => review.val());
+                let reviewsList = reviews.map((review) => review.val());
                 // add review ids as properties to the reviews objects
                 reviewsList.forEach((review, index) => {
-                    review.id = Object.values(reviewIDs)[index];
+                    if (review) review.id = Object.values(reviewIDs)[index];
                 });
+                reviewsList = reviewsList.filter((review) => review);
                 setReviewsList(reviewsList);
             } else {
                 setReviewsList([]);
